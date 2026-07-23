@@ -1,0 +1,16 @@
+{
+  "name": "schema-platform-docs",
+  "version": "1.0.0",
+  "description": "Documentation for Schema Platform",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "deploy": "npm run build && gh-pages -d .vitepress/dist"
+  },
+  "devDependencies": {
+    "vitepress": "^1.0.0",
+    "gh-pages": "^6.0.0"
+  }
+}
