@@ -1,0 +1,35 @@
+---
+title: Schema Platform
+layout: home
+
+hero:
+  name: Schema Platform
+  text: AI Application Platform for Form/Flow Scenarios
+  tagline: Conversational Agent, Visual Workflow Orchestration, RAG Knowledge Base, Evaluation System
+  actions:
+    - theme: brand
+      text: Get Started
+      link: /en/guide/
+    - theme: alt
+      text: View on GitHub
+      link: https://github.com/nan1010082085/ai-platform
+
+features:
+  - icon: 🤖
+    title: AI Agent
+    details: Multi-expert conversational Agent with LangGraph StateGraph, supporting requirement analysis, task planning, tool invocation, and HITL interrupt/resume.
+  - icon: 🔧
+    title: 32 Node Types
+    details: Visual DAG workflow editor with LLM, agent-loop, agent-team, code execution, schedule triggers, and 7 vertical scenario nodes (approval, compliance, etc).
+  - icon: 📚
+    title: RAG + Rerank
+    details: Vector search + keyword fallback + BGE-Reranker rerank + hybrid weighted fusion. Debug view with three-way comparison.
+  - icon: 📊
+    title: Evaluation System
+    details: Offline evaluation with datasets, test cases, and version comparison. Quantify prompt/model changes with pass rate, cost, and LLM-as-judge scoring.
+  - icon: 🔌
+    title: Plugin Center
+    details: Configure Experts, Skills, Tools, and MCP servers via JSON. Hot-reload, CLI packaging, and plugin marketplace.
+  - icon: 🏭
+    title: 31 Industry Templates
+    details: "Pre-built templates across 10 categories: HR, Finance, Operations, Customer Service, Legal, Document Processing, and more."
