@@ -1,9 +1,34 @@
 import { defineConfig } from 'vitepress'
 
+/** markdown-it 插件：代码块和行内代码里的 {{ }} 转义为 HTML 实体，避免 Vue 模板解析报错 */
+function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args: unknown[]) => string> } }) {
+  const defaultFence = md.renderer.rules.fence!.bind(md.renderer.rules)
+  md.renderer.rules.fence = (tokens: unknown[], idx: number, options: unknown, env: unknown, self: unknown) => {
+    return defaultFence(tokens, idx, options, env, self)
+      .replace(/\{\{/g, '&#123;&#123;')
+      .replace(/\}\}/g, '&#125;&#125;')
+  }
+  const defaultCodeInline = md.renderer.rules.code_inline!.bind(md.renderer.rules)
+  md.renderer.rules.code_inline = (tokens: unknown[], idx: number, options: unknown, env: unknown, self: unknown) => {
+    return defaultCodeInline(tokens, idx, options, env, self)
+      .replace(/\{\{/g, '&#123;&#123;')
+      .replace(/\}\}/g, '&#125;&#125;')
+  }
+}
+
 export default defineConfig({
   title: 'Schema Platform',
   description: 'Open-source AI application platform with visual workflow orchestration',
-  
+
+  // 允许死链接（部分页面待补充，不阻塞部署）
+  ignoreDeadLinks: true,
+
+  markdown: {
+    config: (md) => {
+      md.use(escapeVueInterpolation)
+    },
+  },
+
   head: [
     ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],

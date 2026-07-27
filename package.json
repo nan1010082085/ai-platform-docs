@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Documentation for Schema Platform",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vitepress dev",
     "build": "vitepress build",
