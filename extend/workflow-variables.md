@@ -2,7 +2,7 @@
 
 > 本文档描述工作流中可用的模板变量及其解析规则。变量在 LLM 节点的 `prompt`、`systemPrompt`，以及 Tool 节点的 `toolArgs`、HITL 节点的 `confirmMessage` 等字符串字段中均可使用。
 
-**相关源码**：[agentWorkflowTemplateResolver.ts](../../server/src/ai/services/agentWorkflowTemplateResolver.ts) · [agentWorkflowExecutor.ts](../../server/src/ai/services/agentWorkflowExecutor.ts) · [agentWorkflow.ts](../../ai/shared/agentWorkflow.ts)
+**相关源码**：[agentWorkflowTemplateResolver.ts](https://github.com/nan1010082085/ai-platform) · [agentWorkflowExecutor.ts](https://github.com/nan1010082085/ai-platform) · [agentWorkflow.ts](https://github.com/nan1010082085/ai-platform)
 
 ---
 

@@ -96,19 +96,10 @@ export default defineConfig({
       { text: '编辑器', link: '/editor/' },
       { text: '流程设计器', link: '/flow/' },
       { text: '后端服务', link: '/server/' },
-      { text: '快速开始', link: '/guide/' },
       { text: '扩展开发', link: '/extend/' },
     ],
 
     sidebar: {
-      '/guide/': [
-        {
-          text: '快速开始',
-          items: [
-            { text: '简介', link: '/guide/' },
-          ],
-        },
-      ],
       '/editor/': [
         {
           text: '可视化编辑器',

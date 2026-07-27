@@ -2,7 +2,7 @@
 
 > 本文档面向需要编写、打包和分发 Skill 的开发者。Skill 是插件中心四层能力模型（MCP / Tool / Skill / Expert）中的指令层，负责向 Expert 的 system prompt 注入可复用的行为规范。
 
-**相关文档**：[plugin.md](../../ai/docs/plugin.md) · [Expert 扩展指南](../../ai/docs/expert-extension-guide.md) · 服务端配置 `server/config/plugins/README.md`
+**相关文档**：[plugin.md](/plugin) · [Expert 扩展指南](/expert-extension-guide) · 服务端配置 `server/config/plugins/README.md`
 
 ---
 

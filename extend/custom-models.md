@@ -2,7 +2,7 @@
 
 > 本文档介绍如何将 Ollama、vLLM、DeepSeek 私有网关等自部署模型服务接入 Schema Form AI 平台。平台支持所有 OpenAI Chat Completions 兼容的 API 端点。
 
-**相关文档**：[环境变量参考](../../ai/docs/environment-variables.md) · [模型配置 API](../../ai/app/src/api/modelConfigApi.ts)
+**相关文档**：[环境变量参考](/environment-variables) · [模型配置 API](https://github.com/nan1010082085/ai-platform)
 
 ---
 
