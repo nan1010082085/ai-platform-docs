@@ -1,6 +1,6 @@
 import { defineConfig } from 'vitepress'
 
-/** markdown-it 插件：代码块和行内代码里的 {{ }} 转义为 HTML 实体，避免 Vue 模板解析报错 */
+/** markdown-it 插件：代码块和行内代码里的 {{ }} 转义为 HTML 实体 */
 function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args: unknown[]) => string> } }) {
   const defaultFence = md.renderer.rules.fence!.bind(md.renderer.rules)
   md.renderer.rules.fence = (tokens: unknown[], idx: number, options: unknown, env: unknown, self: unknown) => {
@@ -17,10 +17,11 @@ function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args
 }
 
 export default defineConfig({
+  base: '/schema-platform/docs/',
   title: 'Schema Platform',
-  description: 'Open-source AI application platform with visual workflow orchestration',
+  description: '表单/流程垂直场景的 AI 应用平台',
+  lang: 'zh-CN',
 
-  // 允许死链接（部分页面待补充，不阻塞部署）
   ignoreDeadLinks: true,
 
   markdown: {
@@ -30,134 +31,175 @@ export default defineConfig({
   },
 
   head: [
-    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/schema-platform/docs/logo.svg' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-    ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:title', content: 'Schema Platform' }],
-    ['meta', { property: 'og:description', content: 'Open-source AI application platform' }],
   ],
 
+  locales: {
+    root: {
+      label: '中文',
+      lang: 'zh-CN',
+    },
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      title: 'Schema Platform',
+      description: 'AI application platform for form/flow scenarios',
+      themeConfig: {
+        nav: [
+          { text: 'Home', link: '/en/' },
+          { text: 'Guide', link: '/en/guide/' },
+          { text: 'Extend', link: '/en/extend/' },
+          { text: 'Design', link: '/en/design/' },
+          { text: 'Product', link: '/en/product/' },
+        ],
+        sidebar: {
+          '/en/guide/': [
+            { text: 'Guide', items: [{ text: 'Introduction', link: '/en/guide/' }] },
+          ],
+          '/en/extend/': [
+            {
+              text: 'Extension Development',
+              items: [
+                { text: 'Overview', link: '/en/extend/' },
+                { text: 'Custom Models', link: '/en/extend/custom-models' },
+                { text: 'Skill Author Guide', link: '/en/extend/skill-author-guide' },
+                { text: 'Workflow Template RFC', link: '/en/extend/workflow-template-rfc' },
+                { text: 'Workflow Variables', link: '/en/extend/workflow-variables' },
+              ],
+            },
+          ],
+          '/en/design/': [
+            { text: 'Design', items: [{ text: 'Model Architecture', link: '/en/design/model-architecture' }] },
+          ],
+          '/en/product/': [
+            { text: 'Product', items: [
+              { text: 'Prompt Architecture', link: '/en/product/f-p-prompt-architecture' },
+              { text: 'Registry Survey', link: '/en/product/f-1-registry-survey' },
+              { text: 'Plugin Write Eval', link: '/en/product/plugin-write-eval' },
+            ]},
+          ],
+        },
+        outline: { label: 'On this page' },
+        docFooter: { prev: 'Previous', next: 'Next' },
+        returnToTopLabel: 'Return to top',
+      },
+    },
+  },
+
   themeConfig: {
-    logo: '/logo.svg',
-    
+    logo: '/schema-platform/docs/logo.svg',
+
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'AI Platform', link: '/ai/' },
-      { text: 'Editor', link: '/editor/' },
-      { text: 'Flow Designer', link: '/flow/' },
-      { text: 'Guide', link: '/guide/' },
-      {
-        text: 'v1.0',
-        items: [
-          { text: 'Changelog', link: '/ai/changelog' },
-          { text: 'Contributing', link: '/contributing' },
-        ]
-      }
+      { text: '首页', link: '/' },
+      { text: 'AI 平台', link: '/ai/' },
+      { text: '编辑器', link: '/editor/' },
+      { text: '流程设计器', link: '/flow/' },
+      { text: '后端服务', link: '/server/' },
+      { text: '快速开始', link: '/guide/' },
+      { text: '扩展开发', link: '/extend/' },
     ],
 
     sidebar: {
-      '/ai/': [
-        {
-          text: 'AI Platform',
-          items: [
-            { text: 'Introduction', link: '/ai/' },
-            { text: 'Quick Start', link: '/ai/quick-start' },
-            { text: 'Architecture', link: '/ai/architecture' },
-          ]
-        },
-        {
-          text: 'Core Features',
-          items: [
-            { text: 'AI Chat', link: '/ai/chat' },
-            { text: 'Agent Workflow', link: '/ai/workflow' },
-            { text: 'RAG Knowledge Base', link: '/ai/rag' },
-            { text: 'Plugin Center', link: '/ai/plugin' },
-            { text: 'Model Management', link: '/ai/models' },
-          ]
-        },
-        {
-          text: 'Development',
-          items: [
-            { text: 'Development Guide', link: '/ai/development' },
-            { text: 'API Reference', link: '/ai/api' },
-            { text: 'Testing', link: '/ai/testing' },
-            { text: 'Deployment', link: '/ai/deployment' },
-          ]
-        },
-        {
-          text: 'Resources',
-          items: [
-            { text: 'Changelog', link: '/ai/changelog' },
-            { text: 'Security', link: '/ai/security' },
-            { text: 'FAQ', link: '/ai/faq' },
-          ]
-        }
-      ],
-      
-      '/editor/': [
-        {
-          text: 'Form Editor',
-          items: [
-            { text: 'Introduction', link: '/editor/' },
-            { text: 'Quick Start', link: '/editor/quick-start' },
-            { text: 'Architecture', link: '/editor/architecture' },
-          ]
-        },
-        {
-          text: 'Features',
-          items: [
-            { text: 'Schema Design', link: '/editor/schema' },
-            { text: 'Widget System', link: '/editor/widgets' },
-            { text: 'Property Panel', link: '/editor/property-panel' },
-            { text: 'Validation', link: '/editor/validation' },
-          ]
-        },
-        {
-          text: 'Development',
-          items: [
-            { text: 'Widget Development', link: '/editor/widget-development' },
-            { text: 'Third-party Widgets', link: '/editor/third-party-widgets' },
-            { text: 'API Reference', link: '/editor/api' },
-          ]
-        }
-      ],
-      
-      '/flow/': [
-        {
-          text: 'Flow Designer',
-          items: [
-            { text: 'Introduction', link: '/flow/' },
-            { text: 'Quick Start', link: '/flow/quick-start' },
-          ]
-        },
-        {
-          text: 'Features',
-          items: [
-            { text: 'Node Types', link: '/flow/nodes' },
-            { text: 'Flow Execution', link: '/flow/execution' },
-            { text: 'Integration', link: '/flow/integration' },
-          ]
-        }
-      ],
-      
       '/guide/': [
         {
-          text: 'Getting Started',
+          text: '快速开始',
           items: [
-            { text: 'Introduction', link: '/guide/' },
-            { text: 'Installation', link: '/guide/installation' },
-            { text: 'Configuration', link: '/guide/configuration' },
-          ]
+            { text: '简介', link: '/guide/' },
+          ],
+        },
+      ],
+      '/editor/': [
+        {
+          text: '可视化编辑器',
+          items: [
+            { text: '概览', link: '/editor/' },
+            { text: '架构设计', link: '/editor/architecture' },
+            { text: 'Widget 体系', link: '/editor/widgets' },
+            { text: '双画布系统', link: '/editor/canvas-system' },
+            { text: '四大配置系统', link: '/editor/config-systems' },
+          ],
+        },
+      ],
+      '/ai/': [
+        {
+          text: 'AI 平台',
+          items: [
+            { text: '概览', link: '/ai/' },
+            { text: 'AI 对话', link: '/ai/agent' },
+            { text: 'Agent Workflow', link: '/ai/agent-workflow' },
+            { text: '架构设计', link: '/ai/architecture' },
+            { text: '开发指南', link: '/ai/DEVELOPMENT' },
+            { text: '部署指南', link: '/ai/DEPLOYMENT' },
+            { text: '事件协议', link: '/ai/events' },
+            { text: '环境变量', link: '/ai/environment-variables' },
+          ],
         },
         {
-          text: 'Advanced',
+          text: '产品文档',
           items: [
-            { text: 'Architecture', link: '/guide/architecture' },
-            { text: 'Deployment', link: '/guide/deployment' },
-            { text: 'Troubleshooting', link: '/guide/troubleshooting' },
-          ]
-        }
-      ]
+            { text: '全链路架构', link: '/ai/product/full-chain-architecture-2026-07-24' },
+            { text: 'LangGraph 优化', link: '/ai/product/langgraph-optimization-2026-07-24' },
+            { text: '垂直领域分析', link: '/ai/product/vertical-domain-analysis-2026-07-24' },
+            { text: '提示词优化', link: '/ai/product/prompt-optimization-2026-07-24' },
+          ],
+        },
+      ],
+      '/extend/': [
+        {
+          text: '扩展开发',
+          items: [
+            { text: '概览', link: '/extend/' },
+            { text: '自定义模型', link: '/extend/custom-models' },
+            { text: 'Skill 作者手册', link: '/extend/skill-author-guide' },
+            { text: 'Workflow 模板 RFC', link: '/extend/workflow-template-rfc' },
+            { text: 'Workflow 变量', link: '/extend/workflow-variables' },
+          ],
+        },
+      ],
+      '/server/': [
+        {
+          text: '后端服务',
+          items: [
+            { text: '概览', link: '/server/' },
+            { text: '能力清单', link: '/server/capabilities' },
+            { text: 'API 参考', link: '/server/api' },
+            { text: '数据库设计', link: '/server/database' },
+            { text: '数据模型', link: '/server/models' },
+            { text: 'RAG 架构', link: '/server/rag-architecture' },
+            { text: '插件中心', link: '/server/plugin-center' },
+            { text: '业务 API 映射', link: '/server/business-api-mapping' },
+            { text: '提交流程 Webhook', link: '/server/submission-flow-webhook' },
+          ],
+        },
+      ],
+      '/flow/': [
+        {
+          text: '流程设计器',
+          items: [
+            { text: '概览', link: '/flow/' },
+            { text: '架构设计', link: '/flow/architecture' },
+          ],
+        },
+      ],
+      '/design/': [
+        {
+          text: '架构设计',
+          items: [
+            { text: '模型架构', link: '/design/model-architecture' },
+          ],
+        },
+      ],
+      '/product/': [
+        {
+          text: '产品文档',
+          items: [
+            { text: 'Prompt 架构', link: '/product/f-p-prompt-architecture' },
+            { text: 'Registry 调研', link: '/product/f-1-registry-survey' },
+            { text: '插件写能力评估', link: '/product/plugin-write-eval' },
+          ],
+        },
+      ],
     },
 
     socialLinks: [
@@ -165,21 +207,29 @@ export default defineConfig({
     ],
 
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2024-present Schema Platform Team'
+      message: 'MIT License',
+      copyright: '© 2024 Schema Platform Team',
     },
 
     search: {
-      provider: 'local'
+      provider: 'local',
     },
 
-    editLink: {
-      pattern: 'https://github.com/nan1010082085/ai-platform/edit/main/docs/:path',
-      text: 'Edit this page on GitHub'
+    outline: {
+      label: '目录',
     },
 
     lastUpdated: {
-      text: 'Last updated',
+      text: '最后更新',
     },
-  }
+
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇',
+    },
+
+    returnToTopLabel: '回到顶部',
+    sidebarMenuLabel: '菜单',
+    darkModeSwitchLabel: '主题',
+  },
 })

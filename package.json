@@ -5,8 +5,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vitepress dev",
-    "build": "vitepress build",
+    "dev": "bash sync-project-docs.sh && vitepress dev",
+    "build": "bash sync-project-docs.sh && vitepress build",
     "preview": "vitepress preview",
     "deploy": "npm run build && gh-pages -d .vitepress/dist"
   },
