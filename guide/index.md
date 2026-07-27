@@ -1,94 +1,54 @@
-# Introduction
-
-Welcome to Schema Platform AI documentation!
-
-Schema Platform is an **open-source AI application platform** that provides:
-
-- 🤖 **AI Chat** - Conversational Agent with multi-expert support
-- 🔄 **Agent Workflow** - Visual workflow orchestration (like n8n)
-- 📚 **RAG Knowledge Base** - Document retrieval and augmentation
-- 🔌 **Plugin Center** - Extensible AI capabilities
-- 🔗 **External Integration** - REST API for workflow invocation
-
-## Quick Overview
-
-### AI Chat
-
-The AI Chat system uses LangGraph to manage multi-expert conversations. Each expert can be configured with different tools, prompts, and capabilities.
-
-**Key Features:**
-- WebSocket streaming for real-time responses
-- Multi-modal input (text, images, files)
-- @mention system for expert selection
-- RAG integration for knowledge-based answers
-
-### Agent Workflow
-
-Visual DAG (Directed Acyclic Graph) editor for creating AI workflows. Similar to n8n or Make.com.
-
-**Node Types:**
-- LLM nodes for AI processing
-- Document parsing and OCR
-- Conditional logic and branching
-- Human-in-the-loop (HITL)
-- Tool invocation
-- MCP server integration
-
-### RAG Knowledge Base
-
-Upload documents and create a searchable knowledge base.
-
-**Supported Formats:**
-- PDF documents
-- Word documents (.docx)
-- Excel spreadsheets (.xlsx)
-- Text files (.txt, .md)
-
-### Plugin Center
-
-Extend AI capabilities through plugins:
-
-- **Experts** - Domain-specific AI assistants
-- **Skills** - Reusable prompt templates
-- **Tools** - Function calling capabilities
-- **MCP Servers** - Model Context Protocol integrations
-
-### External Integration
-
-Publish workflows as REST APIs:
-
-```bash
-curl -X POST http://localhost:3001/api/ai/workflows/invoke/your-workflow \
-  -H "X-Tenant-Id: your-tenant-id" \
-  -H "X-Workflow-Key: wf_your_key" \
-  -H "Content-Type: application/json" \
-  -d '{"input": "your data"}'
-```
-
-## Who Should Use This?
-
-- **Developers** building AI-powered applications
-- **Product Teams** creating conversational interfaces
-- **Data Scientists** implementing RAG systems
-- **Enterprises** needing customizable AI workflows
-- **Open Source Contributors** interested in AI platforms
-
-## Getting Started
-
-Ready to start? Choose your path:
-
-- **[Quick Start](/ai/quick-start)** - Get up and running in 5 minutes
-- **[Architecture](/ai/architecture)** - Understand the system design
-- **[AI Platform](/ai/)** - Explore AI-specific features
-- **[Editor](/editor/)** - Learn about the form editor
-- **[Flow Designer](/flow/)** - Discover workflow capabilities
-
-## Community
-
-- **GitHub**: [schema-platform](https://github.com/nan1010082085/ai-platform)
-- **Discussions**: [GitHub Discussions](https://github.com/nan1010082085/ai-platform/discussions)
-- **Issues**: [Report Bugs](https://github.com/nan1010082085/ai-platform/issues)
-
+---
+title: 简介
 ---
 
-**Let's build something amazing together!** 🚀
+# 简介
+
+Schema Platform 是一个**表单/流程垂直场景的 AI 应用平台**。
+
+## 核心能力
+
+- 🤖 **AI 对话 Agent** - LangGraph 多专家对话，需求分析、任务规划、工具调用
+- 🔧 **Agent Workflow** - 可视化 DAG 工作流编排，32 种节点类型
+- 📚 **RAG 知识库** - 向量检索 + Rerank + 混合检索
+- 📊 **评测体系** - 离线评测，数据集 + 版本对比
+- 🔌 **插件中心** - Expert/Skill/Tool/MCP 配置，热重载
+- 🏭 **31 个行业模板** - 10 个分类，DB 存储 + UI 管理
+
+## 快速开始
+
+```bash
+# 安装
+cd shared/platform-shared && pnpm install && pnpm build && cd ../..
+cd server && pnpm install && cd ..
+cd ai/app && pnpm install && cd ../..
+
+# 配置
+cp server/.env.example server/.env
+# 编辑 .env 设置 MONGODB_URI / JWT_SECRET / DEEPSEEK_API_KEY
+
+# 启动
+cd server && pnpm dev    # 端口 3001
+cd ai/app && pnpm dev    # 端口 5300
+```
+
+## 架构
+
+```
+浏览器 (5300)
+  └─ ai/app (Vue 3)
+       ├─ REST API -> server (Koa, 3001)
+       └─ WebSocket -> server (Socket.IO)
+                       ├─ MongoDB
+                       ├─ BullMQ + Redis（队列）
+                       ├─ LLM（DeepSeek/OpenAI/Anthropic）
+                       └─ RAG（BGE-M3 + rerank）
+```
+
+## 文档导航
+
+- [AI 平台](/ai/) - 对话 Agent、工作流、RAG、插件
+- [编辑器](/editor/) - 表单设计器、Widget 体系
+- [流程设计器](/flow/) - BPMN 流程引擎
+- [后端服务](/server/) - API、数据库、模型
+- [扩展开发](/extend/) - 自定义模型、Skill、模板
