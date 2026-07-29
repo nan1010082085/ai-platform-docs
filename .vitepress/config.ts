@@ -39,6 +39,7 @@ export default withMermaid(defineConfig({
     'editor/container-nesting-decision.md',
     'editor/schema-validation-testing.md',
     'editor/product-architecture-analysis-2026-07-28.md',
+    'editor/product/**',
     'server/business-api-mapping.md',
     'server/business-platform-ops.md',
     'server/submission-flow-webhook.md',
