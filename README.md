@@ -33,16 +33,24 @@ npm run preview
 
 ## 📁 Structure
 
+This is the **single source of truth** for all Schema Platform documentation. Each sub-project's docs live here directly — they are no longer synced from per-project `docs/` directories (the `sync-project-docs.sh` step was removed when docs were consolidated into this independent project).
+
 ```
 docs/
 ├── .vitepress/          # VitePress configuration
-│   └── config.ts        # Site configuration
-├── ai/                  # AI Platform documentation
-├── editor/              # Form Editor documentation
-├── flow/                # Flow Designer documentation
+│   └── config.ts        # Site config, sidebar, nav
+├── ai/                  # AI Platform docs (source)
+├── editor/              # Form Editor docs (source)
+├── flow/                # Flow Designer docs (source)
+├── server/              # Backend service docs (source)
 ├── guide/               # Getting started guides
-├── public/              # Static assets
+├── design/              # Platform-wide architecture docs
+├── extend/              # Extension development guides
+├── en/                  # English translations
+├── public/              # Static assets (logo, etc.)
 ├── index.md             # Homepage
+├── deploy.sh            # Deployment script
+├── nginx-docs.conf      # nginx config sample
 └── package.json
 ```
 

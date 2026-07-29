@@ -18,7 +18,7 @@ function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args
 }
 
 export default withMermaid(defineConfig({
-  base: '/schema-platform/docs/',
+  base: '/ai-platform-docs/',
   title: 'Schema Platform',
   description: '表单/流程垂直场景的 AI 应用平台',
   lang: 'zh-CN',
@@ -87,6 +87,7 @@ export default withMermaid(defineConfig({
                 { text: 'Custom Models', link: '/en/extend/custom-models' },
                 { text: 'Skill Author Guide', link: '/en/extend/skill-author-guide' },
                 { text: 'Workflow Template RFC', link: '/en/extend/workflow-template-rfc' },
+                { text: 'Workflow Integration', link: '/en/extend/workflow-integration' },
                 { text: 'Workflow Variables', link: '/en/extend/workflow-variables' },
               ],
             },
