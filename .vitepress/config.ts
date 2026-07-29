@@ -38,6 +38,7 @@ export default withMermaid(defineConfig({
     'editor/editor-review-and-roadmap.md',
     'editor/container-nesting-decision.md',
     'editor/schema-validation-testing.md',
+    'editor/product-architecture-analysis-2026-07-28.md',
     'server/business-api-mapping.md',
     'server/business-platform-ops.md',
     'server/submission-flow-webhook.md',
@@ -93,17 +94,131 @@ export default withMermaid(defineConfig({
             },
           ],
           '/en/ai/': [
-            { text: 'AI Platform', items: [{ text: 'Overview', link: '/en/ai/' }] },
+        {
+          text: 'AI Platform',
+          items: [
+            { text: 'Overview', link: '/en/ai/' },
+            { text: 'Changelog', link: '/en/ai/changelog' },
+            { text: 'Quick Start', link: '/en/ai/QUICK_START' },
+            { text: 'Architecture', link: '/en/ai/architecture' },
           ],
+        },
+        {
+          text: 'Core Features',
+          items: [
+            { text: 'Chat Agent', link: '/en/ai/agent' },
+            { text: 'Agent Workflow', link: '/en/ai/agent-workflow' },
+            { text: 'RAG', link: '/en/ai/rag-tool-mcp-boundary' },
+            { text: 'Plugin Center', link: '/en/ai/plugin' },
+            { text: 'Plugin Registry', link: '/en/ai/plugin-registry' },
+            { text: 'MCP', link: '/en/ai/mcp' },
+            { text: 'Tools', link: '/en/ai/tool' },
+            { text: 'Expert Extension', link: '/en/ai/expert-extension-guide' },
+            { text: 'SDK', link: '/en/ai/sdk' },
+          ],
+        },
+        {
+          text: 'Architecture & Design',
+          items: [
+            { text: 'Platform', link: '/en/ai/platform' },
+            { text: 'ai-shared API', link: '/en/ai/ai-shared' },
+            { text: 'Design Overview', link: '/en/ai/design/' },
+            { text: 'Chat Design', link: '/en/ai/design/chat' },
+            { text: 'RAG Design', link: '/en/ai/design/rag' },
+            { text: 'Runtime Design', link: '/en/ai/design/runtime' },
+            { text: 'Workflow Open API', link: '/en/ai/design/workflow-open-api' },
+          ],
+        },
+        {
+          text: 'Development & Deployment',
+          items: [
+            { text: 'Development', link: '/en/ai/DEVELOPMENT' },
+            { text: 'Deployment', link: '/en/ai/DEPLOYMENT' },
+            { text: 'Environment Variables', link: '/en/ai/environment-variables' },
+            { text: 'Events', link: '/en/ai/events' },
+            { text: 'Contributing', link: '/en/ai/CONTRIBUTING' },
+            { text: 'Security', link: '/en/ai/SECURITY_BEST_PRACTICES' },
+          ],
+        },
+        {
+          text: 'Extension Development',
+          items: [
+            { text: 'Skill Assembly Spec', link: '/en/ai/extend/skill-assembly-spec' },
+            { text: 'Pack Spec v1', link: '/en/ai/extend/pack-spec-v1' },
+            { text: 'Third-party Plugin', link: '/en/ai/extend/third-party-plugin-guide' },
+            { text: 'Plugin Scaffold', link: '/en/ai/extend/plugin-scaffold/' },
+          ],
+        },
+      ],
           '/en/editor/': [
-            { text: 'Editor', items: [{ text: 'Overview', link: '/en/editor/' }] },
+        {
+          text: 'Visual Editor',
+          items: [
+            { text: 'Overview', link: '/en/editor/' },
+            { text: 'Changelog', link: '/en/editor/changelog' },
+            { text: 'Capabilities', link: '/en/editor/capabilities' },
+            { text: 'Architecture', link: '/en/editor/architecture' },
           ],
+        },
+        {
+          text: 'Core Systems',
+          items: [
+            { text: 'Widgets', link: '/en/editor/widgets' },
+            { text: 'Widget Development', link: '/en/editor/widget-development' },
+            { text: 'Third-party Widget', link: '/en/editor/third-party-widget-guide' },
+            { text: 'Dual Canvas', link: '/en/editor/canvas-system' },
+            { text: 'Config Systems', link: '/en/editor/config-systems' },
+            { text: 'Property Panel', link: '/en/editor/property-panel' },
+            { text: 'Store Design', link: '/en/editor/store-design' },
+          ],
+        },
+        {
+          text: 'Integration & Embedding',
+          items: [
+            { text: 'qiankun Integration', link: '/en/editor/qiankun-integration' },
+            { text: 'Micro-app Container', link: '/en/editor/micro-app-container-design' },
+          ],
+        },
+        {
+          text: 'Design',
+          items: [
+            { text: 'Design Overview', link: '/en/editor/design/' },
+            { text: 'Designer', link: '/en/editor/design/designer' },
+            { text: 'Runtime', link: '/en/editor/design/runtime' },
+            { text: 'Instances & Publish', link: '/en/editor/design/instances-publish' },
+          ],
+        },
+      ],
           '/en/flow/': [
-            { text: 'Flow', items: [{ text: 'Overview', link: '/en/flow/' }] },
+        {
+          text: 'Flow Designer',
+          items: [
+            { text: 'Overview', link: '/en/flow/' },
+            { text: 'Changelog', link: '/en/flow/changelog' },
+            { text: 'Architecture', link: '/en/flow/architecture' },
+            { text: 'Design Overview', link: '/en/flow/design/' },
+            { text: 'Designer', link: '/en/flow/design/designer' },
+            { text: 'Runtime', link: '/en/flow/design/runtime' },
+            { text: 'Instances & Tasks', link: '/en/flow/design/instances-tasks' },
           ],
+        },
+      ],
           '/en/server/': [
-            { text: 'Server', items: [{ text: 'Overview', link: '/en/server/' }] },
+        {
+          text: 'Backend Service',
+          items: [
+            { text: 'Overview', link: '/en/server/' },
+            { text: 'Changelog', link: '/en/server/changelog' },
+            { text: 'Capabilities', link: '/en/server/capabilities' },
+            { text: 'API Reference', link: '/en/server/api' },
+            { text: 'API Details', link: '/en/server/api-reference' },
+            { text: 'Database', link: '/en/server/database' },
+            { text: 'Data Models', link: '/en/server/models' },
+            { text: 'RAG Architecture', link: '/en/server/rag-architecture' },
+            { text: 'Plugin Center', link: '/en/server/plugin-center' },
           ],
+        },
+      ],
           '/en/design/': [
             { text: 'Design', items: [{ text: 'Model Architecture', link: '/en/design/model-architecture' }] },
           ],
