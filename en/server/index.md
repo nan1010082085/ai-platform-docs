@@ -19,7 +19,7 @@ pnpm build
 ## Documentation
 
 - [Capabilities](/server/capabilities) - Feature matrix, tech stack, architecture
-- [API Reference](/server/api-reference) - 190+ endpoints with examples
+- [API Reference](/server/api-reference) - 230+ endpoints with examples
 - [API Overview](/server/api) - REST API endpoint overview
 - [Data Models](/server/models) - Mongoose model definitions
 - [Database](/server/database) - MongoDB connection & configuration

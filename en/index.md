@@ -31,5 +31,5 @@ features:
     title: Plugin Center
     details: Configure Experts, Skills, Tools, and MCP servers via JSON. Hot-reload, CLI packaging, and plugin marketplace.
   - icon: 🏭
-    title: 31 Industry Templates
+    title: 32 Industry Templates
     details: "Pre-built templates across 10 categories: HR, Finance, Operations, Customer Service, Legal, Document Processing, and more."

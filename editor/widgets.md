@@ -6,7 +6,7 @@ outline: deep
 
 ## 概览
 
-编辑器拥有 **98 个 Widget 目录**，**104 次 registerWidget**，分 8 组。
+编辑器拥有 **86 个 Widget 目录**，**97 次 registerWidget**，分 8 组。
 
 | 分组 | 数量 | 代表 |
 |------|------|------|

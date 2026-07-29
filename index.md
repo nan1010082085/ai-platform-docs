@@ -33,7 +33,7 @@ features:
     title: 插件中心
     details: JSON 配置 Expert/Skill/Tool/MCP，热重载，CLI 打包，插件市场。
   - icon: 🏭
-    title: 31 个行业模板
+    title: 32 个行业模板
     details: 覆盖 10 个分类：HR、财务、运营、客服、法务、文档处理、审计等，DB 存储 + UI 管理。
   - icon: ⚡
     title: BullMQ 执行引擎

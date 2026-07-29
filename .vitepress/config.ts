@@ -133,6 +133,7 @@ export default withMermaid(defineConfig({
           text: '可视化编辑器',
           items: [
             { text: '概览', link: '/editor/' },
+            { text: '更新日志', link: '/editor/changelog' },
             { text: '能力清单', link: '/editor/capabilities' },
             { text: '架构设计', link: '/editor/architecture' },
           ],
@@ -171,6 +172,7 @@ export default withMermaid(defineConfig({
           text: 'AI 平台',
           items: [
             { text: '概览', link: '/ai/' },
+            { text: '更新日志', link: '/ai/changelog' },
             { text: '快速开始', link: '/ai/QUICK_START' },
             { text: '架构设计', link: '/ai/architecture' },
           ],
@@ -240,6 +242,7 @@ export default withMermaid(defineConfig({
           text: '后端服务',
           items: [
             { text: '概览', link: '/server/' },
+            { text: '更新日志', link: '/server/changelog' },
             { text: '能力清单', link: '/server/capabilities' },
             { text: 'API 参考', link: '/server/api' },
             { text: 'API 详细文档', link: '/server/api-reference' },
@@ -255,6 +258,7 @@ export default withMermaid(defineConfig({
           text: '流程设计器',
           items: [
             { text: '概览', link: '/flow/' },
+            { text: '更新日志', link: '/flow/changelog' },
             { text: '架构设计', link: '/flow/architecture' },
             { text: '设计概览', link: '/flow/design/' },
             { text: '设计器设计', link: '/flow/design/designer' },

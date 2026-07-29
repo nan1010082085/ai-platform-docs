@@ -13,7 +13,7 @@ Schema Platform is an **AI application platform for form/workflow vertical scena
 - 📚 **RAG Knowledge Base** - Vector search + Rerank + hybrid retrieval
 - 📊 **Evaluation System** - Offline evaluation, datasets + version comparison
 - 🔌 **Plugin Center** - Expert/Skill/Tool/MCP configuration, hot-reload
-- 🏭 **31 Industry Templates** - 10 categories, DB-stored + UI-managed
+- 🏭 **32 Industry Templates** - 10 categories, DB-stored + UI-managed
 
 ## Quick Start
 
