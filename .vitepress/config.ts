@@ -18,7 +18,7 @@ function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args
 }
 
 export default withMermaid(defineConfig({
-  base: '/ai-platform-docs/',
+  base: '/schema-platform/docs/',
   title: 'Schema Platform',
   description: '表单/流程垂直场景的 AI 应用平台',
   lang: 'zh-CN',
