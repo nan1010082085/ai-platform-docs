@@ -1,119 +1,108 @@
 # Editor 项目深耕分析
 
-> 2026-07-29 · 基于低代码/表单设计器行业对标的深耕分析与优先级规划
+> 2026-07-29 · 站在开源肩膀上构建表单/大屏 + AI 一体化独特价值
 > 内部开发文档，不发布到站点（随 `editor/product/**` 排除）
-> 对标项目认知截至知识截止，非实时检索；需精确对比请补充竞品版本/URL
+> 核心思路：不对标追赶 Formily/Amis，而是站在 Vue/EP/ECharts/Vue Flow 等开源之上，聚焦"双画布 + 四大配置 + AI 一体"这个开源没有的独特价值
 
 ---
 
-## 一、行业全景：低代码/表单设计器梯队
+## 一、核心思路
 
-| 梯队 | 项目 | 定位 | 核心优势 | 短板 |
-|---|---|---|---|---|
-| 表单引擎 | **Formily**（阿里） | 表单协议 + 设计器 | Schema 协议、联动、生态（designable/react-vue） | 大屏/自由布局弱 |
-| 配置渲染 | **Amis**（百度） | JSON 配置渲染 | 组件多、配置化、响应式 | 设计器弱 |
-| 应用平台 | **Appsmith / ToolJet** | 低代码应用 | 数据源、JS 扩展、市场 | 表单协议弱 |
-| 搭建器 | **H5-Dooring / 鲁班** | H5/大屏搭建 | 模板、营销场景 | 表单弱 |
+不是"对标 Formily/Amis 补差距"（追赶者），而是"站在 Vue 3 / Element Plus / ECharts / Vue Flow 等开源之上，构建表单/大屏 + AI 一体化可视化搭建平台"（建设者）。
 
----
+**深耕三问**：
+1. 哪些直接复用开源（不造轮子）？
+2. 哪些集成开源（站在肩膀上）？
+3. 哪些自建（独特价值，开源没有）？
 
-## 二、editor 项目差异化优势（要守住）
-
-1. **双画布**--Free（大屏/自由页，绝对定位）+ Flex（表单，流式）。Formily 只有表单，Amis 无自由布局，这是 editor 独特。
-2. **四大配置系统 + 事件引擎**--事件（20 动作类型）/联动（6 类型）/API/变量，比 Amis 配置化更强、比 Formily 联动更全。
-3. **高可用 Widget 架构**--WidgetStateShell + WidgetErrorBoundary + useWidgetData（重试/SWR/去重/乐观更新）+ el-table-v2 虚拟化（10000 行 42ms），生产级。
-4. **与 AI 一体**--AiSidebarView 嵌入，Formily/Amis 都没有原生 AI 辅助。
-5. **Schema 驱动 + 注册式类型**--`SchemaType = string` + registry + createWidgetPlugin，扩展无需改类型联合。
-6. **视口剔除 + immer 撤销**--大屏性能与编辑体验。
+Formily 是表单引擎（无大屏/自由布局），Amis 是配置渲染（设计器弱），Appsmith 是应用平台（表单协议弱）。我们的独特性：双画布（Free+Flex）+ 四大配置 + AI 一体。通用组件站在 EP/ECharts 上，垂直能力（双画布/配置系统/AI 一体）自建深耕。
 
 ---
 
-## 三、与头部差距（要补的）
+## 二、已站在其上的开源底座
 
-| 维度 | Formily/Amis/Appsmith | editor 现状 | 差距 |
-|---|---|---|---|
-| **生态** | Formily 完整生态（designable/react-vue/组件库） | 闭源，无外部消费者 | 生态未开 |
-| **性能** | Formily 按需、Amis 轻量 | Bundle 3.7MB（UMD 单包） | 首屏重 |
-| **i18n** | Formily/Amis 多语言 | 16.9% 覆盖 | 出海受阻 |
-| **组件市场** | Amis 社区组件、Appsmith 市场 | createWidgetPlugin 有，无市场 | 生态未开 |
-| **移动端** | Amis 响应式、H5-Dooring 移动 | 响应式断点骨架有，落地浅 | 移动场景弱 |
-| **协议兼容** | Formily 协议成标准 | 自有 Schema | 迁移成本高 |
-| **代码分割** | 按需加载 | qiankun UMD 限制 | 无法 code split |
-
----
-
-## 四、深耕优先级
-
-### P0（体验与性能）
-
-**1. Bundle 优化** - 首屏体验，开源第一印象
-- CSS code splitting（当前 `cssCodeSplit: false`）
-- 路由级懒加载（EditorView/InstancesView/PublishView）
-- Widget 分组懒加载（chart/business 按需）
-- Element Plus 按需引入（改 `shared/platform-shared/config/element.ts`）
-- 目标：首屏 JS < 1MB gzip（当前 3.7MB -> gzip 1.24MB）
-- product-architecture-analysis 已列方案，需落地
-
-**2. i18n 80%+** - 出海/开源门槛
-- Widget config 翻译层（`translateWidgetPropLabel/Desc` 已有，需扩展）
-- 高频组件 locale key（input/select/table/chart/crud-list-page）
-- 目标：16.9% -> 80%+
-
-### P1（生态与场景）
-
-**3. 组件市场 + 第三方 Widget 生态**
-- createWidgetPlugin 打包分发
-- 市场 UI（浏览/搜索/安装）
-- 版本管理 + 签名
-- 对标 Appsmith 市场
-
-**4. 移动端适配深化**
-- 响应式断点落地（desktop/tablet/mobile 三套布局可用）
-- 移动端预览模式
-- 移动端专属组件（如手势、底部抽屉）
-- `useResponsivePosition` 骨架已有，需落地
-
-**5. Formily 协议兼容/导入**
-- Formily Schema 导入转换器
-- 降低 Formily 用户迁移成本，借势生态
-
-### P2（架构演进）
-
-**6. 代码分割架构**
-- 评估 qiankun -> Module Federation 迁移
-- 解除 UMD 限制，支持全量 code splitting
-- 跨项目协调（shared/platform-shared）
-
-**7. Schema 协议开放**
-- 发布 Schema 协议文档
-- 渲染器独立包（WidgetRenderer 可被外部消费）
-- Widget SDK（脚手架，当前 backlog 移除，可重启）
+| 层 | 开源 | 用途 |
+|---|---|---|
+| 框架 | Vue 3.5 + TypeScript | SPA |
+| UI | Element Plus 2.9 | 组件库 |
+| 图表 | ECharts 6.1（tree-shaken） | 大屏图表 |
+| 流程画布 | Vue Flow | BPMN 设计器（flow 用，editor 可借鉴） |
+| 微前端 | qiankun | 子应用集成 |
+| 撤销 | immer | patches 历史 |
+| 状态 | Pinia | Store |
+| 构建 | Vite | dev/build |
 
 ---
 
-## 五、与 ai 协同深耕点（最大差异化）
+## 三、可集成/兼容的开源（不重复造轮子）
 
-editor + ai 一体是最大护城河，协同深耕：
+### 表单生态（站在 Formily 协议上）
+- **Formily 协议兼容/导入**：支持导入 Formily Schema，借势 Formily 生态（designable/组件库），降低 Formily 用户迁移成本
+- 不自己造表单协议，复用 Formily 设计思路与生态
 
-1. **AI 生成 -> editor 可视化编辑闭环**：ai 生成 Schema，editor 接手精修。深化版本 diff、局部编辑、AI 辅助布局。
-2. **editor 数据源 -> ai RAG 自动索引**：editor 的 Schema/数据自动进 ai RAG，反哺 AI 生成质量。
-3. **editor 表单 + flow 审批 + ai 建议**：RuntimeAgent 在审批节点给建议，三能力一体。
-4. **统一评测**：editor 表单质量（字段命名/必填/布局）+ ai 生成质量统一评测。
+### 组件生态（站在 EP/ECharts 上）
+- **Element Plus 按需**：复用 EP 组件，按需引入（当前全量，需优化 Bundle）
+- **ECharts 按需**：tree-shaken 已做，深化按图表类型懒加载
+- **第三方组件**：兼容 EP 生态组件，不自己造所有组件
+
+### 可视化（站在 Vue Flow 上）
+- **画布交互**：复用 Vue Flow（flow 已用），editor Free 画布交互可借鉴
+- 不自己造画布引擎
 
 ---
 
-## 六、最高杠杆切入建议
+## 四、自建的核心独特价值（开源没有，要深耕）
 
-- **Bundle 优化**：首屏体验，开源第一印象，方案已就绪待落地
-- **i18n 80%+**：出海/开源门槛，翻译层已有基础
+1. **双画布**--Free（大屏/自由页，绝对定位）+ Flex（表单，流式）。Formily 只有表单，Amis 无自由布局
+2. **四大配置系统 + 事件引擎**--事件（20 动作）/联动（6 类型）/API/变量，比 Amis 配置化更强
+3. **高可用 Widget 架构**--WidgetStateShell + WidgetErrorBoundary + useWidgetData + el-table-v2 虚拟化，生产级
+4. **与 AI 一体**--AiSidebarView 嵌入，Formily/Amis 无原生 AI 辅助
+5. **Schema 驱动 + 注册式类型**--`SchemaType = string` + registry + createWidgetPlugin
+6. **视口剔除 + immer 撤销**--大屏性能与编辑体验
 
 ---
 
-## 七、相关文档
+## 五、深耕方向：集成开源（省力）+ 放大独特（护城河）
+
+### A. 集成开源（快速补齐基础，不造轮子）
+
+1. **Formily 协议兼容**--导入转换器，借势 Formily 生态
+2. **EP 按需 + ECharts 懒加载**--站在 EP/ECharts 上，优化 Bundle（CSS split + 按需引入）
+3. **组件市场**--参考 npm 生态，Widget 打包分发（createWidgetPlugin 已有基础）
+
+### B. 放大独特（聚焦护城河，开源没有）
+
+1. **双画布深化**--Free + Flex 模式更完整，大屏+表单混合场景
+2. **四大配置系统增强**--事件/联动/API/变量更强大（条件表达式增强、API 编排、变量联动）
+3. **AI 一体闭环**--AI 生成 Schema -> editor 精修 -> 回灌 AI 优化，Formily/Amis 无法复制
+4. **垂直 Widget**--表单/流程/审批场景 Widget（结合 ai/flow），通用平台没有
+5. **大屏 + AI**--AI 辅助大屏布局（数据源推荐、图表类型选择、配色方案）
+
+---
+
+## 六、与 ai 协同深耕（最大独特价值）
+
+editor + ai + flow 一体是最大护城河，通用平台无法复制：
+
+1. **AI 生成 -> editor 编辑闭环**--ai 生成 Schema，editor 接手精修，版本 diff/局部编辑
+2. **editor 数据源 -> ai 垂直 RAG**--Schema/字段语义进 ai 垂直 RAG，反哺生成
+3. **垂直 Widget + ai**--审批/合规 Widget 配 AI 建议
+4. **统一评测**--表单质量（字段命名/必填/布局）+ AI 生成质量（站在 ragas 上）
+
+---
+
+## 七、最高杠杆
+
+- **集成开源**：Formily 协议兼容（借势生态）+ EP/ECharts 按需（Bundle 优化）
+- **放大独特**：AI 一体闭环（生成 -> 编辑 -> 回灌）+ 垂直 Widget（表单/流程场景）
+
+---
+
+## 八、相关文档
 
 - [architecture.md](../architecture.md) - 分层架构
 - [capabilities.md](../capabilities.md) - 能力矩阵
 - [widgets.md](../widgets.md) - Widget 体系
 - [canvas-system.md](../canvas-system.md) - 双画布
-- [product-architecture-analysis-2026-07-28.md](../product-architecture-analysis-2026-07-28.md) - 上次架构分析（含 Bundle 优化方案）
+- [product-architecture-analysis-2026-07-28.md](../product-architecture-analysis-2026-07-28.md) - 上次架构分析（Bundle 优化方案）
 - [iteration-evolution.md](../iteration-evolution.md) - E1-E3 收口
