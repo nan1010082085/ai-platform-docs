@@ -3,7 +3,7 @@
 > **归档日期：2026-08-05**。本文由原 backlog 全文迁入，仅供历史追溯。活跃缺口见 [../backlog.md](../backlog.md)。
 
 
-> 最后更新：**2026-07-24** · **全量任务索引**见 [open-platform-roadmap.md § 七](../open-platform-roadmap.md#七全量任务索引) · 可执行拆解见 [open-source-iteration.md](../open-source-iteration.md) · **LangGraph→Workflow 对话节点**见 [langgraph-workflow-nodes-roadmap.md](../langgraph-workflow-nodes-roadmap.md) · **Workflow-as-Agent 演进**见 [evolution-plan-2026-07-22-workflow-as-agent.md](../evolution-plan-2026-07-22-workflow-as-agent.md)
+> 最后更新：**2026-07-24** · **全量任务索引**见 [open-platform-roadmap.md § 七](../open-platform-roadmap.md#七全量任务索引) · 可执行拆解见 [open-source-iteration.md](../open-source-iteration.md) · **LangGraph→Workflow 对话节点**见 [langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md) · **Workflow-as-Agent 演进**见 [evolution-plan-2026-07-22-workflow-as-agent.md](./evolution-plan-2026-07-22-workflow-as-agent.md)
 
 **已完成总览**：[ai-five-phase-iteration.md](./ai-five-phase-iteration.md) · [plugin.md](../../plugin.md) · [platform.md](../../platform.md)
 

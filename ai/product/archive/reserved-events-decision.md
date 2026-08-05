@@ -18,7 +18,7 @@
 
 ## 后续（非本决策阻塞）
 
-- 若产品需要「思考 / 质检」成为可编排的工作流节点，另开 LangGraph 节点路线图（见 `langgraph-workflow-nodes-roadmap.md`），与协议事件并存。
+- 若产品需要「思考 / 质检」成为可编排的工作流节点，另开 LangGraph 节点路线图（见 [langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md)），与协议事件并存。
 - 文档：在 `docs/events.md` 标明这两类为 **已实现的对话流事件**，避免再被当作「预留空洞」。
 
 ## 不做

@@ -201,7 +201,7 @@ F.2 表中 **P0 调研项**（dynamicPrompt、Tool kind、HTTP 安全、MCP tran
 
 ### Phase J — LangGraph 对话节点白盒化（P0，完成）
 
-> 详细规格见 [langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md) · 节点参考见 [agent-workflow.md §2.5](../agent-workflow.md#25-对话智能节点phase-j)
+> 详细规格见 [langgraph-workflow-nodes-roadmap.md](./archive/langgraph-workflow-nodes-roadmap.md) · 节点参考见 [agent-workflow.md §2.5](../agent-workflow.md#25-对话智能节点phase-j)
 
 | ID | 任务 | 说明 | 状态 |
 |----|------|------|------|

@@ -69,8 +69,18 @@
 
 | 文档 | 说明 |
 |------|------|
+| [archive/](./archive/) | 归档目录总览 |
 | [archive/phases-completed-through-z.md](./archive/phases-completed-through-z.md) | 原 backlog 全文（A～Z 明细 + 迭代日志） |
 | [archive/ai-five-phase-iteration.md](./archive/ai-five-phase-iteration.md) | 五项迭代完成记录 |
 | [archive/evolution-plan-2026-07-20.md](./archive/evolution-plan-2026-07-20.md) | 早期演进计划 |
+| [archive/evolution-plan-2026-07-22-workflow-as-agent.md](./archive/evolution-plan-2026-07-22-workflow-as-agent.md) | Workflow-as-Agent（Q/R/S/T） |
 | [archive/evolution-plan-2026-07-22-phase-u.md](./archive/evolution-plan-2026-07-22-phase-u.md) | Phase U 计划（已关闭） |
-| [archive/f2-survey-remaining.md](./archive/f2-survey-remaining.md) | F.2 调研剩余项（已完成） |
+| [archive/evolution-plan-2026-07-24-product-polish.md](./archive/evolution-plan-2026-07-24-product-polish.md) | 产品打磨 X/Y/Z |
+| [archive/langgraph-workflow-nodes-roadmap.md](./archive/langgraph-workflow-nodes-roadmap.md) | Phase J 白盒路线 |
+| [archive/f-p-prompt-architecture.md](./archive/f-p-prompt-architecture.md) | Phase F Prompt 专项 |
+| [archive/f2-survey-remaining.md](./archive/f2-survey-remaining.md) | F.2 调研剩余项 |
+| [archive/iteration-evolution.md](./archive/iteration-evolution.md) | A1–A3 产品演进 |
+| [archive/iteration-plan-2026-07-23.md](./archive/iteration-plan-2026-07-23.md) | 2026-07-23 迭代计划 |
+| [archive/dev-execution-plan.md](./archive/dev-execution-plan.md) | A1–A3 开发执行计划 |
+| [archive/reserved-events-decision.md](./archive/reserved-events-decision.md) | A2 预留事件决策 |
+| [archive/plugin-market-security.md](./archive/plugin-market-security.md) | A3.3 插件市场安全 |

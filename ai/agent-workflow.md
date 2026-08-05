@@ -144,7 +144,7 @@ HTTP 外部触发，发布时自动生成 `webhookSecret`。
 
 ### 2.5 对话智能节点（Phase J）
 
-> 详细规格见 [langgraph-workflow-nodes-roadmap.md](./product/langgraph-workflow-nodes-roadmap.md)
+> 详细规格见 [langgraph-workflow-nodes-roadmap.md](./product/archive/langgraph-workflow-nodes-roadmap.md)
 
 将 Chat LangGraph 黑盒中的对话智能层映射为白盒 Workflow 节点，共享 `server/src/ai/runtime/*` 运行时。
 

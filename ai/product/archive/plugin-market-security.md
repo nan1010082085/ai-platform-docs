@@ -29,5 +29,5 @@
 
 ## 参考
 
-- [third-party-plugin-guide.md](../extend/third-party-plugin-guide.md)
+- [third-party-plugin-guide.md](../../extend/third-party-plugin-guide.md)
 - expert-manager 安全检查流程（插件中心已有启用前校验）

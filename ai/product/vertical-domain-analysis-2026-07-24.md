@@ -3,7 +3,7 @@
 > 日期：2026-07-27
 > 依据：代码全量核实（editor 89 widgets / flow 12 BPMN 节点 / ai 25 workflow 节点 / server 130+ 业务交付物 patterns / 3 行业配置 / 31 workflow 模板）
 > 竞品对标：Dify（通用 AI 平台）、n8n（通用自动化）、Coze（闭源 SaaS）
-> 上游：[architecture-deep-dive-2026-07-24.md](./architecture-deep-dive-2026-07-24.md) · [evolution-plan-2026-07-24-product-polish.md](./evolution-plan-2026-07-24-product-polish.md)
+> 上游：[architecture-deep-dive-2026-07-24.md](./architecture-deep-dive-2026-07-24.md) · [evolution-plan-2026-07-24-product-polish.md](./archive/evolution-plan-2026-07-24-product-polish.md)
 
 ---
 

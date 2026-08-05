@@ -2,7 +2,7 @@
 
 > 创建日期：**2026-07-13**  
 > 角色：产品经理 + 架构  
-> 关联：[agent-workflow.md](../agent-workflow.md) · [design/runtime.md](../design/runtime.md) · [backlog.md](./backlog.md)
+> 关联：[agent-workflow.md](../../agent-workflow.md) · [design/runtime.md](../../design/runtime.md) · [backlog.md](../backlog.md)
 
 ---
 
@@ -317,8 +317,8 @@ task-chain 节点启动
 |----|------|------|
 | J-4-1 | 模板 `chat-parity-assistant` | 接近 Chat 默认链路的官方 DAG |
 | J-4-2 | 模板 `requirement-gated-build` | 分析 → 确认 → 规划 → 执行 |
-| J-4-3 | 更新 [agent-workflow.md](../agent-workflow.md) §2 节点表 | 文档 |
-| J-4-4 | 更新 [workflow-terminology.md](./workflow-terminology.md) | 新节点中文名 |
+| J-4-3 | 更新 [agent-workflow.md](../../agent-workflow.md) §2 节点表 | 文档 |
+| J-4-4 | 更新 [workflow-terminology.md](../workflow-terminology.md) | 新节点中文名 |
 | J-4-5 | seed `demo-chat-parity` 已发布流 | `seedDemoWorkflows.ts` |
 
 ---

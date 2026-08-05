@@ -2,7 +2,7 @@
 
 > 日期：2026-07-27
 > 依据：代码核实（`agentWorkflowExecutor.ts` / `agentNodes.ts` / `platform-shared/ai/agentWorkflow/types.ts` / `SchemaEmbedding.ts` / `ragService.ts`）+ 业界多智能体与长程记忆实践（LangGraph / Anthropic 多智能体研究系统 / Mem0 / Letta / Zep 公开资料）
-> 上游：[evolution-plan-2026-07-22-workflow-as-agent.md](./evolution-plan-2026-07-22-workflow-as-agent.md)、[evolution-plan-2026-07-22-phase-u.md](./archive/evolution-plan-2026-07-22-phase-u.md)
+> 上游：[evolution-plan-2026-07-22-workflow-as-agent.md](./archive/evolution-plan-2026-07-22-workflow-as-agent.md)、[evolution-plan-2026-07-22-phase-u.md](./archive/evolution-plan-2026-07-22-phase-u.md)
 > 本文档解决两件事：① RAG 进化为长程记忆（跨会话、可提取/整合/遗忘）② 多智能体协作深化（并行/精炼/handoff），并将两者嵌入 workflow 与 chat
 
 ---

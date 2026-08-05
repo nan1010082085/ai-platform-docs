@@ -12,7 +12,7 @@
 | v2 requirement analysis | `requirement_analysis_*`, `requirement_confirm_*` | ✅ implemented |
 | v2 task planning | `task_plan_*` | ✅ implemented |
 | v2 thinking/reasoning | `thinker_*` | ✅ chat stream implemented (`chatStreamRunner` emits; frontend writes thinking) |
-| v2 quality check | `quality_check_*` | ✅ chat stream implemented; for workflow graph nodes see [reserved-events-decision.md](./product/reserved-events-decision.md) (internal) |
+| v2 quality check | `quality_check_*` | ✅ chat stream implemented; for workflow graph nodes see [reserved-events-decision.md](./product/archive/reserved-events-decision.md) (internal) |
 
 > **Chat LangGraph**: `chat:event` (WebSocket).
 > **Chat x Workflow**: REST starts execution + `workflow:event` (WebSocket push, see §2).
@@ -617,7 +617,7 @@ interface ResumePayload {
 
 ## 9. Thinking & Quality-check Events
 
-> v2 events, chat stream implemented (`chatStreamRunner` emits); reserved events in workflow graph nodes see [reserved-events-decision.md](./product/reserved-events-decision.md) (internal).
+> v2 events, chat stream implemented (`chatStreamRunner` emits); reserved events in workflow graph nodes see [reserved-events-decision.md](./product/archive/reserved-events-decision.md) (internal).
 
 ### 9.1 thinker_start
 

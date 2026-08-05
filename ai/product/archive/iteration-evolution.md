@@ -1,7 +1,7 @@
 # AI 应用 · 产品迭代进化路线
 
 > 视角：从产品成熟度与开源增长出发，规划 AI 项目从「AI 应用小平台」到「开源 SaaS 平台」再到「开放 AI 工作流平台」的演进路径。
-> 本文承接 [ai-five-phase-iteration.md](./archive/ai-five-phase-iteration.md)（已完成五项）与 [backlog.md](./backlog.md)，聚焦产品维度的不足诊断、演进决策与验收度量。开源专项见 [open-source-iteration.md](./open-source-iteration.md)，开放平台专项见 [open-platform-roadmap.md](./open-platform-roadmap.md)。
+> 本文承接 [ai-five-phase-iteration.md](./ai-five-phase-iteration.md)（已完成五项）与 [backlog.md](../backlog.md)，聚焦产品维度的不足诊断、演进决策与验收度量。开源专项见 [open-source-iteration.md](../open-source-iteration.md)，开放平台专项见 [open-platform-roadmap.md](../open-platform-roadmap.md)。
 > 日期：2026-07-20 · 作者：产品视角评审
 
 ---
@@ -191,11 +191,11 @@ AI 项目是「可独立部署、可开源的 AI 应用能力小平台」，核�
 
 | 已有文档 | 聚焦 | 本文档关系 |
 |----------|------|------------|
-| [ai-five-phase-iteration.md](./archive/ai-five-phase-iteration.md) | 已完成的五项工程落地 | 历史背景，本文承接其「文档与实现漂移」治理方向 |
-| [backlog.md](./backlog.md) | 未完成项与实现思路 | 本文 A1-A3 承接并补足产品维度 |
-| [open-source-iteration.md](./open-source-iteration.md) | 开源专项 | 本文 A1 开源就绪与开源专项互补，本文聚焦「可被外部使用」的代码与体验基础 |
-| [open-platform-roadmap.md](./open-platform-roadmap.md) | 开放平台专项 | 本文 A3 开放平台与之互补，本文聚焦生态贡献维度 |
-| [advanced-features-roadmap.md](./advanced-features-roadmap.md) | 高级功能 | 功能维度独立推进，本文不重复 |
+| [ai-five-phase-iteration.md](./ai-five-phase-iteration.md) | 已完成的五项工程落地 | 历史背景，本文承接其「文档与实现漂移」治理方向 |
+| [backlog.md](../backlog.md) | 未完成项与实现思路 | 本文 A1-A3 承接并补足产品维度 |
+| [open-source-iteration.md](../open-source-iteration.md) | 开源专项 | 本文 A1 开源就绪与开源专项互补，本文聚焦「可被外部使用」的代码与体验基础 |
+| [open-platform-roadmap.md](../open-platform-roadmap.md) | 开放平台专项 | 本文 A3 开放平台与之互补，本文聚焦生态贡献维度 |
+| [advanced-features-roadmap.md](../advanced-features-roadmap.md) | 高级功能 | 功能维度独立推进，本文不重复 |
 | [langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md) | 工作流节点 | 与 A2.4 预留事件决策相关 |
 
 映射关系：

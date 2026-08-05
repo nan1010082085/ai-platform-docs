@@ -9,7 +9,7 @@
 |------|------|
 | [platform.md](../platform.md) | 三能力一体、JWT、双 Key |
 | [open-source-iteration.md](./open-source-iteration.md) | JWT 统一、基线 1.0、**Phase A～I 可执行拆解** |
-| [langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md) | **Phase J**：LangGraph 对话节点 → Workflow 白盒补齐 |
+| [langgraph-workflow-nodes-roadmap.md](./archive/langgraph-workflow-nodes-roadmap.md) | **Phase J**：LangGraph 对话节点 → Workflow 白盒补齐 |
 | [plugin.md](../plugin.md) | 插件中心架构与 CLI |
 | 本文 | **模板策略 + 能力调研清单 + 阶段总表** |
 
@@ -389,7 +389,7 @@ Expert 的 `tools` / `skills` 不替代 Model；Workflow `llm` 节点应引用 *
 | E-6 | agent-workflow 文档 | E |
 | E-T1～E-T5 | 五类新模板（见 §二 E.6）：contract-extract / kb-faq / http-notify / rag-ingest-qa / multi-doc-batch | E |
 | F-1～F-5 | 调研执行步骤（§三 F.4），产出 `f-1-registry-survey.md` | F |
-| F-P1～F-P4 | Prompt 待决问题（§三 F.3），产出 `f-p-prompt-architecture.md` | F |
+| F-P1～F-P4 | Prompt 待决问题（§三 F.3），产出 [f-p-prompt-architecture.md](./archive/f-p-prompt-architecture.md) | F |
 | F.2 表 | 逐项 P0 调研：dynamicPrompt、Tool kind、HTTP 安全、MCP transport、Prompt 四层、`promptsRoutes` 等 | F |
 | G-1 | BYOK 归属 → `model-architecture.md` | G |
 | G-2 | llmCache / LLMManager 优先级（DB/用户配置优先于平台 env） | G |

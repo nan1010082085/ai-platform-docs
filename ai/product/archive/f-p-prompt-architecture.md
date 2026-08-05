@@ -2,7 +2,7 @@
 
 > **产出目标**：梳理五套 Prompt 来源的边界与扩展契约，回答 F-P1 ~ F-P4 四个待决问题，输出开源文档可引用的结论。
 
-**关联文档**：[open-platform-roadmap.md §三 F.3](./open-platform-roadmap.md#三phase-f--能力层细化调研) · [plugin.md](../plugin.md)
+**关联文档**：[open-platform-roadmap.md §三 F.3](../open-platform-roadmap.md#三phase-f--能力层细化调研) · [plugin.md](../../plugin.md)
 
 ---
 

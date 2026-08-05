@@ -2,7 +2,7 @@
 
 > 日期：2026-07-22
 > 依据：代码核实（agentWorkflowExecutor / agentWorkflowRoutes / workflow.ts / debugRoutes）+ 竞品架构（Dify / Coze / n8n / LangGraph）公开资料
-> 上游：[evolution-plan-2026-07-20.md](./archive/evolution-plan-2026-07-20.md)、[backlog.md](./backlog.md)、[langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md)
+> 上游：[evolution-plan-2026-07-20.md](./evolution-plan-2026-07-20.md)、[backlog.md](../backlog.md)、[langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md)
 > 本文档解决三件事：① 每个工作流成为智能体的架构路径 ② workflow 直接测试界面（不只是 chat）③ 复杂界面/文件组件化重构
 
 ---
