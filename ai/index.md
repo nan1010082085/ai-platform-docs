@@ -20,3 +20,8 @@ Schema Platform 的 AI 模块文档。
 - [开发指南](./DEVELOPMENT) - 本地开发环境搭建
 - [部署指南](./DEPLOYMENT) - 生产环境部署
 - [环境变量](./environment-variables) - 配置参考
+
+## 产品进度
+
+- [任务进度与开放缺口](./product/backlog) - 活跃 backlog
+- [历史 Phase 归档](./product/archive/) - 已完成 Phase A～Z 与过期计划

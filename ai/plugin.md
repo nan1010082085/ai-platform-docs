@@ -3,7 +3,7 @@
 > **独立文档**：Expert / Skill / Tool / MCP 四层能力目录的配置、运行时、UI 与演进路线。  
 > Chat LangGraph 与 Agent Workflow **共用**同一 Registry。
 
-**相关**：[Expert 扩展指南](./expert-extension-guide.md) · [五项迭代完成记录](./product/ai-five-phase-iteration.md) · [Workflow 开放 API](./design/workflow-open-api.md) · 服务端配置说明 `server/config/plugins/README.md`
+**相关**：[Expert 扩展指南](./expert-extension-guide.md) · [五项迭代完成记录](./product/archive/ai-five-phase-iteration.md) · [Workflow 开放 API](./design/workflow-open-api.md) · 服务端配置说明 `server/config/plugins/README.md`
 
 ---
 

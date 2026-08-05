@@ -107,5 +107,5 @@ ai + editor + flow 一体是最大护城河，通用平台无法复制：
 - [platform.md](../platform.md) - 三能力一体定位
 - [rag-architecture.md](../rag-architecture.md) - RAG 现状（BGE-M3）
 - [agent-workflow.md](../agent-workflow.md) - 工作流节点
-- [product/ai-five-phase-iteration.md](./ai-five-phase-iteration.md) - 历史迭代
+- [product/archive/ai-five-phase-iteration.md](./archive/ai-five-phase-iteration.md) - 历史迭代
 - [product/open-platform-roadmap.md](./open-platform-roadmap.md) - 开放平台路线

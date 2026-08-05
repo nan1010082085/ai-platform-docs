@@ -3,7 +3,7 @@
 > **Standalone doc**: config, runtime, UI, and evolution of the Expert / Skill / Tool / MCP four-layer capability directory.
 > Chat LangGraph and Agent Workflow **share** the same Registry.
 
-**Related**: [Expert extension guide](./expert-extension-guide.md) · [Five-phase iteration record](./product/ai-five-phase-iteration.md) (internal) · [Workflow Open API](./design/workflow-open-api.md) · server config notes `server/config/plugins/README.md`
+**Related**: [Expert extension guide](./expert-extension-guide.md) · [Five-phase iteration record](./product/archive/ai-five-phase-iteration.md) (internal) · [Workflow Open API](./design/workflow-open-api.md) · server config notes `server/config/plugins/README.md`
 
 ---
 

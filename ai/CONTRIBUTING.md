@@ -41,7 +41,8 @@ ai/docs/
 │   ├── rag.md
 │   └── runtime.md
 ├── product/                     # 产品规划
-│   ├── backlog.md
+│   ├── backlog.md               # 活跃缺口与进度
+│   ├── archive/                 # 已完成 Phase 归档
 │   ├── open-platform-roadmap.md
 │   └── open-source-iteration.md
 └── extend/                      # 扩展指南

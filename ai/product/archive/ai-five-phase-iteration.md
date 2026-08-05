@@ -3,7 +3,7 @@
 > 产品工作坊五项问题的一次性工程落地。  
 > **最后更新：2026-07-07** · 状态：**全部 Phase 已完成**
 
-**关联文档**：[插件中心（独立）](../plugin.md) · [未完成任务 backlog](./backlog.md) · [Workflow 术语表](./workflow-terminology.md)
+**关联文档**：[插件中心（独立）](../../plugin.md) · [未完成任务 backlog](../backlog.md) · [Workflow 术语表](../workflow-terminology.md)
 
 ---
 
@@ -31,7 +31,7 @@
 | 执行列表 / 详情 trigger 中文 | `AgentExecutionListView` / `AgentExecutionDetailView` |
 | Chat 执行 `trigger: chat` | `agentWorkflowApi.executeWorkflow(..., { trigger: 'chat' })` |
 
-术语文档：[workflow-terminology.md](./workflow-terminology.md)
+术语文档：[workflow-terminology.md](../workflow-terminology.md)
 
 ---
 
@@ -45,7 +45,7 @@
 | PluginCenter 工具中文显示名 | `getToolDisplayLabel` |
 | 专家工具列中文 tag | `PluginCenterView.vue` |
 
-插件完整说明见 **[plugin.md](../plugin.md)**。
+插件完整说明见 **[plugin.md](../../plugin.md)**。
 
 ---
 
@@ -76,7 +76,7 @@ POST /api/ai/workflows/:id/execute  { input, trigger: "chat" }
 workflow:subscribe → workflow:event → workflow:unsubscribe
 ```
 
-协议文档：[events.md](../events.md) §二 · [server/docs/api-reference.md](../../../server/docs/api-reference.md)
+协议文档：[events.md](../../events.md) §二 · [server/docs/api-reference.md](../../../../server/docs/api-reference.md)
 
 ---
 
@@ -84,14 +84,14 @@ workflow:subscribe → workflow:event → workflow:unsubscribe
 
 | 文档 | 内容 |
 |------|------|
-| [workflow-terminology.md](./workflow-terminology.md) | 入口节点 vs trigger |
-| [plugin.md](../plugin.md) | **插件中心独立文档** |
-| [backlog.md](./backlog.md) | 未完成项与实现思路 |
-| [design/chat.md](../design/chat.md) | Workflow WS 交互流 |
-| [design/runtime.md](../design/runtime.md) | 双引擎运行时 |
-| [design/workflows.md](../design/workflows.md) | 执行监控 WS |
-| [agent-workflow.md](../agent-workflow.md) | Chat 集成章节 |
-| [plugin-registry.md](../plugin-registry.md) / [plugin-roadmap.md](../plugin-roadmap.md) | 迁移指针 → plugin.md |
+| [workflow-terminology.md](../workflow-terminology.md) | 入口节点 vs trigger |
+| [plugin.md](../../plugin.md) | **插件中心独立文档** |
+| [backlog.md](../backlog.md) | 未完成项与实现思路 |
+| [design/chat.md](../../design/chat.md) | Workflow WS 交互流 |
+| [design/runtime.md](../../design/runtime.md) | 双引擎运行时 |
+| [design/workflows.md](../../design/workflows.md) | 执行监控 WS |
+| [agent-workflow.md](../../agent-workflow.md) | Chat 集成章节 |
+| [plugin-registry.md](../../plugin-registry.md) / [plugin-roadmap.md](../../plugin-roadmap.md) | 迁移指针 → plugin.md |
 
 ---
 
@@ -107,7 +107,7 @@ workflow:subscribe → workflow:event → workflow:unsubscribe
 
 ## 明确不在范围
 
-见 [backlog.md](./backlog.md)「明确不做」：Open API SSE、Shell 菜单、Chat v2 未实现图节点等。
+见 [backlog.md](../backlog.md)「明确不做」：Open API SSE、Shell 菜单、Chat v2 未实现图节点等。
 
 ---
 
@@ -117,4 +117,4 @@ workflow:subscribe → workflow:event → workflow:unsubscribe
 |------|------|
 | 2026-07-07 上午 | 五项 Phase 1–5 落地；Chat SSE 移除 |
 | 2026-07-07 中午 | 执行列表/详情 WS；HITL 重订阅；文档去轮询漂移 |
-| 2026-07-07 下午 | 独立 [plugin.md](../plugin.md)；[backlog.md](./backlog.md) 待办与实现思路 |
+| 2026-07-07 下午 | 独立 [plugin.md](../../plugin.md)；[backlog.md](../backlog.md) 待办与实现思路 |

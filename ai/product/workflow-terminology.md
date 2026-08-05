@@ -46,4 +46,4 @@
 
 详见 [design/chat.md](../design/chat.md)、[design/runtime.md](../design/runtime.md)。
 
-**相关**：[五项迭代记录](./ai-five-phase-iteration.md) · [插件中心](../plugin.md) · [待办 backlog](./backlog.md)
+**相关**：[五项迭代记录](./archive/ai-five-phase-iteration.md) · [插件中心](../plugin.md) · [任务进度 backlog](./backlog.md)

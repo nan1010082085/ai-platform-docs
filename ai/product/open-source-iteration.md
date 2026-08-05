@@ -265,4 +265,4 @@ P3 远期：音频/视频/3D 预览
 
 - **[open-platform-roadmap.md](./open-platform-roadmap.md)** — 总路线图
 - [platform.md](../platform.md) — 三能力 + JWT + 凭证
-- [product/backlog.md](./backlog.md) — **进度入口**（进行中 Phase 一览）
+- [product/backlog.md](./backlog.md) — **进度入口**（开放缺口与已完成归档索引）

@@ -2,7 +2,7 @@
 
 > 日期：2026-07-22
 > 依据：代码核实（agentWorkflowExecutor / agentWorkflowRoutes / workflow.ts / debugRoutes）+ 竞品架构（Dify / Coze / n8n / LangGraph）公开资料
-> 上游：[evolution-plan-2026-07-20.md](./evolution-plan-2026-07-20.md)、[backlog.md](./backlog.md)、[langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md)
+> 上游：[evolution-plan-2026-07-20.md](./archive/evolution-plan-2026-07-20.md)、[backlog.md](./backlog.md)、[langgraph-workflow-nodes-roadmap.md](./langgraph-workflow-nodes-roadmap.md)
 > 本文档解决三件事：① 每个工作流成为智能体的架构路径 ② workflow 直接测试界面（不只是 chat）③ 复杂界面/文件组件化重构
 
 ---
@@ -68,7 +68,7 @@ L1/L2 你们已具备。L3 是本计划的核心增量。
 
 ## 三、迭代计划
 
-### Phase Q：Workflow 调用测试界面（优先，2-3d）
+### Phase Q：Workflow 调用测试界面（优先，2-3d） ✅
 
 **目标**：给 workflow 一个独立于 chat 的调用测试界面，像路由调试那样直接、可复跑。
 
@@ -89,7 +89,7 @@ L1/L2 你们已具备。L3 是本计划的核心增量。
 
 **验收**：草稿 workflow 不发布即可在 WorkflowDebugView 自定义输入执行，看到每个节点 input/output/耗时，失败节点标红。
 
-### Phase R：Agent-Loop 节点（核心，3-5d）
+### Phase R：Agent-Loop 节点（核心，3-5d） ✅
 
 **目标**：让任意 workflow 内可嵌入 LLM 自主循环段，workflow 即智能体。
 
@@ -106,7 +106,35 @@ L1/L2 你们已具备。L3 是本计划的核心增量。
 
 **验收**：一个 workflow 里放 agent-loop 节点，LLM 能自主调用同图内的 tool 节点/子 workflow，循环到完成。
 
-### Phase S：Workflow 作为 Bot 技能被路由调用（2d）
+### Phase R+：Message 模块渲染器扩展（1-2d，与 Phase R 并行） ✅
+
+**目标**：根据 agent workflow 新增的能力，扩展 Message 模块的渲染器类型，确保 chat 界面能完整展示 workflow 执行过程。
+
+**现状**：`RendererRegistry.ts` 已有 16 种渲染器，覆盖 text/code/artifact/thinking/tool_call/image_generate/ppt_generate/requirement_confirm/action_proposal/schema_result/flow_result 等。但 agent workflow 引入新场景后，需要补充渲染器。
+
+**新增渲染器**：
+
+| 类型 | 组件 | 说明 | 优先级 |
+|------|------|------|--------|
+| `sub_workflow` | SubWorkflowRenderer | 子 workflow 调用卡片（显示嵌套执行状态、可展开看详情） | P0 |
+| `agent_handoff` | AgentHandoffRenderer | 智能体间控制转移（显示源/目标 agent、转移原因） | P1 |
+| `cost_usage` | CostUsageRenderer | Token 消耗/成本展示（累计 token、费用估算） | P1 |
+| `approval_gate` | ApprovalRenderer | 人工审批节点（HITL 在 message 中的交互形态） | P1 |
+| `variable_change` | VariableChangeRenderer | 工作流变量变更追踪（diff 形式展示） | P2 |
+| `error_recovery` | ErrorRecoveryRenderer | 错误恢复/重试策略选择（用户可选重试/跳过/回滚） | P2 |
+
+**实现**：
+
+| 子任务 | 说明 |
+|---|---|
+| R+-1 新增渲染器组件 | 在 `ai/app/src/components/message/renderers/` 下按类型创建 |
+| R+-2 注册到 RendererRegistry | 每个渲染器注册 matcher + priority + emitEvents |
+| R+-3 扩展 StepData 类型 | `types/index.ts` 的 StepData 联合类型新增对应 type |
+| R+-4 Server 端 step 生成 | `agentWorkflowExecutor.ts` 执行过程中生成对应 step 记录 |
+
+**验收**：chat 中执行含 agent-loop/sub-workflow/HITL 的 workflow 时，消息流中能看到对应的渲染卡片。
+
+### Phase S：Workflow 作为 Bot 技能被路由调用（2d） ✅
 
 **目标**：已发布的 workflow 可被 Chat 的意图路由识别并调用，workflow 即"专家技能"。
 
@@ -118,7 +146,7 @@ L1/L2 你们已具备。L3 是本计划的核心增量。
 
 **验收**：发布带 routing keywords 的 workflow，在 chat 里说相关话术，自动路由到该 workflow 执行。
 
-### Phase T：复杂界面组件化重构（穿插进行，见第四节）
+### Phase T：复杂界面组件化重构（穿插进行，见第四节） ✅
 
 ---
 
@@ -184,12 +212,12 @@ L1/L2 你们已具备。L3 是本计划的核心增量。
 
 ## 六、批次执行计划
 
-| 批次 | 内容 | 工期 | 依赖 |
-|---|---|---|---|
-| 批次 1 | T-1 拆 `NodeTraceList` + Phase Q（WorkflowDebugView） | 3d | 无 |
-| 批次 2 | Phase R（agent-loop 节点） | 4d | 批次 1 |
-| 批次 3 | Phase S（workflow 作为路由技能） | 2d | 批次 2 |
-| 批次 4 | T-2/T-3/T-4 组件化重构 | 穿插 | 低耦合 |
+| 批次 | 内容 | 工期 | 依赖 | 状态 |
+|---|---|---|---|---|
+| 批次 1 | T-1 拆 `NodeTraceList` + Phase Q（WorkflowDebugView） | 3d | 无 | ✅ 已完成 |
+| 批次 2 | Phase R（agent-loop 节点）+ Phase R+（Message 渲染器扩展） | 5d | 批次 1 | ✅ 已完成 |
+| 批次 3 | Phase S（workflow 作为路由技能） | 2d | 批次 2 | ✅ 已完成 |
+| 批次 4 | T-2/T-3/T-4 组件化重构 | 穿插 | 低耦合 | ✅ 已完成 |
 
 ---
 
@@ -197,6 +225,8 @@ L1/L2 你们已具备。L3 是本计划的核心增量。
 
 - WorkflowDebugView 上线后，designer 里"手动测试执行"（固定 message）入口下线
 - agent-loop 节点能跑通一个 demo：LLM 自主调 2+ 工具完成多步任务
+- Message 模块渲染器从 16 种扩展到 22 种（含 sub_workflow/agent_handoff/cost_usage/approval_gate/variable_change/error_recovery）
+- chat 中执行含 agent-loop 的 workflow 时，消息流能展示完整的执行过程
 - 至少 3 个超标文件（>500行）拆到 <350 行
 - 680 现有测试不退化，新增 workflow-debug / agent-loop 测试
 
@@ -207,3 +237,4 @@ L1/L2 你们已具备。L3 是本计划的核心增量。
 1. **agent-loop 节点的工具范围**：只能调同图内的 tool 节点，还是也能调已发布的其它 workflow？（建议：先同图 tool，Phase S 后扩子 workflow）
 2. **WorkflowDebugView 是否支持断点单步**：首版只做"执行+看轨迹"，单步调试放后续？
 3. **L3 智能体的计费/配额**：agent-loop 迭代可能放大 token 消耗，是否复用 Phase D-3 的配额限流？
+4. **Message 模块外部化时机**：chat/message 组件是否需要抽成 `@schema-platform/chat-shared` 包？（建议：等 workflow 对外需求明确后再做，当前先在 ai/app 内扩展渲染器）

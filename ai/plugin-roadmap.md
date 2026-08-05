@@ -7,7 +7,7 @@
 | 已完成能力、生产清单、代码入口 | [plugin.md](./plugin.md) |
 | 待办、进度、实现思路 | [plugin.md §八](./plugin.md#八待完成项与实现思路) · [product/backlog.md](./product/backlog.md) |
 | Workflow Open API（Phase 2–5） | [design/workflow-open-api.md](./design/workflow-open-api.md) |
-| 五项迭代（含 Skills 上架） | [product/ai-five-phase-iteration.md](./product/ai-five-phase-iteration.md) |
+| 五项迭代（含 Skills 上架） | [product/archive/ai-five-phase-iteration.md](./product/archive/ai-five-phase-iteration.md) |
 
 **CLI 速查**（`server/` 目录）：
 

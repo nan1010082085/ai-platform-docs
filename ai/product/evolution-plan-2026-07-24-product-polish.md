@@ -2,7 +2,7 @@
 
 > 日期：2026-07-24
 > 依据：代码核实（ai/app + server/src/ai 全量）+ 竞品对标（Dify / Coze / n8n / FastGPT / LangSmith / Langfuse / CrewAI / Claude Artifacts）
-> 上游：[evolution-plan-2026-07-22-phase-u.md](./evolution-plan-2026-07-22-phase-u.md) · [iteration-plan-2026-07-23.md](./iteration-plan-2026-07-23.md)
+> 上游：[evolution-plan-2026-07-22-phase-u.md](./archive/evolution-plan-2026-07-22-phase-u.md) · [iteration-plan-2026-07-23.md](./iteration-plan-2026-07-23.md)
 > 原则：**功能与 UI/交互同步设计**。每个能力都带交互方案，复用现有设计语言，不另起炉灶。
 
 ---

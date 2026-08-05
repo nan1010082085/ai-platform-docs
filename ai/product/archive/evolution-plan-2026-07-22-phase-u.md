@@ -2,7 +2,7 @@
 
 > 日期：2026-07-22
 > 依据：Phase Q/R/S/T 已交付后的产品审查 + 查漏补缺
-> 上游：[evolution-plan-2026-07-22-workflow-as-agent.md](./evolution-plan-2026-07-22-workflow-as-agent.md)
+> 上游：[evolution-plan-2026-07-22-workflow-as-agent.md](../evolution-plan-2026-07-22-workflow-as-agent.md)
 > 本文档定义 Q/R/S 之后的平台化方向
 
 ---
