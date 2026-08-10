@@ -70,7 +70,7 @@ flowchart TB
 
   Ed --> Canvas
   Canvas -->|free| Overlay --> SR
-  Canvas -->|flex| WR
+  Canvas -->|grid| WR
   SR --> Cull
   SR --> Registry
   Pub --> WR --> Registry
@@ -86,7 +86,23 @@ flowchart TB
 | 路径 | 入口 | 布局 | 用途 |
 |------|------|------|------|
 | SchemaRender → SchemaNode | EditorCanvas（free） | 绝对定位 | 设计态画布 |
-| WidgetRenderer → WidgetNode | EditorCanvas（flex）/ PublishView | 流式 | 预览 / 发布 / Flex 页 |
+| WidgetRenderer → WidgetNode | EditorCanvas（grid）/ PublishView | CSS Grid | 预览 / 发布 / Grid 页 |
+
+### Grid 布局引擎（参考 formily Grid）
+
+grid 模式使用 CSS Grid + formily Grid 引擎核心算法，支持多列自适应布局：
+
+| 组件 | 文件 | 说明 |
+|------|------|------|
+| gridEngine | `utils/gridEngine.ts` | 纯函数引擎：computeColumns（列数计算）、computeTemplateColumns（repeat(N, minmax(minW, maxW))）、resolveChildSpan（span 分配） |
+| useGridEngine | `composables/useGridEngine.ts` | Vue composable：ResizeObserver 跟踪容器宽度，computed 响应式重算 |
+| WidgetRenderer | `components/WidgetRenderer/index.vue` | flowContainerStyle 用 grid engine 驱动；每个子节点用 div gridColumn 包裹 |
+
+画布级配置（CanvasConfig.gridLayout）：rowGap / columnGap / minColumns / maxColumns / minWidth / maxWidth / colWrap / maxContentWidth / contentAlign
+
+Widget 级配置：Widget.gridSpan（跨列数，-1 = 撑满剩余列，0/未设 = 1 列）
+
+简化自 formily（编辑器不需要）：breakpoints（响应式断点）、strictAutoFit（严格自适应）、shouldVisible（条件显示）、MutationObserver（Vue 响应式替代）、@formily/reactive（用 Vue ref/computed）
 
 ### 视口剔除（仅 free 编辑态）
 
@@ -156,7 +172,7 @@ flowchart TB
 
 | 领域 | 代表 |
 |------|------|
-| 拖拽 / 缩放 | useDrag, useResize, useFlexCanvasDrop |
+| 拖拽 / 缩放 | useDrag, useResize, useGridCanvasDrop |
 | 视口 / 对齐 | useViewportCulling, useWidgetAlignment |
 | 联动 / 事件 | useLinkage, useChartEvents, useEventLog |
 | 数据 | useDataSource, useDynamicOptions, useFormData |

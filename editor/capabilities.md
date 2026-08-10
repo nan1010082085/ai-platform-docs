@@ -9,7 +9,7 @@
 
 让非开发人员用拖拽搭建：
 
-1. **审批 / 业务表单**（Flex）
+1. **审批 / 业务表单**（Grid）
 2. **运营大屏 / 自由页面**（Free）
 3. **可发布、可嵌入**的运行页（`/view/:code`）
 
@@ -22,12 +22,12 @@
 | 能力域 | 能力项 | 状态 | 入口 / 证据 |
 |--------|--------|------|-------------|
 | 搭建 | Free 绝对定位画布 | ✅ | `layoutMode: 'free'` |
-| 搭建 | Flex 流式页面 | 🟡 | 渲染 + 投放可用；容器嵌套仍单层 flatten，见 [container-nesting-decision.md](./container-nesting-decision.md) |
+| 搭建 | Grid CSS Grid 页面 | ✅ | layoutMode: "grid"；gridEngine + useGridEngine；支持多列自适应 + span，见 [container-nesting-decision.md](./container-nesting-decision.md) |
 | 搭建 | 85+ Widget | ✅ | `widgets/` + registry |
 | 搭建 | 大屏 Demo 一键创建 | ✅ | 实例新建 →「运营大屏 Demo」 |
 | 搭建 | 深色大屏主题 | ✅ | `boardThemes` / canvas.themePreset |
-| 交互 | 拖拽 / 缩放 / 辅助线 | ✅ | **Free**：EditorOverlay + useDrag；Flex 无 resize/辅助线 |
-| 交互 | Flex 部件拖入 | 🟡 | useFlexCanvasDrop / FlexColDropZone；缺插入指示线、嵌套 2 层未落地 |
+| 交互 | 拖拽 / 缩放 / 辅助线 | ✅ | Free：EditorOverlay + useDrag；Grid：插入指示线 + 右边缘 resize |
+| 交互 | Grid 部件拖入 | ✅ | useGridCanvasDrop / GridColDropZone + 插入指示线 |
 | 交互 | 撤销重做（immer） | ✅ | editorStore |
 | 交互 | 对齐 / 分布 / 锁定 / 隐藏 | ✅ | useWidgetAlignment + 快捷键 |
 | 性能 | 视口剔除 | ✅ | useViewportCulling（编辑态） |
@@ -55,9 +55,9 @@
 4. 切换区域为「隐藏图表」→ 图表因联动隐藏  
 5. 保存 → 发布 → 打开 `/view/{code}?interaction=interactive`
 
-### 3.2 表单 Flex
+### 3.2 表单 Grid
 
-1. 新建 → **Flex** → 表单 / 列表 / 详情模板  
+1. 新建 → **Grid** → 表单 / 列表 / 详情模板  
 2. 拖入控件，配置事件与联动  
 3. 预览 → 保存发布
 
@@ -96,10 +96,10 @@
 | P0 | server `/telemetry` + dashboard | 无法度量流失与卡顿 |
 | P1 | 真实 100+ widget FPS 体感验收 | 大屏上限仍偏「理论」 |
 | P1 | i18n 覆盖 ≥ 80% | 出海/开源受阻 |
-| P1 | Flex 插入指示线 / span / 模式切换 | Flex 编辑 chrome 弱于 free |
+| P1 | Grid 插入指示线 + span + gridEngine | Grid 编辑能力补齐 |
 | P2 | PropertyPanel 继续拆分；清理 WidgetRule | 维护成本 |
 | P2 | 嵌套 2 层决策落地代码 | 决策与实现不一致（仍 flatten） |
-| P3 | Flex 专用交互设计稿 | designer.md 拖拽流几乎仅 free |
+| P3 | Grid 专用交互设计稿 | designer.md 拖拽流覆盖双模式 |
 | P3 | SDK 脚手架 + Widget 市场 | 生态未开 |
 
 ---

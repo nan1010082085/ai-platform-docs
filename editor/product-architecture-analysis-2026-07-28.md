@@ -53,7 +53,7 @@
 - 四大配置系统（事件/联动/API/变量）提供强大表达能力
 
 #### ✅ 双画布模式
-- Free（绝对定位）+ Flex（流式布局）双模式并存
+- Free（绝对定位）+ Grid（CSS Grid）双模式并存
 - 视口剔除（useViewportCulling）优化大屏性能
 - 模式切换自动适配 Widget 可用性
 
@@ -122,7 +122,7 @@
 | 能力域 | 能力项 | 状态 | 验证方式 |
 |--------|--------|------|----------|
 | **布局** | Free 绝对定位 | ✅ | 120 widget 54+ FPS |
-| **布局** | Flex 流式布局 | ✅ | 表单/列表/详情模板 |
+| **布局** | Grid CSS Grid 布局 | ✅ | 表单/列表/详情模板 |
 | **布局** | 双模式切换 | ✅ | Toolbar 一键切换 |
 | **Widget** | 87 类 Widget | ✅ | registry 注册 |
 | **Widget** | 高可用壳 | ✅ | WidgetStateShell + ErrorBoundary |
@@ -131,7 +131,7 @@
 | **配置** | 联动系统 | ✅ | 6 种联动类型 |
 | **配置** | API 数据源 | ✅ | 动态数据 + 缓存 |
 | **配置** | 变量系统 | ✅ | Widget/Board 级变量 |
-| **交互** | 拖拽编排 | ✅ | Free + Flex 双模式 |
+| **交互** | 拖拽编排 | ✅ | Free + Grid 双模式 |
 | **交互** | 撤销重做 | ✅ | immer patches |
 | **交互** | 快捷键 | ✅ | Ctrl+Z/C/V/Del 等 |
 | **发布** | 多模式发布 | ✅ | interactive/readonly |
