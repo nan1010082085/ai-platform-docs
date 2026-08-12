@@ -227,15 +227,15 @@ F.2 表中 **P0 调研项**（dynamicPrompt、Tool kind、HTTP 安全、MCP tran
 
 **产出**：供应商/模型两级管理、Ollama 接入、快速添加预设
 
-### Phase L — 消息组件化重构（P1，进行中）
+### Phase L — 消息组件化重构（P1，完成）
 
 | ID | 任务 | 说明 | 状态 |
 |----|------|------|------|
-| L-1 | RendererRegistry | 渲染器注册表 | 🔄 |
-| L-2 | 独立渲染器 | Text/Code/Thinking/ToolCall/Image/Requirement/Document | 🔄 |
-| L-3 | AiMessageContent | 内容调度器 | 🔄 |
-| L-4 | AiMessageActionBar | 操作栏 | 🔄 |
-| L-5 | AiMessage 瘦身 | 主组件 ~100 行 | 🔄 |
+| L-1 | RendererRegistry | 渲染器注册表 | ✅ |
+| L-2 | 独立渲染器 | 20+ 渲染器（Text/Code/Thinking/ToolCall/Image/Requirement/Document 等） | ✅ |
+| L-3 | AiMessageContent | 内容调度器 | ✅ |
+| L-4 | AiMessageActionBar | 操作栏 | ✅ |
+| L-5 | AiMessage 瘦身 | 主组件 ~400 行（含类型定义），模板 ~30 行 | ✅ |
 
 **目标**：新增预览类型只需新建 Renderer + 注册
 

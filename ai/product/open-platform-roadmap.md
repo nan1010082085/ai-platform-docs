@@ -32,10 +32,10 @@
 | **I** | **可选技术债** | P2 | ✅ 已完成 |
 | **J** | **LangGraph 对话节点白盒化** | P0 | ✅ 已完成（5 runtime + 6 节点 + 2 模板） |
 | **K** | **Provider/Model 两级结构** | P0 | ✅ 已完成 |
-| **L** | **消息组件化重构** | P1 | 🔄 进行中 |
+| **L** | **消息组件化重构** | P1 | ✅ 已完成 |
 | **M** | **Chat 预览增强** | P1 | ✅ 已完成 |
 
-当前重点：**Phase L（消息组件化）**；待规划：Phase D-3/D-4、Phase H-2/H-4、Phase G-7。
+已完成：Phase L（消息组件化）；待规划：Phase D-3/D-4、Phase H-2/H-4、Phase G-7。
 
 ---
 
@@ -322,7 +322,7 @@ Expert 的 `tools` / `skills` 不替代 Model；Workflow `llm` 节点应引用 *
 | **I** | v1 管线回退删除、`legacyAgentKey` 文档、双 Key 示例 | ✅ |
 | **J** | LangGraph 对话节点白盒化 | ✅ |
 | **K** | Provider/Model 两级结构 | ✅ |
-| **L** | 消息组件化重构 | 🔄 |
+| **L** | 消息组件化重构 | ✅ |
 | **M** | Chat 预览增强 | ✅ |
 
 ---
@@ -331,7 +331,7 @@ Expert 的 `tools` / `skills` 不替代 Model；Workflow `llm` 节点应引用 *
 
 ```text
 已完成：Phase A/B/C/E/F/G/I/J/K/M
-进行中：Phase L（消息组件化）
+已完成：Phase L（消息组件化）
 待规划：Phase D（配额/限流 + 插件市场）+ Phase H（文档收尾）+ Phase G-7（openai-compatible）
 远期：音频/视频/3D 预览
 ```
