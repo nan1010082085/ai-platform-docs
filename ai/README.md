@@ -54,6 +54,13 @@ cd shared/platform-shared && pnpm build  # 构建共享包（含 AI 类型/事�
 - [插件 Registry](./plugin-registry.md) - 插件注册表
 - [第三方插件开发指南](./extend/third-party-plugin-guide.md) - Expert/Skill/Tool/MCP + 脚手架
 
+### AI App 前端
+
+- [App 概览](./app/) - `@ai-app` 前端应用：功能、运行与嵌入模式
+- [架构与分层](./app/architecture.md) - 目录结构、Store/Composable/API 清单、插件适配层
+- [路由与页面](./app/routing.md) - 路由表与守卫逻辑
+- [DSH Agent 运行时](./harness.md) - ai/harness 服务（会话 API、轨迹投影）
+
 ### 共享包与运维
 
 - [ai-shared API](./ai-shared.md) - 类型、导出、工具名、Prompt 构建器

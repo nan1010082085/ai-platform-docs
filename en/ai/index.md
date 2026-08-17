@@ -14,6 +14,13 @@ Documentation for the AI module of Schema Platform.
 - [Plugin Center](./plugin) - Expert/Skill/Tool/MCP config
 - [Event Protocol](./events) - WebSocket event types
 
+## AI App Frontend
+
+- [App Overview](./app/) - `@ai-app` positioning, features, run & embed modes
+- [Architecture & Layers](./app/architecture) - directory structure, Store/Composable/API inventory, plugin adapter
+- [Routing & Pages](./app/routing) - full route table and guards
+- [DSH Agent Runtime](./harness) - ai/harness service (trace debug)
+
 ## Architecture & Development
 
 - [Architecture](./architecture) - dual-engine architecture, system overview

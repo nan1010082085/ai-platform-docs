@@ -119,6 +119,14 @@ export default withMermaid(defineConfig({
           ],
         },
         {
+          text: 'AI App Frontend',
+          items: [
+            { text: 'App Overview', link: '/en/ai/app/' },
+            { text: 'Architecture & Layers', link: '/en/ai/app/architecture' },
+            { text: 'Routing & Pages', link: '/en/ai/app/routing' },
+          ],
+        },
+        {
           text: 'Architecture & Design',
           items: [
             { text: 'Platform', link: '/en/ai/platform' },
@@ -128,6 +136,7 @@ export default withMermaid(defineConfig({
             { text: 'RAG Design', link: '/en/ai/design/rag' },
             { text: 'Runtime Design', link: '/en/ai/design/runtime' },
             { text: 'Workflow Open API', link: '/en/ai/design/workflow-open-api' },
+            { text: 'DSH Agent Runtime', link: '/en/ai/harness' },
           ],
         },
         {
@@ -217,6 +226,7 @@ export default withMermaid(defineConfig({
             { text: 'Data Models', link: '/en/server/models' },
             { text: 'RAG Architecture', link: '/en/server/rag-architecture' },
             { text: 'Plugin Center', link: '/en/server/plugin-center' },
+            { text: 'Deployment & Ops', link: '/en/server/deployment' },
           ],
         },
       ],
@@ -308,6 +318,14 @@ export default withMermaid(defineConfig({
           ],
         },
         {
+          text: 'AI App 前端',
+          items: [
+            { text: 'App 概览', link: '/ai/app/' },
+            { text: '架构与分层', link: '/ai/app/architecture' },
+            { text: '路由与页面', link: '/ai/app/routing' },
+          ],
+        },
+        {
           text: '架构与设计',
           items: [
             { text: '平台定位', link: '/ai/platform' },
@@ -317,6 +335,7 @@ export default withMermaid(defineConfig({
             { text: 'RAG 设计', link: '/ai/design/rag' },
             { text: 'Runtime 设计', link: '/ai/design/runtime' },
             { text: 'Workflow Open API', link: '/ai/design/workflow-open-api' },
+            { text: 'DSH Agent 运行时', link: '/ai/harness' },
           ],
         },
         {
@@ -366,6 +385,7 @@ export default withMermaid(defineConfig({
             { text: '数据模型', link: '/server/models' },
             { text: 'RAG 架构', link: '/server/rag-architecture' },
             { text: '插件中心', link: '/server/plugin-center' },
+            { text: '部署与运维', link: '/server/deployment' },
           ],
         },
       ],
