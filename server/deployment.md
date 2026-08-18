@@ -35,11 +35,12 @@ bash deploy/deploy.sh --target all
 
 ```
 ~/schema-platform/
-├── apps/                  # 前端产物（editor/ flow/ ai/）
+├── apps/                  # 前端产物（editor/ flow/ ai/ ua/ docs/）
 ├── server/                # ← 后端 dist + package.json
 ├── shared/
 │   ├── flow-shared/       # server 运行时依赖
 │   └── ai-shared/
+├── harness/               # AI Harness Agent 运行时（DSH）
 ├── flow-shared → shared/flow-shared   # symlink
 ├── ai-shared   → shared/ai-shared     # symlink
 ├── .env.production
@@ -51,7 +52,9 @@ bash deploy/deploy.sh --target all
 
 ## 三、进程管理（PM2）
 
-`deploy/ecosystem.config.cjs`：
+`deploy/ecosystem.config.cjs` 管理以下进程：
+
+### platform-server
 
 | 项 | 值 |
 |------|------|
@@ -63,7 +66,17 @@ bash deploy/deploy.sh --target all
 | 环境文件 | `.env.production` |
 | 插件配置目录 | `AI_PLUGIN_CONFIG_DIR` → `server/config`（Expert/Skill/Tool/MCP 配置） |
 
-常用运维命令：
+### ai-harness
+
+| 项 | 值 |
+|------|------|
+| 应用名 | `ai-harness` |
+| 启动命令 | `pnpm exec dsh --profile ai-harness` |
+| 工作目录 | `~/schema-platform/harness` |
+| 模式 | fork，单实例 |
+| 端口 | 5310（nginx 反代 `/schema-platform/harness/`） |
+
+### 常用运维命令
 
 ```bash
 pm2 start ecosystem.config.cjs      # 启动/更新
@@ -74,13 +87,23 @@ pm2 status                          # 进程状态
 
 ## 四、nginx 反代
 
+nginx 配置位于 `/etc/nginx/sites-available/schema-platform`，由 `deploy/nginx-schema-platform.conf` snippet 管理。
+
 | 路径 | 规则 |
 |------|------|
-| `/schema-platform/api/` | proxy → `127.0.0.1:30001`（REST API） |
-| `/schema-platform/ws` | proxy → `127.0.0.1:30001`（WebSocket，含 Upgrade 头） |
-| `/schema-platform/editor|flow|ai` | alias → `apps/*`（静态资源） |
+| `/schema-platform/api/` | proxy → `127.0.0.1:30001`（REST API，`client_max_body_size 12m`） |
+| `/schema-platform/ws` | proxy → `127.0.0.1:30001`（WebSocket，含 Upgrade 头，超时 7200s） |
+| `/schema-platform/harness/` | proxy → `127.0.0.1:5310`（AI Harness Agent 运行时） |
+| `/schema-platform/editor/` | alias → `apps/editor/`（SPA，fallback 到 index.html） |
+| `/schema-platform/flow/` | alias → `apps/flow/` |
+| `/schema-platform/ai/` | alias → `apps/ai/` |
+| `/schema-platform/ua/` | alias → `apps/ua/` |
+| `/schema-platform/docs/` | alias → `apps/docs/`（VitePress 文档站） |
+| `~* ^/schema-platform/.+\.(js\|css\|svg\|png\|jpg\|jpeg\|gif\|woff2?\|ttf\|eot\|map)$` | 静态资源 404 兜底（避免 MIME 类型错误） |
 
-开发环境端口为 3001；生产 30001（`.env.production` 中 `PORT`）。
+> 开发环境端口为 3001；生产 30001（`.env.production` 中 `PORT`）。
+>
+> **部署注意事项**：nginx 配置可能被直接修改过，部署前必须先 `scp` 拉取线上配置做 diff，避免覆盖其他项目的配置。
 
 ## 五、数据与缓存依赖
 

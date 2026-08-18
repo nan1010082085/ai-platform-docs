@@ -35,11 +35,12 @@ Remote layout under `~/schema-platform/`:
 
 ```
 ~/schema-platform/
-├── apps/                  # frontend artifacts (editor/ flow/ ai/)
+├── apps/                  # frontend artifacts (editor/ flow/ ai/ ua/ docs/)
 ├── server/                # ← backend dist + package.json
 ├── shared/
 │   ├── flow-shared/       # server runtime deps
 │   └── ai-shared/
+├── harness/               # AI Harness Agent runtime (DSH)
 ├── flow-shared → shared/flow-shared   # symlink
 ├── ai-shared   → shared/ai-shared     # symlink
 ├── .env.production
@@ -51,7 +52,9 @@ Remote layout under `~/schema-platform/`:
 
 ## 3. Process Management (PM2)
 
-`deploy/ecosystem.config.cjs`:
+`deploy/ecosystem.config.cjs` manages the following processes:
+
+### platform-server
 
 | Item | Value |
 |------|------|
@@ -63,7 +66,17 @@ Remote layout under `~/schema-platform/`:
 | Env file | `.env.production` |
 | Plugin config dir | `AI_PLUGIN_CONFIG_DIR` → `server/config` (Expert/Skill/Tool/MCP config) |
 
-Common ops commands:
+### ai-harness
+
+| Item | Value |
+|------|------|
+| App name | `ai-harness` |
+| Start command | `pnpm exec dsh --profile ai-harness` |
+| Working dir | `~/schema-platform/harness` |
+| Mode | fork, single instance |
+| Port | 5310 (nginx proxy `/schema-platform/harness/`) |
+
+### Common ops commands
 
 ```bash
 pm2 start ecosystem.config.cjs      # start / update
@@ -74,13 +87,23 @@ pm2 status                          # process status
 
 ## 4. nginx Reverse Proxy
 
+nginx config is located at `/etc/nginx/sites-available/schema-platform`, managed via the `deploy/nginx-schema-platform.conf` snippet.
+
 | Path | Rule |
 |------|------|
-| `/schema-platform/api/` | proxy → `127.0.0.1:30001` (REST API) |
-| `/schema-platform/ws` | proxy → `127.0.0.1:30001` (WebSocket, with Upgrade headers) |
-| `/schema-platform/editor|flow|ai` | alias → `apps/*` (static assets) |
+| `/schema-platform/api/` | proxy → `127.0.0.1:30001` (REST API, `client_max_body_size 12m`) |
+| `/schema-platform/ws` | proxy → `127.0.0.1:30001` (WebSocket, with Upgrade headers, timeout 7200s) |
+| `/schema-platform/harness/` | proxy → `127.0.0.1:5310` (AI Harness Agent runtime) |
+| `/schema-platform/editor/` | alias → `apps/editor/` (SPA, fallback to index.html) |
+| `/schema-platform/flow/` | alias → `apps/flow/` |
+| `/schema-platform/ai/` | alias → `apps/ai/` |
+| `/schema-platform/ua/` | alias → `apps/ua/` |
+| `/schema-platform/docs/` | alias → `apps/docs/` (VitePress docs site) |
+| `~* ^/schema-platform/.+\.(js\|css\|svg\|png\|jpg\|jpeg\|gif\|woff2?\|ttf\|eot\|map)$` | Static asset 404 fallback (avoids MIME type errors) |
 
-Dev port is 3001; production is 30001 (`PORT` in `.env.production`).
+> Dev port is 3001; production is 30001 (`PORT` in `.env.production`).
+>
+> **Deployment note**: nginx config may have been modified directly on the server. Always `scp` and diff before deploying to avoid overwriting other projects' config.
 
 ## 5. Data & Cache Dependencies
 
