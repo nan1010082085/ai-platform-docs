@@ -43,14 +43,14 @@ Skill 支持两种内容定义方式：内联（inline）和外部文件（file�
 
 ```json
 {
-  "id": "platform.reply-zh",
+  "id": "platform-reply-zh",
   "label": "中文回复",
   "content": "默认使用简体中文回复；技术术语可保留英文。",
   "enabled": true
 }
 ```
 
-**文件位置**：`server/config/plugins/skills/platform.reply-zh.json`
+**文件位置**：`server/config/plugins/skills/platform-reply-zh.json`
 
 ### 2.2 外部文件方式
 
@@ -60,9 +60,9 @@ JSON 声明：
 
 ```json
 {
-  "id": "example.support-tone",
+  "id": "example-support-tone",
   "label": "客服语气",
-  "file": "example.support-tone.md",
+  "file": "example-support-tone.md",
   "enabled": false
 }
 ```
@@ -103,7 +103,7 @@ my-pack/
 
 ```json
 {
-  "id": "my-org.my-pack",
+  "id": "my-org-my-pack",
   "name": "My Skill Pack",
   "version": "1.0.0",
   "description": "包含自定义 Skill 的插件包"
@@ -112,7 +112,7 @@ my-pack/
 
 | 字段 | 必填 | 说明 |
 |------|------|------|
-| `id` | 是 | 包唯一标识，推荐 `{org}.{name}` 格式 |
+| `id` | 是 | 包唯一标识，推荐 kebab-case 格式 |
 | `name` | 是 | 人类可读名称 |
 | `version` | 是 | 语义化版本号 |
 | `description` | 否 | 包描述 |
@@ -150,11 +150,11 @@ pnpm plugin:install --file dist/my-pack.tgz --tenant acme
 
 ### 4.1 编写 Skill 声明
 
-创建文件 `server/config/plugins/skills/my-org.output-format.json`：
+创建文件 `server/config/plugins/skills/my-org-output-format.json`：
 
 ```json
 {
-  "id": "my-org.output-format",
+  "id": "my-org-output-format",
   "label": "输出格式约束",
   "content": "回复时使用 Markdown 格式；代码块标注语言类型；列表项使用有序列表；关键结论用粗体标注。",
   "enabled": true
@@ -177,7 +177,7 @@ pnpm plugin:validate
 ```json
 {
   "id": "platform.general",
-  "skills": ["platform.reply-zh", "my-org.output-format"],
+  "skills": ["platform-reply-zh", "my-org-output-format"],
   ...
 }
 ```
@@ -204,7 +204,7 @@ Expert 通过 `skills` 数组引用 Skill 的 id：
   "id": "platform.editor",
   "label": "Editor 专家",
   "dynamicPrompt": "editor",
-  "skills": ["platform.schema-quality", "platform.reply-zh"],
+  "skills": ["platform-schema-quality", "platform-reply-zh"],
   "tools": ["schema__search", "generate_schema"]
 }
 ```
@@ -226,7 +226,7 @@ return `${base}\n\n${skillBlocks.join('\n\n')}`
 
 ### 5.2 拼装顺序
 
-1. **base prompt** 优先 — 如果 Expert 配置了 `dynamicPrompt`，先通过 `promptBuilder` 生成基础 prompt；否则使用 `systemPrompt` 字段
+1. **base prompt 优先** — 如果 Expert 配置了 `dynamicPrompt`，先通过 `promptBuilder` 生成基础 prompt；否则使用 `systemPrompt` 字段
 2. **Skill 按数组顺序追加** — `skills` 数组中的 id 按声明顺序依次解析，每个 Skill 的 `content` 以空行分隔拼接到 base prompt 尾部
 3. **缺失的 Skill 被静默跳过** — 如果某个 id 在 Registry 中找不到（未注册或已禁用），该条目被过滤，不影响其他 Skill
 
@@ -236,7 +236,7 @@ Skill 可以声明 `tools` 字段，指定该 Skill 所需的工具名。挂载�
 
 ```json
 {
-  "id": "my-org.rag-skill",
+  "id": "my-org-rag-skill",
   "label": "RAG 检索指令",
   "content": "回答问题前先使用知识库检索相关信息。",
   "tools": ["rag__search"],
@@ -251,13 +251,13 @@ Skill 可以声明 `tools` 字段，指定该 Skill 所需的工具名。挂载�
 同一个 Skill 可以被多个 Expert 引用：
 
 ```text
-platform.reply-zh ──┬── platform.editor
+platform-reply-zh ──┬── platform.editor
                     ├── platform.flow
                     ├── platform.page
                     └── platform.general
 ```
 
-修改 `platform.reply-zh` 的内容后，所有引用它的 Expert 在下次加载时都会使用新内容。
+修改 `platform-reply-zh` 的内容后，所有引用它的 Expert 在下次加载时都会使用新内容。
 
 ---
 
@@ -265,9 +265,9 @@ platform.reply-zh ──┬── platform.editor
 
 ### 6.1 命名规范
 
-- **id**：使用 `{org}.{功能}` 的 kebab-case 格式，如 `platform.schema-quality`、`acme.compliance-check`
+- **id**：使用纯 kebab-case 格式，如 `platform-schema-quality`、`my-org-output-format`
 - **label**：简短的中文描述，用于前端 Plugin Center 展示
-- **文件名**：与 id 保持一致，如 `platform.schema-quality.json`
+- **文件名**：与 id 保持一致，如 `platform-schema-quality.json`
 
 ### 6.2 内容编写
 

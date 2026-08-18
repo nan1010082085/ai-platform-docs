@@ -74,6 +74,8 @@ export default withMermaid(defineConfig({
           { text: 'Editor', link: '/en/editor/' },
           { text: 'Flow', link: '/en/flow/' },
           { text: 'Server', link: '/en/server/' },
+          { text: 'UA', link: '/en/ua/' },
+          { text: 'Shared', link: '/en/shared/' },
           { text: 'Extend', link: '/en/extend/' },
           { text: 'Design', link: '/en/design/' },
         ],
@@ -233,6 +235,26 @@ export default withMermaid(defineConfig({
           '/en/design/': [
             { text: 'Design', items: [{ text: 'Model Architecture', link: '/en/design/model-architecture' }] },
           ],
+          '/en/ua/': [
+            {
+              text: 'User & Tenant Management',
+              items: [
+                { text: 'Overview', link: '/en/ua/' },
+                { text: 'Changelog', link: '/en/ua/changelog' },
+                { text: 'Architecture', link: '/en/ua/architecture' },
+              ],
+            },
+          ],
+          '/en/shared/': [
+            {
+              text: 'Shared Packages',
+              items: [
+                { text: 'Overview', link: '/en/shared/' },
+                { text: 'platform-shared', link: '/en/shared/platform-shared' },
+                { text: 'flow-shared', link: '/en/shared/flow-shared' },
+              ],
+            },
+          ],
         },
         outline: { label: 'On this page' },
         docFooter: { prev: 'Previous', next: 'Next' },
@@ -250,6 +272,8 @@ export default withMermaid(defineConfig({
       { text: '编辑器', link: '/editor/' },
       { text: '流程设计器', link: '/flow/' },
       { text: '后端服务', link: '/server/' },
+      { text: '用户管理', link: '/ua/' },
+      { text: '公共包', link: '/shared/' },
       { text: '扩展开发', link: '/extend/' },
     ],
 
@@ -408,6 +432,26 @@ export default withMermaid(defineConfig({
           text: '架构设计',
           items: [
             { text: '模型架构', link: '/design/model-architecture' },
+          ],
+        },
+      ],
+      '/ua/': [
+        {
+          text: '用户与租户管理',
+          items: [
+            { text: '概览', link: '/ua/' },
+            { text: '更新日志', link: '/ua/changelog' },
+            { text: '架构设计', link: '/ua/architecture' },
+          ],
+        },
+      ],
+      '/shared/': [
+        {
+          text: '公共包',
+          items: [
+            { text: '概览', link: '/shared/' },
+            { text: 'platform-shared', link: '/shared/platform-shared' },
+            { text: 'flow-shared', link: '/shared/flow-shared' },
           ],
         },
       ],

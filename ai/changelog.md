@@ -35,10 +35,57 @@ title: 更新日志
 - **开源就绪度诊断**：i18n、前端埋点、文档校准短板识别并立项
 - **行业模板扩充**：覆盖 10 个分类（HR/财务/运营/客服/法务等）
 
-## 更早 · 能力地基
+## 2026-07-15 · 插件中心完善
 
-- **双引擎架构**：Chat LangGraph StateGraph + Workflow DAG 编排
-- **插件中心**：Expert / Skill / Tool / MCP 配置化，热重载
+- **插件热重载**：HUP 信号触发热重载，无需重启服务
+- **Skill 拼装规范**：Skill 组装技术规范定稿
+- **Pack Spec v1**：插件打包规范 v1 发布
+- **第三方插件指南**：外部开发者接入文档
+
+## 2026-07-10 · RAG 知识库
+
+- **BGE-M3 embedding**：向量化模型接入
+- **BGE-Reranker 重排**：检索结果重排序
+- **混合加权融合**：向量检索 + 关键词检索加权融合
+- **文档分块策略**：智能分块、重叠窗口
+
+## 2026-07-05 · Agent Workflow 引擎
+
+- **DAG 工作流编排**：32 种节点类型
 - **BullMQ 执行引擎**：持久化队列 + 自动重试 + 死信队列
-- **RAG 知识库**：向量检索 + BGE-Reranker 重排 + 混合加权融合
-- **对外集成**：Workflow Open API（轮询 + 回调两种模式）
+- **节点执行监控**：实时进度推送（WebSocket）
+- **子工作流调用**：支持嵌套工作流
+
+## 2026-06-30 · AI 对话 Agent
+
+- **LangGraph 多专家对话**：需求分析、任务规划、工具调用
+- **工具系统**：内置工具 + 自定义工具注册
+- **流式输出**：SSE 流式响应
+- **会话管理**：多轮对话、上下文窗口
+
+## 2026-06-27 · v1.0.2
+
+- `.env.development` / `.env.production` 创建
+- 本地 MongoDB + 端口 3001（开发环境）
+- `.npmrc` 统一
+
+## 架构基线
+
+| 组件 | 说明 |
+|------|------|
+| 双引擎架构 | Chat LangGraph StateGraph + Workflow DAG 编排 |
+| 插件中心 | Expert / Skill / Tool / MCP 配置化，热重载 |
+| BullMQ 执行引擎 | 持久化队列 + 自动重试 + 死信队列 |
+| RAG 知识库 | 向量检索 + BGE-Reranker 重排 + 混合加权融合 |
+| 对外集成 | Workflow Open API（轮询 + 回调两种模式） |
+
+## 能力矩阵
+
+| 能力 | 状态 | 说明 |
+|------|------|------|
+| AI 对话 Agent | ✅ 成熟 | LangGraph 多专家对话、需求分析、任务规划 |
+| Agent Workflow | ✅ 成熟 | 可视化 DAG 工作流编排、32 种节点 |
+| 插件中心 | ✅ 成熟 | Expert/Skill/Tool/MCP 配置化 |
+| RAG 知识库 | 🔄 迭代中 | 向量检索 + Rerank + 混合检索 |
+| MCP 协议 | 🔄 迭代中 | Model Context Protocol Server 接入 |
+| SDK 集成 | 🔄 迭代中 | REST API + WebSocket + SDK |
