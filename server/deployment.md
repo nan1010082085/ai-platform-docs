@@ -40,7 +40,6 @@ bash deploy/deploy.sh --target all
 ├── shared/
 │   ├── flow-shared/       # server 运行时依赖
 │   └── ai-shared/
-├── harness/               # AI Harness Agent 运行时（DSH）
 ├── flow-shared → shared/flow-shared   # symlink
 ├── ai-shared   → shared/ai-shared     # symlink
 ├── .env.production
@@ -66,16 +65,6 @@ bash deploy/deploy.sh --target all
 | 环境文件 | `.env.production` |
 | 插件配置目录 | `AI_PLUGIN_CONFIG_DIR` → `server/config`（Expert/Skill/Tool/MCP 配置） |
 
-### ai-harness
-
-| 项 | 值 |
-|------|------|
-| 应用名 | `ai-harness` |
-| 启动命令 | `pnpm exec dsh --profile ai-harness` |
-| 工作目录 | `~/schema-platform/harness` |
-| 模式 | fork，单实例 |
-| 端口 | 5310（nginx 反代 `/schema-platform/harness/`） |
-
 ### 常用运维命令
 
 ```bash
@@ -93,7 +82,6 @@ nginx 配置位于 `/etc/nginx/sites-available/schema-platform`，由 `deploy/ng
 |------|------|
 | `/schema-platform/api/` | proxy → `127.0.0.1:30001`（REST API，`client_max_body_size 12m`） |
 | `/schema-platform/ws` | proxy → `127.0.0.1:30001`（WebSocket，含 Upgrade 头，超时 7200s） |
-| `/schema-platform/harness/` | proxy → `127.0.0.1:5310`（AI Harness Agent 运行时） |
 | `/schema-platform/editor/` | alias → `apps/editor/`（SPA，fallback 到 index.html） |
 | `/schema-platform/flow/` | alias → `apps/flow/` |
 | `/schema-platform/ai/` | alias → `apps/ai/` |

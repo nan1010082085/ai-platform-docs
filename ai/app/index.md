@@ -87,7 +87,7 @@ ai/app/src/
 ├── stores/       # Pinia Store（全局状态唯一出口）
 ├── views/        # 页面级视图（与路由一一对应）
 ├── plugins/      # DSH/Cordis 插件适配层（唯一出口 @/plugins）
-├── types/        # 本地类型（harnessTrace 等）
+├── types/        # 本地类型
 ├── constants/    # 静态常量（errorCodes、节点类型、模型 Provider 元数据）
 ├── locales/      # i18n 文案
 ├── utils/        # 工具（telemetry 等）
@@ -113,6 +113,5 @@ pnpm test:e2e         # playwright test（e2e/auth.spec.ts）
 
 - [架构与分层](./architecture) — 目录结构、Store/Composable/API 清单、插件适配层
 - [路由与页面](./routing) — 完整路由表、守卫逻辑
-- [Harness 运行时](../harness) — DSH Agent 运行时服务（轨迹调试 / `debug/harness` 页）
 - [架构设计](../architecture) — AI 平台双引擎整体架构
 - [设计概览](../design/overview) — 信息架构与布局线框

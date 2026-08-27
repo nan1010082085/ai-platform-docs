@@ -42,7 +42,6 @@ AI App 前端遵循平台统一分层（与 editor / flow / ua 一致）：
 | `apiKeyApi.ts` / `tenantApi.ts` | API Key / 租户 |
 | `modelApi.ts` / `modelConfigApi.ts` / `providerApi.ts` | 模型 / 模型配置 / Provider |
 | `pluginApi.ts` / `tenantPluginApi.ts` | 插件中心 / 租户插件 |
-| `harness/index.ts` | Harness 运行时客户端（见下文） |
 
 > 接口对接遵循服务端既有规范（前端不修改 `server/`），新增端点时先在 `api/` 聚合。
 
@@ -104,41 +103,7 @@ M0 落地的插件体系融合（设计依据：`ai/docs/design/dsh-cordis-integ
 - workflow 永远是数据不是插件；浏览器端禁止 loader 运行时动态 import
 - 版本锁定：`@deepseek-ai/cordis@4.0.1`、`@deepseek-ai/dsh@0.1.0-rc.6` 精确版本，升级需逐包评审
 
-## 六、Harness 客户端与轨迹协议
-
-### 6.1 客户端（src/api/harness/）
-
-`ai/app` 对 `ai/harness`（DSH Agent 运行时）的类型化调用：
-
-| 函数 | 端点 | 说明 |
-|------|------|------|
-| `startHarnessSession()` | `POST /session/start` | 创建持久化 Agent 会话 |
-| `sendHarnessMessage(sessionId, content)` | `POST /session/:id/message` | 提交消息，等待停稳返回 `{ text, reason }` |
-| `fetchHarnessTrace(sessionId)` | `GET /session/:id/trace` | 拉取 `platform.nodeTrace` 投影快照 |
-| `subscribeHarnessEvents(sessionId, onEvents)` | `GET /session/:id/events`（SSE） | 订阅会话事件增量，返回退订函数 |
-
-环境变量：`VITE_HARNESS_BASE_URL`（默认 `/schema-platform/harness`）、`VITE_HARNESS_TOKEN`（POC 默认 `poc-token`）。SSE 因 EventSource 不支持自定义 header，POC 阶段走 query token。
-
-### 6.2 轨迹协议（src/types/harnessTrace.ts）
-
-DSH 会话轨迹读模型，与 `ai/harness` 的 trajectory-forward 插件（zod schema）一一对应：
-
-```ts
-interface AgentNodeTrace {
-  turns: AgentNodeTraceTurn[]      // turn 起止 seq 与结束原因
-  toolCalls: AgentNodeTraceToolCall[] // 工具调用：callId/turn/step/name/arguments/resultSeq/isError
-  messages: AgentNodeTraceMessage[]   // 模型消息：turn/step/text
-}
-```
-
-可选字段恒存在，未发生时为 `null`（对齐 zod nullable）。正式化时迁移到 `shared/platform-shared/ai`（跨项目需立项）。
-
-### 6.3 消费方
-
-- `views/HarnessTraceView.vue`（路由 `/debug/harness`）：会话创建 → 消息 → 轨迹/事件查看
-- `views/AgentExecutionDetailView.vue`：执行详情节点级监控
-
-## 七、多语言与遥测
+## 六、多语言与遥测
 
 - **i18n**：`locales/zh-CN.ts` / `locales/en-US.ts`，`useAiLocale` 读写本地语言偏好
 - **遥测**：`utils/telemetry.ts`（`initAiTelemetry` / `disposeAiTelemetry`），上报 AI 交互埋点
@@ -156,6 +121,5 @@ interface AgentNodeTrace {
 
 - [App 概览](./index) — 定位、功能、运行与嵌入模式
 - [路由与页面](./routing) — 完整路由表与守卫
-- [Harness 运行时](../harness) — DSH Agent 运行时服务
 - [ai-shared API](../ai-shared) — 共享类型/事件/Prompt
 - [设计概览](../design/overview) — 信息架构线框

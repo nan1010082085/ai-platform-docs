@@ -42,7 +42,6 @@ All backend requests go through `src/api/`; `api/shared/request.ts` provides the
 | `apiKeyApi.ts` / `tenantApi.ts` | API keys / tenants |
 | `modelApi.ts` / `modelConfigApi.ts` / `providerApi.ts` | Models / model config / providers |
 | `pluginApi.ts` / `tenantPluginApi.ts` | Plugin center / tenant plugins |
-| `harness/index.ts` | Harness runtime client (below) |
 
 > API integration follows existing server contracts (the frontend never modifies `server/`); new endpoints are aggregated in `api/` first.
 
@@ -104,41 +103,7 @@ M0 plugin-system integration (design basis: `ai/docs/design/dsh-cordis-integrati
 - A workflow is always data, never a plugin; no runtime dynamic import of loaders in the browser
 - Version lock: `@deepseek-ai/cordis@4.0.1`, `@deepseek-ai/dsh@0.1.0-rc.6` exact versions; upgrades require per-package review
 
-## 6. Harness Client & Trace Protocol
-
-### 6.1 Client (src/api/harness/)
-
-Typed calls from `ai/app` to `ai/harness` (DSH agent runtime):
-
-| Function | Endpoint | Description |
-|------|------|------|
-| `startHarnessSession()` | `POST /session/start` | Create a persistent agent session |
-| `sendHarnessMessage(sessionId, content)` | `POST /session/:id/message` | Submit a message, wait until settled → `{ text, reason }` |
-| `fetchHarnessTrace(sessionId)` | `GET /session/:id/trace` | Fetch `platform.nodeTrace` projection snapshot |
-| `subscribeHarnessEvents(sessionId, onEvents)` | `GET /session/:id/events` (SSE) | Subscribe to session event deltas; returns an unsubscribe function |
-
-Env vars: `VITE_HARNESS_BASE_URL` (default `/schema-platform/harness`), `VITE_HARNESS_TOKEN` (POC default `poc-token`). SSE uses query token in POC because EventSource cannot set custom headers.
-
-### 6.2 Trace Protocol (src/types/harnessTrace.ts)
-
-Read model of DSH session traces, 1:1 with the trajectory-forward plugin (zod schema) in `ai/harness`:
-
-```ts
-interface AgentNodeTrace {
-  turns: AgentNodeTraceTurn[]      // turn start/end seq and end reason
-  toolCalls: AgentNodeTraceToolCall[] // tool calls: callId/turn/step/name/arguments/resultSeq/isError
-  messages: AgentNodeTraceMessage[]   // model messages: turn/step/text
-}
-```
-
-Optional fields always exist, `null` when absent (aligned with zod nullable). Will move to `shared/platform-shared/ai` when formalized (cross-project, needs approval).
-
-### 6.3 Consumers
-
-- `views/HarnessTraceView.vue` (route `/debug/harness`): session create → message → trace/events view
-- `views/AgentExecutionDetailView.vue`: execution detail node-level monitoring
-
-## 7. i18n & Telemetry
+## 6. i18n & Telemetry
 
 - **i18n**: `locales/zh-CN.ts` / `locales/en-US.ts`; `useAiLocale` reads/writes local language preference
 - **Telemetry**: `utils/telemetry.ts` (`initAiTelemetry` / `disposeAiTelemetry`) for AI interaction events
@@ -156,6 +121,5 @@ Optional fields always exist, `null` when absent (aligned with zod nullable). Wi
 
 - [App Overview](./index) — positioning, features, run & embed modes
 - [Routing & Pages](./routing) — full route table and guards
-- [Harness Runtime](../harness) — DSH agent runtime service
 - [ai-shared API](../ai-shared) — shared types/events/prompts
 - [Design Overview](../design/overview) — information architecture wireframes

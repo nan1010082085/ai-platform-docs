@@ -40,7 +40,6 @@ Remote layout under `~/schema-platform/`:
 ├── shared/
 │   ├── flow-shared/       # server runtime deps
 │   └── ai-shared/
-├── harness/               # AI Harness Agent runtime (DSH)
 ├── flow-shared → shared/flow-shared   # symlink
 ├── ai-shared   → shared/ai-shared     # symlink
 ├── .env.production
@@ -66,16 +65,6 @@ Remote layout under `~/schema-platform/`:
 | Env file | `.env.production` |
 | Plugin config dir | `AI_PLUGIN_CONFIG_DIR` → `server/config` (Expert/Skill/Tool/MCP config) |
 
-### ai-harness
-
-| Item | Value |
-|------|------|
-| App name | `ai-harness` |
-| Start command | `pnpm exec dsh --profile ai-harness` |
-| Working dir | `~/schema-platform/harness` |
-| Mode | fork, single instance |
-| Port | 5310 (nginx proxy `/schema-platform/harness/`) |
-
 ### Common ops commands
 
 ```bash
@@ -93,7 +82,6 @@ nginx config is located at `/etc/nginx/sites-available/schema-platform`, managed
 |------|------|
 | `/schema-platform/api/` | proxy → `127.0.0.1:30001` (REST API, `client_max_body_size 12m`) |
 | `/schema-platform/ws` | proxy → `127.0.0.1:30001` (WebSocket, with Upgrade headers, timeout 7200s) |
-| `/schema-platform/harness/` | proxy → `127.0.0.1:5310` (AI Harness Agent runtime) |
 | `/schema-platform/editor/` | alias → `apps/editor/` (SPA, fallback to index.html) |
 | `/schema-platform/flow/` | alias → `apps/flow/` |
 | `/schema-platform/ai/` | alias → `apps/ai/` |

@@ -19,7 +19,6 @@ Documentation for the AI module of Schema Platform.
 - [App Overview](./app/) - `@ai-app` positioning, features, run & embed modes
 - [Architecture & Layers](./app/architecture) - directory structure, Store/Composable/API inventory, plugin adapter
 - [Routing & Pages](./app/routing) - full route table and guards
-- [DSH Agent Runtime](./harness) - ai/harness service (trace debug)
 
 ## Architecture & Development
 

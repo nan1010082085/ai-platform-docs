@@ -138,7 +138,6 @@ export default withMermaid(defineConfig({
             { text: 'RAG Design', link: '/en/ai/design/rag' },
             { text: 'Runtime Design', link: '/en/ai/design/runtime' },
             { text: 'Workflow Open API', link: '/en/ai/design/workflow-open-api' },
-            { text: 'DSH Agent Runtime', link: '/en/ai/harness' },
           ],
         },
         {
@@ -359,7 +358,6 @@ export default withMermaid(defineConfig({
             { text: 'RAG 设计', link: '/ai/design/rag' },
             { text: 'Runtime 设计', link: '/ai/design/runtime' },
             { text: 'Workflow Open API', link: '/ai/design/workflow-open-api' },
-            { text: 'DSH Agent 运行时', link: '/ai/harness' },
           ],
         },
         {

@@ -29,7 +29,7 @@ Dependency direction: `app → @schema-platform/platform-shared` (including `pla
 | Settings | `/settings/*` | API keys, model settings, embedding settings, workflow templates |
 | Evaluation | `/evaluation` | Offline workflow quality evaluation (datasets + runs + comparison) |
 | Schedules | `/schedules` | Scheduled workflow triggers |
-| Debug | `/debug/*` | Routing debug, workflow debug, harness trace, RAG debug |
+| Debug | `/debug/*` | Routing debug, workflow debug, RAG debug |
 | Sidebar mode | `/sidebar` | 400px compact chat embedded in editor/flow right panel |
 
 Full route table in [Routing & Pages](./routing).
@@ -87,7 +87,7 @@ ai/app/src/
 ├── stores/       # Pinia stores (single exit for global state)
 ├── views/        # page-level views (1:1 with routes)
 ├── plugins/      # DSH/Cordis plugin adapter (only exit @/plugins)
-├── types/        # local protocol types (harnessTrace etc.)
+├── types/        # local protocol types
 ├── constants/    # static constants (errorCodes, node types, model provider metadata)
 ├── locales/      # i18n messages
 ├── utils/        # utilities (telemetry etc.)
@@ -113,6 +113,5 @@ pnpm test:e2e         # playwright test (e2e/auth.spec.ts)
 
 - [Architecture & Layers](./architecture) — directory structure, Store/Composable/API inventory, plugin adapter
 - [Routing & Pages](./routing) — full route table and guards
-- [Harness Runtime](../harness) — DSH agent runtime (`debug/harness` page)
 - [Architecture](../architecture) — AI platform dual-engine overview
 - [Design Overview](../design/overview) — information architecture wireframes

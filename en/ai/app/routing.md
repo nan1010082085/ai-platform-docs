@@ -34,7 +34,6 @@ Children of `AiLayout` (sidebar + main content):
 | `/settings/templates` | `workflow-templates` | `WorkflowTemplateManagerView` |
 | `/debug/routing` | `routing-debug` | `RoutingDebugView` |
 | `/debug/workflow/:id` | `workflow-debug` | `WorkflowDebugView` |
-| `/debug/harness` | `harness-debug` | `HarnessTraceView` |
 | `/debug/rag` | `rag-debug` | `RagDebugView` |
 | `/evaluation` | `evaluation` | `EvaluationView` |
 | `/schedules` | `schedules` | `ScheduleView` |

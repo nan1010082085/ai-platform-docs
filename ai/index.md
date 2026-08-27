@@ -44,7 +44,6 @@ pnpm dev    # 端口 5300
 | [App 概览](./app/) | `@ai-app` 定位、功能、运行与嵌入模式 |
 | [架构与分层](./app/architecture) | 目录结构、Store/Composable/API 清单、插件适配层 |
 | [路由与页面](./app/routing) | 完整路由表与守卫 |
-| [DSH Agent 运行时](./harness) | ai/harness 服务（轨迹调试） |
 
 ## 架构与设计
 
