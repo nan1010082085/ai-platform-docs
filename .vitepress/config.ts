@@ -26,6 +26,11 @@ export default withMermaid(defineConfig({
   ignoreDeadLinks: true,
 
   srcExclude: [
+    // 私有仓库文档（不公开）
+    'server/**',
+    'shared/**',
+    'ua/**',
+    // 内部文档
     'ai/product/**',
     'ai/migration-plan.md',
     'ai/plugin-roadmap.md',
@@ -40,9 +45,6 @@ export default withMermaid(defineConfig({
     'editor/schema-validation-testing.md',
     'editor/product-architecture-analysis-2026-07-28.md',
     'editor/product/**',
-    'server/business-api-mapping.md',
-    'server/business-platform-ops.md',
-    'server/submission-flow-webhook.md',
   ],
 
   markdown: {
@@ -73,9 +75,6 @@ export default withMermaid(defineConfig({
           { text: 'AI', link: '/en/ai/' },
           { text: 'Editor', link: '/en/editor/' },
           { text: 'Flow', link: '/en/flow/' },
-          { text: 'Server', link: '/en/server/' },
-          { text: 'UA', link: '/en/ua/' },
-          { text: 'Shared', link: '/en/shared/' },
           { text: 'Extend', link: '/en/extend/' },
           { text: 'Design', link: '/en/design/' },
         ],
@@ -214,45 +213,8 @@ export default withMermaid(defineConfig({
           ],
         },
       ],
-          '/en/server/': [
-        {
-          text: 'Backend Service',
-          items: [
-            { text: 'Overview', link: '/en/server/' },
-            { text: 'Changelog', link: '/en/server/changelog' },
-            { text: 'Capabilities', link: '/en/server/capabilities' },
-            { text: 'API Reference', link: '/en/server/api' },
-            { text: 'API Details', link: '/en/server/api-reference' },
-            { text: 'Database', link: '/en/server/database' },
-            { text: 'Data Models', link: '/en/server/models' },
-            { text: 'RAG Architecture', link: '/en/server/rag-architecture' },
-            { text: 'Plugin Center', link: '/en/server/plugin-center' },
-            { text: 'Deployment & Ops', link: '/en/server/deployment' },
-          ],
-        },
-      ],
           '/en/design/': [
             { text: 'Design', items: [{ text: 'Model Architecture', link: '/en/design/model-architecture' }] },
-          ],
-          '/en/ua/': [
-            {
-              text: 'User & Tenant Management',
-              items: [
-                { text: 'Overview', link: '/en/ua/' },
-                { text: 'Changelog', link: '/en/ua/changelog' },
-                { text: 'Architecture', link: '/en/ua/architecture' },
-              ],
-            },
-          ],
-          '/en/shared/': [
-            {
-              text: 'Shared Packages',
-              items: [
-                { text: 'Overview', link: '/en/shared/' },
-                { text: 'platform-shared', link: '/en/shared/platform-shared' },
-                { text: 'flow-shared', link: '/en/shared/flow-shared' },
-              ],
-            },
           ],
         },
         outline: { label: 'On this page' },
@@ -270,9 +232,6 @@ export default withMermaid(defineConfig({
       { text: 'AI 平台', link: '/ai/' },
       { text: '编辑器', link: '/editor/' },
       { text: '流程设计器', link: '/flow/' },
-      { text: '后端服务', link: '/server/' },
-      { text: '用户管理', link: '/ua/' },
-      { text: '公共包', link: '/shared/' },
       { text: '扩展开发', link: '/extend/' },
     ],
 
@@ -430,26 +389,6 @@ export default withMermaid(defineConfig({
           text: '架构设计',
           items: [
             { text: '模型架构', link: '/design/model-architecture' },
-          ],
-        },
-      ],
-      '/ua/': [
-        {
-          text: '用户与租户管理',
-          items: [
-            { text: '概览', link: '/ua/' },
-            { text: '更新日志', link: '/ua/changelog' },
-            { text: '架构设计', link: '/ua/architecture' },
-          ],
-        },
-      ],
-      '/shared/': [
-        {
-          text: '公共包',
-          items: [
-            { text: '概览', link: '/shared/' },
-            { text: 'platform-shared', link: '/shared/platform-shared' },
-            { text: 'flow-shared', link: '/shared/flow-shared' },
           ],
         },
       ],
