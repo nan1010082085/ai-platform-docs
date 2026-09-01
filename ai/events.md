@@ -102,7 +102,7 @@ type AgentEventType =
   // v2: 任务规划
   | 'task_plan_start'
   | 'task_plan_complete'
-  // v2: 对话流已实现（chatStreamRunner）；工作流图节点另见 reserved-events-decision
+  // v2: 对话流已实现（chatStreamRunner）；工作流图节点按节点类型落地
   | 'thinker_start'
   | 'thinker_complete'
   | 'quality_check_start'
