@@ -144,8 +144,6 @@ Authoritative tool names in `shared/platform-shared/ai/toolNames.ts`. The Palett
 
 ### 2.5 Conversational Intelligence Nodes (Phase J)
 
-> Detailed spec in [langgraph-workflow-nodes-roadmap.md](./product/archive/langgraph-workflow-nodes-roadmap.md) (internal)
-
 Maps the conversational intelligence layer inside the Chat LangGraph black box to white-box Workflow nodes, sharing the `server/src/ai/runtime/*` runtime.
 
 | Node type | Palette category | LangGraph counterpart | Description |

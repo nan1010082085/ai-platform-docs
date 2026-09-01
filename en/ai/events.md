@@ -12,7 +12,7 @@
 | v2 requirement analysis | `requirement_analysis_*`, `requirement_confirm_*` | ✅ implemented |
 | v2 task planning | `task_plan_*` | ✅ implemented |
 | v2 thinking/reasoning | `thinker_*` | ✅ chat stream implemented (`chatStreamRunner` emits; frontend writes thinking) |
-| v2 quality check | `quality_check_*` | ✅ chat stream implemented; for workflow graph nodes see [reserved-events-decision.md](./product/archive/reserved-events-decision.md) (internal) |
+| v2 quality check | `quality_check_*` | ✅ chat stream implemented; workflow graph nodes land by node type |
 
 > **Chat LangGraph**: `chat:event` (WebSocket).
 > **Chat x Workflow**: REST starts execution + `workflow:event` (WebSocket push, see §2).
@@ -102,7 +102,7 @@ type AgentEventType =
   // v2: task planning
   | 'task_plan_start'
   | 'task_plan_complete'
-  // v2: chat stream implemented (chatStreamRunner); workflow graph nodes see reserved-events-decision
+  // v2: chat stream implemented (chatStreamRunner); workflow graph nodes land by node type
   | 'thinker_start'
   | 'thinker_complete'
   | 'quality_check_start'
@@ -617,7 +617,7 @@ interface ResumePayload {
 
 ## 9. Thinking & Quality-check Events
 
-> v2 events, chat stream implemented (`chatStreamRunner` emits); reserved events in workflow graph nodes see [reserved-events-decision.md](./product/archive/reserved-events-decision.md) (internal).
+> v2 events, chat stream implemented (`chatStreamRunner` emits); workflow graph nodes land by corresponding node types.
 
 ### 9.1 thinker_start
 

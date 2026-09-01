@@ -3,7 +3,7 @@
 > **Standalone doc**: config, runtime, UI, and evolution of the Expert / Skill / Tool / MCP four-layer capability directory.
 > Chat LangGraph and Agent Workflow **share** the same Registry.
 
-**Related**: [Expert extension guide](./expert-extension-guide.md) · [Five-phase iteration record](./product/archive/ai-five-phase-iteration.md) (internal) · [Workflow Open API](./design/workflow-open-api.md) · server config notes `server/config/plugins/README.md`
+**Related**: [Expert extension guide](./expert-extension-guide.md) · [Workflow Open API](./design/workflow-open-api.md) · server config notes `server/config/plugins/README.md`
 
 ---
 
@@ -231,8 +231,7 @@ Deploy: `deploy/pack.sh --target server` carries the whole `server/config/`.
 
 | # | Item | Status |
 |---|-----|------|
-| - | Phase F capability-layer refinement research | see [open-platform-roadmap.md §3](./product/open-platform-roadmap.md#3-phase-f--capability-layer-refinement-research) (internal) |
-| - | Prompt four-layer architecture doc `prompt-architecture.md` | research output, to be written |
+| - | Prompt / capability-layer extensions | Schedule via [product/backlog.md](./product/backlog.md) and plugin principles as needed |
 
 Historical PLG items are all complete; see the "Completed Capabilities" table above.
 

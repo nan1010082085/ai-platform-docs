@@ -42,8 +42,7 @@ ai/docs/
 │   └── runtime.md
 ├── product/                     # product planning (internal)
 │   ├── backlog.md
-│   ├── open-platform-roadmap.md
-│   └── open-source-iteration.md
+│   └── workflow-terminology.md
 └── extend/                      # extension guides
     ├── skill-author-guide.md
     ├── workflow-template-rfc.md

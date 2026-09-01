@@ -86,7 +86,7 @@ ai/app/src/
 ├── composables/  # shared logic (useXXX)
 ├── stores/       # Pinia stores (single exit for global state)
 ├── views/        # page-level views (1:1 with routes)
-├── plugins/      # DSH/Cordis plugin adapter (only exit @/plugins)
+├── plugins/      # Cordis plugin adapter (only exit @/plugins)
 ├── types/        # local protocol types
 ├── constants/    # static constants (errorCodes, node types, model provider metadata)
 ├── locales/      # i18n messages

@@ -17,7 +17,7 @@ AI App follows the platform-wide layering (same as editor / flow / ua):
 | Global state | `stores/` | Pinia stores | Single exit for global state; no bare cross-page state in components |
 | Shared logic | `composables/` | `useXXX` composables | Shared logic uses composables, not scattered utils |
 | API aggregation | `api/` | All backend requests | Components/stores/composables must not call `fetch()` directly |
-| Plugin adapter | `plugins/` | DSH/Cordis plugin container | Business code only imports from `@/plugins` |
+| Plugin adapter | `plugins/` | Cordis plugin container | Business code only imports from `@/plugins` |
 | Constants | `constants/` | Static enums/metadata | errorCodes, node types, model provider metadata |
 | Types | `types/` | Local protocol types | Cross-project shared types live in `platform-shared/ai` |
 
@@ -79,9 +79,9 @@ Unified exports in `stores/index.ts` (`useAiStore` kept for backward compatibili
 | Shell embed | `useShellEmbed` (qiankun/iframe embed detection and context bridge) |
 | Monitor / i18n | `useAiMonitor`, `useAiLocale` |
 
-## 5. DSH/Cordis Plugin Adapter (src/plugins/)
+## 5. Cordis Plugin Adapter (src/plugins/)
 
-M0 plugin-system integration (design basis: `ai/docs/design/dsh-cordis-integration.md`). **Business code only imports from `@/plugins`**; direct imports of `@deepseek-ai/cordis` / `@deepseek-ai/dsh-*` are forbidden — Cordis API changes only affect the adapter internals.
+Cordis-inspired plugin container (principles: `ai/docs/design/plugin-architecture-principles.md`). Standalone harness was removed; the client adapter remains. **Business code only imports from `@/plugins`**; direct imports of `@deepseek-ai/cordis` are forbidden — API changes only affect the adapter internals. Extension points (tools / node types / renderers / skills) register via Services — do not stack constants or ad-hoc registries in business code.
 
 | File | Responsibility |
 |------|------|
@@ -101,7 +101,7 @@ M0 plugin-system integration (design basis: `ai/docs/design/dsh-cordis-integrati
 
 - Plugins (code) load statically; tools / workflows / skills are data, registered dynamically by plugin runtime (`chatTools.setOverlay` / `ctx.tools.register`)
 - A workflow is always data, never a plugin; no runtime dynamic import of loaders in the browser
-- Version lock: `@deepseek-ai/cordis@4.0.1`, `@deepseek-ai/dsh@0.1.0-rc.6` exact versions; upgrades require per-package review
+- Version lock: `@deepseek-ai/cordis` exact version; upgrades require changelog review
 
 ## 6. i18n & Telemetry
 
