@@ -29,10 +29,10 @@ pnpm dev    # 端口 5300
 | AI 对话智能体 | LangGraph 多专家对话、需求分析、任务规划、工具调用 | [agent](./agent) |
 | 智能体工作流 | 可视化 DAG 工作流编排、32 种节点类型 | [agent-workflow](./agent-workflow) |
 | RAG 知识库 | 向量检索 + Rerank + 混合检索 | [rag-tool-mcp-boundary](./rag-tool-mcp-boundary) |
-| 插件中心 | Expert / Skill / Tool / MCP 配置化，热重载 | [plugin](./plugin) |
+| 插件中心 | 专家 / 技能 / 工具 / MCP 配置化，热重载 | [plugin](./plugin) |
 | MCP 协议 | Model Context Protocol Server 接入 | [mcp](./mcp) |
 | 工具系统 | 内置工具 + 自定义工具注册 | [tool](./tool) |
-| 专家扩展 | Expert 声明与扩展 | [expert-extension-guide](./expert-extension-guide) |
+| 专家扩展 | 专家声明与扩展 | [expert-extension-guide](./expert-extension-guide) |
 | SDK 集成 | REST API + WebSocket + SDK | [sdk](./sdk) |
 
 ## AI 应用前端
@@ -75,7 +75,7 @@ pnpm dev    # 端口 5300
 | [技能拼装规范](./extend/skill-assembly-spec) | 技能组装技术规范 |
 | [打包规范 v1](./extend/pack-spec-v1) | 插件打包规范 |
 | [第三方插件指南](./extend/third-party-plugin-guide) | 外部开发者接入 |
-| [插件脚手架](./extend/plugin-scaffold/) | 最小 Expert 插件模板 |
+| [插件脚手架](./extend/plugin-scaffold/) | 最小专家插件模板 |
 
 ## 产品进度
 

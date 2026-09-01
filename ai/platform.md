@@ -144,7 +144,7 @@ WebSocket chat:* / workflow:*
 |------|------|
 | AI 对话 | LangGraph 多专家 + WebSocket |
 | Agent 工作流 | 可视化编排、发布、执行、监控 |
-| 插件中心 | Expert / Skill / Tool / MCP 配置 |
+| 插件中心 | 专家 / 技能 / 工具 / MCP 配置 |
 | RAG | 知识库索引与检索 |
 | 对外集成 | invoke + 用户平台 Key / 工作流 Key（直接调用 REST API） |
 

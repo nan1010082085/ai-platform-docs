@@ -25,7 +25,7 @@ ai/
 
 **依赖方向**：`app → ai-shared + platform-shared`；`server → ai-shared`。
 
-**插件中心**：Expert / Skill / Tool / MCP 由 `server/config/plugins/` 分目录配置（见 [plugin.md](../ai/docs/plugin.md)），支持 `plugin:pack` / `plugin:install` 与 SIGHUP 热重载。
+**插件中心**：专家 / 技能 / 工具 / MCP 由 `server/config/plugins/` 分目录配置（见 [plugin.md](../ai/docs/plugin.md)），支持 `plugin:pack` / `plugin:install` 与 SIGHUP 热重载。
 
 **同仓开发**：`app/package.json` 通过 `file:../shared` 引用 ai-shared；Vite alias 可直连 shared 源码，改公共包后 dev/build 自动生效。
 
@@ -121,7 +121,7 @@ START
 | **Registry 专家** | `server/config/plugins/experts/*.json`，如 `platform.editor` |
 | **`legacyAgentKey`** | 内置四专家的调度键（`editor`/`flow`/`page`/`general`），用于 task chain、协作、显式 `context.source`；**不**再对应独立图节点 |
 | **`session.currentExpertId`** | 运行时权威专家 id；`pluginExpert` 据此执行 |
-| **System Prompt** | `buildExpertSystemPrompt`（插件 `systemPrompt` + Skill）；`dynamicPrompt` 走 ai-shared `promptBuilder` |
+| **System Prompt** | `buildExpertSystemPrompt`（插件 `systemPrompt` + 技能）；`dynamicPrompt` 走 ai-shared `promptBuilder` |
 | **第三方专家** | 仅加插件 JSON + pack，无需新增 `graph/*Agent.ts` |
 
 ### 3.4 关键行为

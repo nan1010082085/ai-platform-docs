@@ -1,24 +1,24 @@
 # 技能作者手册
 
-> 本文档面向需要编写、打包和分发 Skill 的开发者。Skill 是插件中心四层能力模型（MCP / Tool / Skill / Expert）中的指令层，负责向 Expert 的 system prompt 注入可复用的行为规范。
+> 本文档面向需要编写、打包和分发技能的开发者。技能是插件中心四层能力模型（MCP / 工具 / 技能 / 专家）中的指令层，负责向专家的 system prompt 注入可复用的行为规范。
 
-**相关文档**：[plugin.md](/plugin) · [Expert 扩展指南](/expert-extension-guide) · 服务端配置 `server/config/plugins/README.md`
+**相关文档**：[plugin.md](/plugin) · [专家扩展指南](/expert-extension-guide) · 服务端配置 `server/config/plugins/README.md`
 
 ---
 
-## 一、Skill 概念
+## 一、技能概念
 
-Skill 是一段**可复用的 Markdown 指令块**。它本身不包含运行时逻辑，而是在 Expert 被调用时，其 `content` 被拼接到 Expert 的 system prompt 尾部，从而约束 LLM 的输出行为。
+技能是一段**可复用的 Markdown 指令块**。它本身不包含运行时逻辑，而是在专家被调用时，其 `content` 被拼接到专家的 system prompt 尾部，从而约束 LLM 的输出行为。
 
 ```text
-Expert 的 system prompt 构成：
+专家的 system prompt 构成：
 
 ┌──────────────────────────────┐
 │  base prompt                 │  ← dynamicPrompt 生成 或 systemPrompt 字段
 ├──────────────────────────────┤
-│  Skill 1 content             │  ← skills[0]
+│  技能1 content             │  ← skills[0]
 ├──────────────────────────────┤
-│  Skill 2 content             │  ← skills[1]
+│  技能2 content             │  ← skills[1]
 ├──────────────────────────────┤
 │  ...                         │
 └──────────────────────────────┘
@@ -26,16 +26,16 @@ Expert 的 system prompt 构成：
 
 **核心特性**：
 
-- 与 Expert 解耦 — 同一个 Skill 可以挂载到多个 Expert
+- 与专家解耦 — 同一个技能可以挂载到多个专家
 - 纯声明式 — 只有 `id`、`label`、`content`（或 `file`），没有可执行代码
-- 启用/禁用可控 — `enabled: false` 的 Skill 不会被加载到 Registry
-- 可携带工具 — `tools` 字段声明该 Skill 需要的工具名，挂载后自动合并到 Expert 的工具集
+- 启用/禁用可控 — `enabled: false` 的技能不会被加载到注册表
+- 可携带工具— `tools` 字段声明该技能需要的工具名，挂载后自动合并到专家的工具集
 
 ---
 
 ## 二、定义方式
 
-Skill 支持两种内容定义方式：内联（inline）和外部文件（file）。
+技能支持两种内容定义方式：内联（inline）和外部文件（file）。
 
 ### 2.1 内联方式
 
@@ -86,15 +86,15 @@ JSON 声明：
 
 ### 3.1 包结构
 
-Skill 可以作为独立的 `.json` 文件放到 `plugins/skills/` 目录，也可以打包为可分发的插件包（Plugin Pack）。插件包的标准目录结构：
+技能可以作为独立的 `.json` 文件放到 `plugins/skills/` 目录，也可以打包为可分发的插件包（Plugin Pack）。插件包的标准目录结构：
 
 ```
 my-pack/
 ├── manifest.json          # 包元数据
 ├── mcp/                   # MCP Server 声明（可选）
 ├── tools/                 # 工具元数据（可选）
-├── experts/               # Expert 声明（可选）
-└── skills/                # Skill 声明 + .md 文件
+├── experts/               # 专家声明（可选）
+└── skills/                # 技能声明 + .md 文件
     ├── my-skill.json
     └── my-skill.md
 ```
@@ -106,7 +106,7 @@ my-pack/
   "id": "my-org-my-pack",
   "name": "My Skill Pack",
   "version": "1.0.0",
-  "description": "包含自定义 Skill 的插件包"
+  "description": "包含自定义技能的插件包"
 }
 ```
 
@@ -132,7 +132,7 @@ pnpm plugin:install --file dist/my-pack.tgz
 pnpm plugin:install --file dist/my-pack.tgz --tenant acme
 ```
 
-安装后，Skill 文件会被复制到 `plugins/local/` 或 `plugins/tenants/{id}/` 目录。由于加载顺序中后者覆盖同 id，本地覆盖层的 Skill 会替换 `plugins/` 中的同名 Skill。
+安装后，技能文件会被复制到 `plugins/local/` 或 `plugins/tenants/{id}/` 目录。由于加载顺序中后者覆盖同 id，本地覆盖层的技能会替换 `plugins/` 中的同名技能。
 
 ### 3.4 分发方式
 
@@ -140,15 +140,15 @@ pnpm plugin:install --file dist/my-pack.tgz --tenant acme
 |------|----------|
 | 直接复制 JSON/MD 到 `plugins/skills/` | 本机开发、单项目使用 |
 | 打包为 `.tgz` + `plugin:install` | 跨团队分发、多租户部署 |
-| `AI_PLUGIN_CONFIG_PATH` 环境变量 | 临时加载外部 Skill 目录 |
+| `AI_PLUGIN_CONFIG_PATH` 环境变量 | 临时加载外部技能目录 |
 
 ---
 
-## 四、最小示例：从零创建一个 Skill
+## 四、最小示例：从零创建一个技能
 
-本节演示创建一个"输出格式约束"Skill，并挂载到 Expert 上。
+本节演示创建一个"输出格式约束"技能，并挂载到专家上。
 
-### 4.1 编写 Skill 声明
+### 4.1 编写技能声明
 
 创建文件 `server/config/plugins/skills/my-org-output-format.json`：
 
@@ -170,9 +170,9 @@ pnpm plugin:validate
 
 确认输出中出现 `skills: 5`（原 4 个 + 新增 1 个），无冲突警告。
 
-### 4.3 挂载到 Expert
+### 4.3 挂载到专家
 
-编辑目标 Expert 的 JSON（例如 `platform.general.json`），在 `skills` 数组中添加新 Skill 的 id：
+编辑目标专家的 JSON（例如 `platform.general.json`），在 `skills` 数组中添加新技能的 id：
 
 ```json
 {
@@ -193,11 +193,11 @@ pnpm plugin:validate
 
 ---
 
-## 五、与 Expert 的关系
+## 五、与专家的关系
 
 ### 5.1 挂载方式
 
-Expert 通过 `skills` 数组引用 Skill 的 id：
+专家通过 `skills` 数组引用技能的 id：
 
 ```json
 {
@@ -226,13 +226,13 @@ return `${base}\n\n${skillBlocks.join('\n\n')}`
 
 ### 5.2 拼装顺序
 
-1. **base prompt 优先** — 如果 Expert 配置了 `dynamicPrompt`，先通过 `promptBuilder` 生成基础 prompt；否则使用 `systemPrompt` 字段
-2. **Skill 按数组顺序追加** — `skills` 数组中的 id 按声明顺序依次解析，每个 Skill 的 `content` 以空行分隔拼接到 base prompt 尾部
-3. **缺失的 Skill 被静默跳过** — 如果某个 id 在 Registry 中找不到（未注册或已禁用），该条目被过滤，不影响其他 Skill
+1. **base prompt 优先** — 如果专家配置了 `dynamicPrompt`，先通过 `promptBuilder` 生成基础 prompt；否则使用 `systemPrompt` 字段
+2. **技能按数组顺序追加** — `skills` 数组中的 id 按声明顺序依次解析，每个技能的 `content` 以空行分隔拼接到 base prompt 尾部
+3. **缺失的技能被静默跳过** — 如果某个 id 在注册表 中找不到（未注册或已禁用），该条目被过滤，不影响其他技能
 
 ### 5.3 工具合并
 
-Skill 可以声明 `tools` 字段，指定该 Skill 所需的工具名。挂载到 Expert 后，这些工具会自动合并到 Expert 的工具集中（去重保序）：
+技能可以声明 `tools` 字段，指定该技能所需的工具名。挂载到专家后，这些工具会自动合并到专家的工具集中（去重保序）：
 
 ```json
 {
@@ -244,11 +244,11 @@ Skill 可以声明 `tools` 字段，指定该 Skill 所需的工具名。挂载�
 }
 ```
 
-合并逻辑（`PluginRegistry.mergeToolNames`）：先收集 `expert.tools`，再遍历每个 Skill 的 `tools`，去重后返回完整列表。
+合并逻辑（`PluginRegistry.mergeToolNames`）：先收集 `expert.tools`，再遍历每个技能的 `tools`，去重后返回完整列表。
 
-### 5.4 多 Expert 共享
+### 5.4 多专家共享
 
-同一个 Skill 可以被多个 Expert 引用：
+同一个技能可以被多个专家引用：
 
 ```text
 platform-reply-zh ──┬── platform.editor
@@ -257,7 +257,7 @@ platform-reply-zh ──┬── platform.editor
                     └── platform.general
 ```
 
-修改 `platform-reply-zh` 的内容后，所有引用它的 Expert 在下次加载时都会使用新内容。
+修改 `platform-reply-zh` 的内容后，所有引用它的专家在下次加载时都会使用新内容。
 
 ---
 
@@ -272,8 +272,8 @@ platform-reply-zh ──┬── platform.editor
 ### 6.2 内容编写
 
 - **指令明确** — 使用祈使句，避免模糊表述。好："字段命名用 camelCase"，差："字段命名建议考虑使用驼峰"
-- **粒度适中** — 一个 Skill 聚焦一个关注点。如果指令超过 500 字，考虑拆分为多个 Skill
-- **避免冲突** — 同一 Expert 挂载的多个 Skill 之间不应有矛盾指令（如一个要求详细、一个要求简洁）
+- **粒度适中** — 一个技能聚焦一个关注点。如果指令超过 500 字，考虑拆分为多个技能
+- **避免冲突** — 同一专家挂载的多个技能之间不应有矛盾指令（如一个要求详细、一个要求简洁）
 - **Markdown 格式** — `content` 使用 Markdown 编写，LLM 对结构化文本的理解优于纯文本段落
 
 ### 6.3 何时用内联 vs 文件
@@ -283,31 +283,31 @@ platform-reply-zh ──┬── platform.editor
 | 指令不超过 5 行 | 内联 `content` |
 | 指令较长或需要独立 diff 追踪 | 外部 `file` |
 | 打包分发给外部团队 | 外部 `file`（便于审查） |
-| 运行时动态生成 | 不适用 Skill，应使用 `dynamicPrompt` |
+| 运行时动态生成 | 不适用技能，应使用 `dynamicPrompt` |
 
 ### 6.4 测试流程
 
-1. 编写 Skill JSON
+1. 编写技能 JSON
 2. `pnpm plugin:validate` 检查语法和 id 冲突
-3. 将 Skill id 添加到目标 Expert 的 `skills` 数组
+3. 将技能 id 添加到目标专家的 `skills` 数组
 4. 热重载或重启 server
-5. 在 Chat 中测试：确认 LLM 输出符合 Skill 约束
-6. 测试边界情况：Skill 内容为空、Skill 被禁用、多个 Skill 同时挂载
+5. 在 Chat 中测试：确认 LLM 输出符合技能约束
+6. 测试边界情况：技能内容为空、技能被禁用、多个技能同时挂载
 
 ### 6.5 常见陷阱
 
 | 问题 | 原因 | 解决 |
 |------|------|------|
-| Skill 未生效 | `enabled: false` 或 id 拼写错误 | 检查 JSON 配置和 `pnpm plugin:validate` 输出 |
+| 技能未生效 | `enabled: false` 或 id 拼写错误 | 检查 JSON 配置和 `pnpm plugin:validate` 输出 |
 | 外部文件内容未加载 | `file` 路径错误或文件不存在 | 查看 server 启动日志中的 `[pluginRegistry] skill file not found` 警告 |
-| Skill 之间指令冲突 | 两个 Skill 对同一行为有相反要求 | 拆分关注点，或在 Expert 中调整 Skill 顺序（后者覆盖前者语义） |
-| 工具未出现在 Expert 中 | Skill 的 `tools` 引用了未注册的工具名 | 确保工具在 `plugins/tools/` 中有对应声明 |
+| 技能之间指令冲突 | 两个技能对同一行为有相反要求 | 拆分关注点，或在专家中调整技能顺序（后者覆盖前者语义） |
+| 工具未出现在专家中 | 技能的 `tools` 引用了未注册的工具名 | 确保工具在 `plugins/tools/` 中有对应声明 |
 
-### 6.6 Skill 与 systemPrompt 的选择
+### 6.6 技能与 systemPrompt 的选择
 
 | 需求 | 使用方式 |
 |------|----------|
-| 固定的专家身份和基础行为 | Expert 的 `systemPrompt` 或 `dynamicPrompt` |
-| 可复用的行为约束，需挂载到多个 Expert | Skill |
+| 固定的专家身份和基础行为 | 专家的 `systemPrompt` 或 `dynamicPrompt` |
+| 可复用的行为约束，需挂载到多个专家 | 技能 |
 | 需要运行时动态生成的内容 | `dynamicPrompt` + `promptBuilder` |
-| 简单的全局偏好（如语言） | 独立 Skill，挂载到所有需要的 Expert |
+| 简单的全局偏好（如语言） | 独立技能，挂载到所有需要的专家 |

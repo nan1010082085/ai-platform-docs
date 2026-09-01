@@ -1,9 +1,9 @@
 # 插件中心（Plugin Center）
 
-> **独立文档**：Expert / Skill / Tool / MCP 四层能力目录的配置、运行时、UI 与演进路线。  
+> **独立文档**：专家 / 技能 / 工具 / MCP 四层能力目录的配置、运行时、UI 与演进路线。  
 > Chat LangGraph 与智能体工作流 **共用**同一注册表。
 
-**相关**：[Expert 扩展指南](./expert-extension-guide.md) · [工作流开放 API](./design/workflow-open-api.md) · 服务端配置说明 `server/config/plugins/README.md`
+**相关**：[专家扩展指南](./expert-extension-guide.md) · [工作流开放 API](./design/workflow-open-api.md) · 服务端配置说明 `server/config/plugins/README.md`
 
 ---
 
@@ -29,9 +29,9 @@ server/config/plugins/
 | 层 | 职责 | 消费者 |
 |----|------|--------|
 | **MCP** | 外部/内置 MCP Server 连接声明 | `mcp/bridge.ts` |
-| **Tool** | 工具名、kind、argsHint、HTTP 模板 | LangGraph tools、Workflow tool 节点 |
-| **Skill** | 拼入 Expert system prompt 的附加指令 | `resolveExpertSystemPrompt` |
-| **Expert** | 专家身份、工具集、路由、模型参数 | Chat 路由、Workflow `expert` 节点 |
+| **工具** | 工具名、kind、argsHint、HTTP 模板 | LangGraph tools、Workflow tool 节点 |
+| **技能** | 拼入专家 system prompt 的附加指令 | `resolveExpertSystemPrompt` |
+| **专家** | 专家身份、工具集、路由、模型参数 | Chat 路由、Workflow `expert` 节点 |
 
 ---
 
@@ -43,8 +43,8 @@ server/config/plugins/
 server/config/plugins/
 ├── mcp/              # 单文件 = 一个 MCP Server
 ├── tools/            # 按域分组 JSON
-├── experts/          # 单文件 = 一个 Expert
-├── skills/           # 单文件 = 一个 Skill
+├── experts/          # 单文件 = 一个专家
+├── skills/           # 单文件 = 一个技能
 ├── packs/            # 可分发插件包（manifest + layers）
 ├── local/            # 本机覆盖（gitignore）
 ├── tenants/{id}/     # 租户 overlay
@@ -64,20 +64,20 @@ plugins/ → plugins/local/ → plugins/tenants/{AI_PLUGIN_TENANT_ID}/ → AI_PL
 | `AI_PLUGIN_TENANT_ID` | 启用 `plugins/tenants/{id}/` overlay |
 | `AI_PLUGIN_WATCH=1` | 开发态监听 `plugins/local/` 变更 |
 
-### Expert 关键字段
+### 专家关键字段
 
 | 字段 | 说明 |
 |------|------|
 | `id` | 全局唯一，如 `platform.editor` |
 | `legacyAgentKey` | **task chain 调度键**（见下方说明），非图节点 ID |
 | `dynamicPrompt` | `editor` / `flow` / `page` / `general` |
-| `tools` / `skills` | 引用的工具名、Skill id 列表 |
+| `tools` / `skills` | 引用的工具名、技能 id 列表 |
 | `routing` | Chat 意图匹配 keywords / contextSources |
 | `runtime` | `langgraph` / `workflow` |
 
 ### `legacyAgentKey` 说明
 
-`legacyAgentKey` 是 **task chain 调度键**，用于将旧版 `currentAgent` 字符串映射到插件中心的 Expert 声明。它**不是** LangGraph 图节点 ID，也不是 Expert ID。
+`legacyAgentKey` 是 **task chain 调度键**，用于将旧版 `currentAgent` 字符串映射到插件中心的专家声明。它**不是** LangGraph 图节点 ID，也不是专家 ID。
 
 **类型定义**（`server/src/ai/plugins/types.ts`）：
 
@@ -90,7 +90,7 @@ type LegacyAgentKey = 'editor' | 'flow' | 'page' | 'general' | 'router'
 | 是什么 | 不是什么 |
 |--------|----------|
 | task chain 中 `step.agent` 的值 | LangGraph 图节点名（如 `pluginExpert`） |
-| 旧版 `session.currentAgent` 的合法值 | Expert 的唯一标识（`id` 才是） |
+| 旧版 `session.currentAgent` 的合法值 | 专家的唯一标识（`id` 才是） |
 | `PluginRegistry.getExpertByLegacyKey()` 的查找键 | Workflow 节点 ID |
 
 **使用场景**：
@@ -117,7 +117,7 @@ type LegacyAgentKey = 'editor' | 'flow' | 'page' | 'general' | 'router'
 }
 ```
 
-**扩展自定义 Expert 时**：只有需要参与 task chain 调度（被 taskPlanner 或 router 引用）的 Expert 才需要设置 `legacyAgentKey`。纯 Workflow 专家或独立运行的专家可以省略此字段，直接使用 `id` 引用。
+**扩展自定义专家时**：只有需要参与 task chain 调度（被 taskPlanner 或 router 引用）的专家才需要设置 `legacyAgentKey`。纯 Workflow 专家或独立运行的专家可以省略此字段，直接使用 `id` 引用。
 
 ---
 
@@ -125,16 +125,16 @@ type LegacyAgentKey = 'editor' | 'flow' | 'page' | 'general' | 'router'
 
 `pnpm plugin:validate`：**experts 4 · skills 4 · tools 25 · mcpServers 5**
 
-### Experts（`plugins/experts/`）
+### 专家（`plugins/experts/`）
 
-| id | 说明 | Skills |
+| id | 说明 | 技能 |
 |----|------|--------|
 | `platform.editor` | 表单 Schema | `platform.schema-quality`, `platform.reply-zh` |
 | `platform.general` | 通用助手 | `platform.reply-zh` |
 | `platform.flow` | BPMN 流程 | `platform.flow-design`, `platform.reply-zh` |
 | `platform.page` | 页面布局 | `platform.page-layout`, `platform.reply-zh` |
 
-### Skills（`plugins/skills/`）
+### 技能（`plugins/skills/`）
 
 | id | 说明 |
 |----|------|
@@ -194,12 +194,12 @@ kill -HUP $(pgrep -f "dist/index.js")   # 热重载 Registry
 | `server/config/plugins/` | 分文件配置 |
 | `server/src/ai/plugins/loadPluginConfig.ts` | 目录合并、热重载 |
 | `server/src/ai/plugins/dispatchExpert.ts` | `runRegisteredExpert` |
-| `server/src/ai/plugins/resolveExpertPrompt.ts` | Skill 拼 prompt |
+| `server/src/ai/plugins/resolveExpertPrompt.ts` | 技能拼 prompt |
 | `server/src/ai/mcp/bridge.ts` | MCP 连接（读 Registry） |
 | `server/src/ai/pluginRoutes.ts` | `GET /api/ai/plugins` |
 | `ai/app/src/composables/usePluginRegistry.ts` | 前端缓存与 Palette |
 | `ai/app/src/views/PluginCenterView.vue` | 插件中心 UI |
-| `ai/app/src/constants/agentTools.ts` | label/category **回退**（权威清单在 Registry） |
+| `ai/app/src/constants/agentTools.ts` | label/category **回退**（权威清单在注册表） |
 
 ---
 
@@ -220,7 +220,7 @@ kill -HUP $(pgrep -f "dist/index.js")   # 热重载 Registry
 | | ToolNodePanel Registry 优先 | ✅ |
 | | Plugin Center 四层只读 UI + 中文工具名 | ✅ |
 | | 专家类型 pill 标签（legacy 中文） | ✅ |
-| **生产 Skill** | `platform.reply-zh` / `platform.schema-quality` | ✅ |
+| **生产技能** | `platform.reply-zh` / `platform.schema-quality` | ✅ |
 | | 挂到 general + editor expert | ✅ |
 | **质量** | stdio MCP 集成测试 | ✅ |
 | | CI `ai-tests.yml` plugin:validate 门禁 | ✅ |
@@ -254,7 +254,7 @@ cp -R server/config/plugins/local.example server/config/plugins/local
 pnpm plugin:validate
 ```
 
-### 新增 Expert 指南
+### 新增专家指南
 
 **最小配置**：
 
@@ -280,4 +280,4 @@ pnpm plugin:validate
 
 **注意**：`legacyAgentKey` 的合法值是固定枚举（`editor` | `flow` | `page` | `general` | `router`），不能自定义新值。如果需要全新的调度维度，应使用 `expertId` 作为调度键，而非扩展 `legacyAgentKey`。
 
-完整扩展指南见 [Expert 扩展指南](./expert-extension-guide.md)。
+完整扩展指南见 [专家扩展指南](./expert-extension-guide.md)。

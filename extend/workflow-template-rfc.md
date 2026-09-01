@@ -382,7 +382,7 @@ function loadPreviewGraph() {
 | 阶段 | 内容 | 影响 |
 |---|---|---|
 | Phase 1 | 新增 `workflows` 注册层，内置模板同时以 JSON 文件存在于 `config/plugins/workflows/` | 零破坏，新旧并存 |
-| Phase 2 | 服务端 `createAgentWorkflow` 优先从 Registry 查找，找不到回退到硬编码 | 零破坏 |
+| Phase 2 | 服务端 `createAgentWorkflow` 优先从注册表查找，找不到回退到硬编码 | 零破坏 |
 | Phase 3 | 前端模板列表合并 Registry + 硬编码 | 零破坏 |
 | Phase 4 | 内置模板全部迁移到 JSON 文件，移除硬编码工厂函数 | **Breaking**：需同步发版 |
 
@@ -485,7 +485,7 @@ template.json.sig    # 作者私钥签名
 - [ ] **5.3** `loadPluginConfig` 新增 `workflows` 层加载逻辑
 - [ ] **5.4** `PLUGIN_PACK_LAYERS` 扩展 `workflows` 层（`pluginPack.ts`）
 - [ ] **5.5** `GET /api/ai/plugins` 响应新增 `workflows` 字段
-- [ ] **5.6** 服务端 `createAgentWorkflow` 改为从 Registry 查找模板，找不到回退硬编码
+- [ ] **5.6** 服务端 `createAgentWorkflow` 改为从注册表查找模板，找不到回退硬编码
 - [ ] **5.7** 单元测试：模板注册、加载、API 返回
 
 ### P1：前端集成 + 内置模板迁移（1 周）
@@ -591,7 +591,7 @@ acme-legal-tools/
 A: 插件 Pack 是现有的分发机制，模板作为 pack 的一层，复用了 pack/install/version 的完整生命周期。数据库存储适合 Marketplace 阶段的在线模板，两者不冲突。
 
 **Q: 内置模板迁移后，旧版本 API 调用 `templateId: 'document-summary'` 还能用吗？**
-A: 能。服务端先从 Registry 查找（内置模板已注册到 Registry），找不到再回退硬编码。迁移完成后 Registry 中始终存在内置模板。
+A: 能。服务端先从注册表查找（内置模板已注册到 Registry），找不到再回退硬编码。迁移完成后 Registry 中始终存在内置模板。
 
 **Q: 插件模板的 graph 中引用了未安装的 toolName 怎么办？**
 A: 创建工作流时不做硬性拦截（用户可能稍后安装对应工具），但在发布时 `validateAgentWorkflowGraph` 会输出 warning。前端可在模板详情页标注"需要的工具"。

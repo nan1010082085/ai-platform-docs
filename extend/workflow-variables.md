@@ -1,6 +1,6 @@
 # Workflow LLM 节点变量文档
 
-> 本文档描述工作流中可用的模板变量及其解析规则。变量在 LLM 节点的 `prompt`、`systemPrompt`，以及 Tool 节点的 `toolArgs`、HITL 节点的 `confirmMessage` 等字符串字段中均可使用。
+> 本文档描述工作流中可用的模板变量及其解析规则。变量在 LLM 节点的 `prompt`、`systemPrompt`，以及工具节点的 `toolArgs`、HITL 节点的 `confirmMessage` 等字符串字段中均可使用。
 
 **相关源码**：[agentWorkflowTemplateResolver.ts](https://github.com/nan1010082085/ai-platform) · [agentWorkflowExecutor.ts](https://github.com/nan1010082085/ai-platform) · [agentWorkflow.ts](https://github.com/nan1010082085/ai-platform)
 
@@ -286,11 +286,11 @@ interface WorkflowTemplateContext {
 |------|------|
 | LLM 节点 `prompt` | 用户提示词 |
 | LLM 节点 `systemPrompt` | 系统提示词 |
-| Tool 节点 `toolArgs` | 工具参数（递归解析字符串值、数组元素、嵌套对象） |
+| 工具节点 `toolArgs` | 工具参数（递归解析字符串值、数组元素、嵌套对象） |
 | HITL 节点 `confirmMessage` | 确认消息 |
 | document-parse / vision-analyze 节点配置 | `fetchUrl`、`fetchBody`、`visionPrompt` 等 |
 
-Tool 节点的 `toolArgs` 递归解析逻辑（`resolveTemplateInArgs`）：
+工具节点的 `toolArgs` 递归解析逻辑（`resolveTemplateInArgs`）：
 
 - `string` 值 → 直接解析模板
 - `Array` → 遍历元素，字符串元素解析模板，对象元素递归
@@ -338,29 +338,29 @@ hitlResult && hitlResult.q1 === '入库'
 
 ---
 
-## 五、与 Skill 的关系
+## 五、与技能的关系
 
 ### 5.1 作用层级
 
-工作流变量和 Skill 处于不同的作用层级：
+工作流变量和技能处于不同的作用层级：
 
 ```
 工作流变量（模板层）
   └─ 解决：节点间数据传递，将上游输出注入下游 prompt/toolArgs
 
-Skill（指令层）
-  └─ 解决：Expert 的 system prompt 组装，向 LLM 注入行为约束
+技能（指令层）
+  └─ 解决：专家的 system prompt 组装，向 LLM 注入行为约束
 ```
 
-两者互不干扰：工作流变量在模板替换阶段解析，Skill 在 Expert 被调度时拼接到 system prompt。
+两者互不干扰：工作流变量在模板替换阶段解析，技能在专家被调度时拼接到 system prompt。
 
-### 5.2 Expert 节点中的交汇点
+### 5.2 专家节点中的交汇点
 
 当工作流包含 `expert` 或 `agent-intent` 节点时，两套机制在同一节点中交汇：
 
 1. **模板变量先解析** — 节点的 `prompt` 字段中的 `{{$input.xxx}}`、`{{$node.xxx}}` 等变量先被替换为实际值
-2. **Expert 被调度** — 解析后的 prompt 作为用户消息传入 Expert
-3. **技能拼装 system prompt** — Expert 的 system prompt 由 base prompt + 挂载的 Skill content 组装而成
+2. **专家被调度** — 解析后的 prompt 作为用户消息传入专家
+3. **技能拼装 system prompt** — 专家的 system prompt 由 base prompt + 挂载的技能 content 组装而成
 
 ```text
 ┌─ 工作流模板解析 ─────────────────────┐
@@ -368,22 +368,22 @@ Skill（指令层）
 │           ↓ 替换为实际值               │
 │  prompt: "请分析 合同正文内容..."       │
 └──────────────────────────────────────┘
-                ↓ 传入 Expert
-┌─ Expert system prompt 组装 ───────────┐
+                ↓ 传入专家
+┌─ 专家 system prompt 组装 ───────────┐
 │  base prompt                          │
-│  + Skill 1 content（如中文回复约束）   │
-│  + Skill 2 content（如输出格式约束）   │
+│  + 技能 1 content（如中文回复约束）   │
+│  + 技能 2 content（如输出格式约束）   │
 └──────────────────────────────────────┘
 ```
 
 ### 5.3 工具集合并
 
-Skill 可以声明 `tools` 字段。当 Expert 节点被调度时，Expert 自身的 `tools` 和挂载 Skill 的 `tools` 会合并去重，形成该次调用可用的完整工具集。这与工作流的 `tool` 节点（独立的工具调用节点）是两套不同的工具调用机制：
+技能可以声明 `tools` 字段。当专家节点被调度时，专家自身的 `tools` 和挂载技能的 `tools` 会合并去重，形成该次调用可用的完整工具集。这与工作流的 `tool` 节点（独立的工具调用节点）是两套不同的工具调用机制：
 
 | 机制 | 触发方式 | 工具来源 |
 |------|----------|----------|
 | 工作流 `tool` 节点 | DAG 流转到该节点时自动调用 | 节点 `data.toolName` 指定 |
-| Expert + Skill 工具 | LLM 自主决策调用 | Expert `tools` + 挂载 Skill `tools` 合并 |
+| 专家 + 技能工具 | LLM 自主决策调用 | 专家 `tools` + 挂载技能 `tools` 合并 |
 
 ---
 
@@ -412,7 +412,7 @@ LLM 节点 prompt：
 手动触发 → 记录用户问题 → 知识库检索 → LLM 生成回答 → 结束
 ```
 
-Tool 节点（知识库检索）toolArgs：
+工具节点（知识库检索）toolArgs：
 
 ```json
 {
@@ -437,7 +437,7 @@ LLM 节点 prompt：
 
 ### 6.3 HTTP 回调通知
 
-Tool 节点（HTTP POST）toolArgs：
+工具节点（HTTP POST）toolArgs：
 
 ```json
 {

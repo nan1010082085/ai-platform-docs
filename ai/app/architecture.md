@@ -92,8 +92,8 @@ Cordis 启发的插件容器（原则：`ai/docs/design/plugin-architecture-prin
 | `config/layers.ts` | 配置分层：`builtin < registry overlay < local patch`（`mergeLayers`） |
 | `config/nodeTypes.ts` | Agent 画布 Palette 项与节点配色（`AGENT_PALETTE_ITEMS`） |
 | `config/renderers.ts` | 消息渲染器注册 |
-| `registry-adapter.ts` | 服务端注册表 工具 → 适配层工具定义（`registryToolToDef`） |
-| `skill-adapter.ts` | 平台 Skill → 适配层技能定义（`platformSkillToDef`） |
+| `registry-adapter.ts` | 服务端注册表工具 → 适配层工具定义（`registryToolToDef`） |
+| `skill-adapter.ts` | 平台技能 → 适配层技能定义（`platformSkillToDef`） |
 | `plugins/chat-tools` | 工具定义类型与分类（`ToolDef` / `ToolCategory`） |
 | `plugins/node-types` / `plugins/renderers` | 节点类型 / 渲染器插件 |
 

@@ -1,12 +1,12 @@
 # Plugin Scaffold
 
-最小 Expert 插件模板，用于快速创建自定义专家插件。
+最小专家插件模板，用于快速创建自定义专家插件。
 
 ## 目录结构
 
 ```
 my-expert-plugin/
-├── expert.json          # Expert 定义（必需）
+├── expert.json          # 专家定义（必需）
 ├── package.json         # 包描述（可选）
 ├── README.md            # 说明文档（可选）
 └── prompts/             # 提示词模板（可选）
@@ -111,7 +111,7 @@ curl http://localhost:3001/api/ai/plugins | jq '.experts[] | select(.id == "my-e
 
 | 文档 | 说明 |
 |------|------|
-| [第三方插件指南](../third-party-plugin-guide) | Tool / Skill / MCP 详细开发指南 |
+| [第三方插件指南](../third-party-plugin-guide) | 工具 / 技能 / MCP 详细开发指南 |
 | [技能拼装规范](../skill-assembly-spec) | 技能组装技术规范 |
 | [打包规范 v1](../pack-spec-v1) | 插件打包规范 |
 | [插件中心](/ai/plugin) | 插件体系总览 |

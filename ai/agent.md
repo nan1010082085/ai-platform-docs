@@ -51,7 +51,7 @@ requirementAnalyzer → taskPlanner → taskChain
 
 ### 1.3 四个内置专家（插件配置）
 
-| Expert ID | legacyAgentKey | 职责 | Skills |
+| 专家 ID | legacyAgentKey | 职责 | 技能 |
 |-----------|---------------|------|--------|
 | `platform.editor` | `editor` | 生成/编辑表单 Schema | `platform.schema-quality`, `platform.reply-zh` |
 | `platform.flow` | `flow` | 生成/编辑 BPMN 流程 | `platform.flow-design`, `platform.reply-zh` |
@@ -283,7 +283,7 @@ const AgentStateAnnotation = Annotation.Root({
 - **页面布局**：Router 自动路由到 `platform.page` 专家
 - **通用问答**：Router 自动路由到 `platform.general` 专家
 - **不确定**：让 Router Agent 根据 keywords 自动匹配
-- **自定义**：在插件中心注册新 Expert，无需修改图代码
+- **自定义**：在插件中心注册新专家，无需修改图代码
 
 ### 7.2 System Prompt 设计
 
@@ -291,7 +291,7 @@ const AgentStateAnnotation = Annotation.Root({
 - 提供清晰的工具使用说明
 - 注入必要的上下文信息（Widget 元数据、Schema 规范等）
 - 限制输出格式（JSON、Markdown 等）
-- 通过 Skills 拼接附加指令（如 `platform.schema-quality`）
+- 通过技能拼接附加指令（如 `platform.schema-quality`）
 
 ### 7.3 工具调用
 
@@ -313,5 +313,5 @@ const AgentStateAnnotation = Annotation.Root({
 | `server/src/ai/graph/taskPlanner.ts` | 任务规划节点 |
 | `server/src/ai/graph/taskChain.ts` | 任务链推进节点 |
 | `server/src/ai/plugins/dispatchExpert.ts` | `runRegisteredExpert` |
-| `server/src/ai/plugins/resolveExpertPrompt.ts` | Skill 拼 prompt |
+| `server/src/ai/plugins/resolveExpertPrompt.ts` | 技能拼 prompt |
 | `server/config/plugins/experts/` | 专家配置 |

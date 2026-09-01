@@ -134,4 +134,4 @@ export default defineConfig({
 | [flow-shared](./flow-shared) | 流程引擎共享层 |
 | [ai-shared](/ai/ai-shared) | AI 共享层 API |
 | [图标规则](/editor/widgets#图标规则) | 图标使用规范 |
-| [扩展开发](/extend/) | 自定义模型、Skill、模板 |
+| [扩展开发](/extend/) | 自定义模型、技能、模板 |

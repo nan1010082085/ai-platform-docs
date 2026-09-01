@@ -18,6 +18,6 @@
 |------|------|
 | [模型架构](/design/model-architecture) | 用户级 / 租户级 / 平台级三层 BYOK 设计 |
 | [插件中心](/ai/plugin) | 插件体系总览 |
-| [Expert 扩展指南](/ai/expert-extension-guide) | Expert 声明与扩展 |
+| [专家扩展指南](/ai/expert-extension-guide) | 专家声明与扩展 |
 | [MCP 协议](/ai/mcp) | MCP Server 接入与 transport |
 | [技能组装规范](/ai/extend/skill-assembly-spec) | 技能拼装技术规范 |

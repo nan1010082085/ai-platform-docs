@@ -23,7 +23,7 @@ Schema Form Platform 的 AI 交互层：通过自然语言对话驱动表单 Sch
 | 记忆管理 | `/memory` | 对话记忆 / 长程记忆查看与清理 |
 | 外部集成 | `/integration` | 工作流开放 API 的 Key 管理与调用方式 |
 | 性能监控 | `/monitor` | Agent 执行统计、告警、概览 |
-| 插件中心 | `/plugins` | Expert / Skill / Tool / MCP 配置与管理 |
+| 插件中心 | `/plugins` | 专家 / 技能 / 工具 / MCP 配置与管理 |
 | MCP 管理 | `/mcp` | MCP Server 配置与健康检查 |
 | Agent 工作流 | `/workflows` 等 | 工作流列表、设计器、执行历史、执行详情 |
 | 设置 | `/settings/*` | API Key、模型设置、Embedding 设置、工作流模板 |

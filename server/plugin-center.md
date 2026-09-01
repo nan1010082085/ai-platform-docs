@@ -1,6 +1,6 @@
 # 插件中心（Server）
 
-> 服务端视角的插件中心实现，管理 Expert / Skill / Tool / MCP 四类插件的加载、注册与热重载。
+> 服务端视角的插件中心实现，管理专家 / 技能 / 工具 / MCP 四类插件的加载、注册与热重载。
 
 ## 架构
 
@@ -13,9 +13,9 @@ server/
 │       └── ai.ts               # /api/ai/plugins 端点
 ├── config/
 │   └── plugins/                # 插件配置目录
-│       ├── experts/            # Expert 配置
-│       ├── skills/             # Skill 配置
-│       ├── tools/              # Tool 配置
+│       ├── experts/            # 专家配置
+│       ├── skills/             # 技能配置
+│       ├── tools/              # 工具配置
 │       ├── mcp/                # MCP Server 配置
 │       └── packs/              # 打包后的插件
 └── scripts/

@@ -52,7 +52,7 @@ cd shared/platform-shared && pnpm build  # 构建共享包（含 AI 类型/事�
 
 - [插件中心](./plugin.md) - 架构、配置、生产清单、CLI
 - [插件注册表](./plugin-registry.md) - 插件注册表
-- [第三方插件开发指南](./extend/third-party-plugin-guide.md) - Expert/Skill/Tool/MCP + 脚手架
+- [第三方插件开发指南](./extend/third-party-plugin-guide.md) - 专家/技能/工具/MCP + 脚手架
 
 ### AI 应用前端
 

@@ -88,4 +88,4 @@ deploy/deploy.sh --target {target} {VERSION}
 | [platform-shared](./platform-shared) | 平台公共组件/工具 |
 | [flow-shared](./flow-shared) | 流程引擎共享层 |
 | [ai-shared](/ai/ai-shared) | AI 共享层 API |
-| [扩展开发](/extend/) | 自定义模型、Skill、模板 |
+| [扩展开发](/extend/) | 自定义模型、技能、模板 |

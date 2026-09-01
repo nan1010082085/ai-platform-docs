@@ -1,7 +1,7 @@
-# RAG 与 Tool/MCP 边界扩展文档
+# RAG 与工具/MCP 边界扩展文档
 
 > **版本**：v1 (2026-07-16)
-> **目标**：明确 RAG、Tool、MCP 三者的职责边界和扩展方式。
+> **目标**：明确 RAG、工具、MCP 三者的职责边界和扩展方式。
 
 ---
 
@@ -21,7 +21,7 @@
 - 文档摘要
 - 上下文增强对话
 
-### 1.2 Tool（工具）
+### 1.2 工具（工具）
 
 **定义**：LLM 可调用的函数或 API，用于执行具体操作。
 
@@ -48,7 +48,7 @@
 
 ## 二、职责边界
 
-| 维度 | RAG | Tool | MCP Server |
+| 维度 | RAG | 工具 | MCP Server |
 |------|-----|------|------------|
 | **输入** | 查询文本 | 参数对象 | 请求消息 |
 | **输出** | 相关文档片段 | 执行结果 | 响应消息 |
@@ -56,9 +56,9 @@
 | **副作用** | 无 | 可有（写入、修改） | 可有 |
 | **调用方式** | 自动注入 | LLM 决定调用 | LLM 决定调用 |
 
-### 2.1 RAG vs Tool
+### 2.1 RAG vs 工具
 
-| 场景 | 使用 RAG | 使用 Tool |
+| 场景 | 使用 RAG | 使用工具 |
 |------|----------|-----------|
 | 查询知识库 | ✅ | ❌ |
 | 创建文档 | ❌ | ✅ |
@@ -66,9 +66,9 @@
 | 语义搜索 | ✅ | ❌ |
 | 精确查询 | ❌ | ✅ |
 
-### 2.2 Tool vs MCP Server
+### 2.2 工具 vs MCP Server
 
-| 维度 | Tool | MCP Server |
+| 维度 | 工具 | MCP Server |
 |------|------|------------|
 | **定义位置** | `config/plugins/tools/` | `config/plugins/mcp/` |
 | **注册方式** | JSON 配置 | JSON 配置 + Factory |
@@ -112,7 +112,7 @@ export async function searchRag(query: string, options?: {
 }): Promise<RagSearchResult[]>
 ```
 
-### 3.2 扩展 Tool
+### 3.2 扩展工具
 
 **方式 1：添加 JSON 配置**
 ```json
@@ -225,15 +225,15 @@ export function createServer(): McpServer {
 | 需求 | 推荐方案 |
 |------|----------|
 | 查询知识库 | RAG |
-| 精确数据查询 | Tool (mcp/graph) |
+| 精确数据查询 | 工具(mcp/graph) |
 | 复杂业务逻辑 | MCP Server (factory) |
-| 外部 API 调用 | Tool (http) 或 MCP Server (sse) |
+| 外部 API 调用 | 工具(http) 或 MCP Server (sse) |
 | 状态管理 | MCP Server |
-| 简单计算 | Tool (graph) |
+| 简单计算 | 工具(graph) |
 
 ### 4.2 命名规范
 
-**Tool 命名**：`{domain}__{action}`
+**工具命名**：`{domain}__{action}`
 - 示例：`schema__search`、`flow__create`、`custom__query`
 
 **MCP Server 命名**：`{namespace}`
@@ -255,28 +255,28 @@ export function createServer(): McpServer {
 
 ## 五、常见问题
 
-### Q1: RAG 和 Tool 可以一起使用吗？
+### Q1: RAG 和工具可以一起使用吗？
 
 A: 可以。典型流程：
 1. RAG 检索相关文档
 2. LLM 分析文档内容
-3. LLM 决定调用 Tool 执行操作
+3. LLM 决定调用工具执行操作
 
 ### Q2: 如何调试 MCP Server？
 
 A: 使用插件中心的 MCP Server 列表查看状态，或使用路由调试 UI 测试工具调用。
 
-### Q3: Tool 和 MCP Server 如何选择？
+### Q3: 工具和 MCP Server 如何选择？
 
 A:
-- 简单工具（无状态、单函数）→ Tool
+- 简单工具（无状态、单函数）→ 工具
 - 复杂服务（多工具、有状态）→ MCP Server
 
 ---
 
 ## 六、相关文档
 
-- [Tool 系统](./tool.md)
+- [工具系统](./tool.md)
 - [MCP 协议](./mcp.md)
 - [插件中心](./plugin.md)
 - [RAG 知识库](./design/rag.md)

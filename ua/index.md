@@ -84,4 +84,4 @@ AppLayout (侧栏)
 
 - [Server API 参考](/server/api-reference) — 用户/角色/权限 API 端点
 - [Server 数据模型](/server/models) — User/Role/Permission 模型定义
-- [扩展开发](/extend/) — 自定义模型、Skill、模板
+- [扩展开发](/extend/) — 自定义模型、技能、模板

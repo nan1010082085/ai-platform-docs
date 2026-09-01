@@ -29,8 +29,8 @@ RAG、MCP、LLM、API、SDK、DAG、JWT、HITL、Webhook、LangGraph、BullMQ、
 
 ## 写法约定
 
-1. **侧栏 / 标题 / 表格「能力」列**：优先中文（如「智能体工作流」「插件注册表」）
-2. **代码、路径、命令、JSON 字段**：保持英文（如 `agent-workflow`、`PluginRegistry`、`X-Workflow-Key`）
+1. **侧栏 / 标题 / 表格「能力」列**：优先中文（如「智能体工作流」「插件注册表」「专家 / 技能 / 工具」）
+2. **代码、路径、命令、JSON 字段**：保持英文（如 `expert.json`、`skills[]`、`PluginRegistry`、`resolveExpertPrompt`）
 3. **双引擎对比**：可写「对话 LangGraph」与「智能体工作流 DAG」，避免侧栏/标题继续写未翻译的 Agent Workflow
 4. **英文站**（`/en/`）：全部保持英文，不套用本表
 
@@ -38,7 +38,7 @@ RAG、MCP、LLM、API、SDK、DAG、JWT、HITL、Webhook、LangGraph、BullMQ、
 
 | 场景 | 推荐写法 |
 |------|----------|
-| 侧栏 | 智能体工作流、插件注册表 |
-| 正文介绍 | 「智能体工作流是 n8n 风格的可视化 DAG…」 |
-| 代码引用 | `agentWorkflowExecutor`、`GET /api/ai/plugins` |
+| 侧栏 | 智能体工作流、插件注册表、专家扩展 |
+| 正文介绍 | 「插件中心管理专家 / 技能 / 工具 / MCP 四层能力」 |
+| 代码引用 | `expert.json`、`skills[]`、`resolveExpertPrompt` |
 | 引擎对比 | Chat LangGraph 与智能体工作流双引擎 |

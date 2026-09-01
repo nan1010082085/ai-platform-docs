@@ -63,7 +63,7 @@ bash deploy/deploy.sh --target all
 | 自动重启 | `autorestart` + `max_restarts: 10` + `restart_delay: 3000` |
 | 内存上限 | `max_memory_restart: 800M` |
 | 环境文件 | `.env.production` |
-| 插件配置目录 | `AI_PLUGIN_CONFIG_DIR` → `server/config`（Expert/Skill/Tool/MCP 配置） |
+| 插件配置目录 | `AI_PLUGIN_CONFIG_DIR` → `server/config`（专家/技能/工具/MCP 配置） |
 
 ### 常用运维命令
 

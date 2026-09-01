@@ -164,7 +164,7 @@ When reviewing code, check for:
 
 ## 📚 Resources
 
-### Tools for Secret Detection
+### 工具 for Secret Detection
 
 - **git-secrets** - Prevents committing secrets
   ```bash

@@ -74,7 +74,7 @@ title: 更新日志
 | 组件 | 说明 |
 |------|------|
 | 双引擎架构 | Chat LangGraph StateGraph + 智能体工作流 DAG 编排 |
-| 插件中心 | Expert / Skill / Tool / MCP 配置化，热重载 |
+| 插件中心 | 专家 / 技能 / 工具 / MCP 配置化，热重载 |
 | BullMQ 执行引擎 | 持久化队列 + 自动重试 + 死信队列 |
 | RAG 知识库 | 向量检索 + BGE-Reranker 重排 + 混合加权融合 |
 | 对外集成 | 工作流开放 API（轮询 + 回调两种模式） |
@@ -85,7 +85,7 @@ title: 更新日志
 |------|------|------|
 | AI 对话智能体 | ✅ 成熟 | LangGraph 多专家对话、需求分析、任务规划 |
 | 智能体工作流 | ✅ 成熟 | 可视化 DAG 工作流编排、32 种节点 |
-| 插件中心 | ✅ 成熟 | Expert/Skill/Tool/MCP 配置化 |
+| 插件中心 | ✅ 成熟 | 专家/技能/工具/MCP 配置化 |
 | RAG 知识库 | 🔄 迭代中 | 向量检索 + Rerank + 混合检索 |
 | MCP 协议 | 🔄 迭代中 | Model Context Protocol Server 接入 |
 | SDK 集成 | 🔄 迭代中 | REST API + WebSocket + SDK |

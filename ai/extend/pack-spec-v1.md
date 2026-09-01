@@ -16,18 +16,18 @@ my-plugin-1.0.0.tgz
     │   └── *.json
     ├── tools/                 # 可选 — 工具声明
     │   └── *.json
-    ├── experts/               # 可选 — Expert 声明
+    ├── experts/               # 可选 — 专家声明
     │   └── *.json
-    └── skills/                # 可选 — Skill 声明
+    └── skills/                # 可选 — 技能声明
         ├── *.json
-        └── *.md               # Skill 外部 Markdown 文件
+        └── *.md               # 技能外部 Markdown 文件
 ```
 
 **约束**：
 - 归档必须恰好包含一个顶层目录
 - `manifest.json` 必须位于顶层目录根部
 - 至少一个资源层目录（mcp / tools / experts / skills）必须包含至少一个 `.json` 文件
-- `skills/` 目录额外允许 `.md` 文件（作为 Skill 的外部 content 文件）
+- `skills/` 目录额外允许 `.md` 文件（作为技能的外部 content 文件）
 
 ---
 
