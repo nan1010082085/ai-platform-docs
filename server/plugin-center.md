@@ -102,6 +102,6 @@ kill -HUP $(pgrep -f "dist/index.js")
 | 文档 | 说明 |
 |------|------|
 | [AI 插件中心总览](/ai/plugin) | 架构、配置、生产清单、运行时 |
-| [插件 Registry](/ai/plugin-registry) | 注册表机制、四类插件 |
+| [插件注册表](/ai/plugin-registry) | 注册表机制、四类插件 |
 | [API 详细文档](./api-reference) | 全部 230+ 端点详细说明 |
 | [部署与运维](./deployment) | 打包、PM2、nginx、配置目录 |

@@ -1,10 +1,10 @@
-# 第三方 Widget 开发指南
+# 第三方 控件开发指南
 
 > 面向外部开发者的 Widget 扩展指南，涵盖从创建到发布的完整流程。
 
 ## 概述
 
-Schema Platform Editor 支持**第三方 Widget 扩展**，开发者可以：
+Schema Platform Editor 支持**第三方控件 扩展**，开发者可以：
 
 - 创建自定义表单组件
 - 打包为独立 Widget 包
@@ -189,8 +189,8 @@ createWidgetPlugin({ widgets: [myWidget] })
 
 | 文档 | 说明 |
 |------|------|
-| [Widget 体系](/editor/widgets) | Widget 架构、注册机制 |
-| [Widget 开发指南](/editor/widget-development) | 内置 Widget 开发规范 |
+| [控件体系](/editor/widgets) | 控件架构、注册机制 |
+| [控件开发指南](/editor/widget-development) | 内置 控件开发规范 |
 | [属性面板](/editor/property-panel) | Widget 属性配置 UI |
-| [Store 设计](/editor/store-design) | Widget 数据存储 |
+| [状态库设计](/editor/store-design) | 控件数据存储 |
 | [能力清单](/editor/capabilities) | Editor 完整能力矩阵 |

@@ -4,7 +4,7 @@ title: AI 平台
 
 # AI 平台
 
-Schema Platform 的 AI 模块，提供**对话 Agent**、**Agent Workflow**、**RAG 知识库**、**插件中心**等核心能力。
+Schema Platform 的 AI 模块，提供**对话智能体**、**智能体工作流**、**RAG 知识库**、**插件中心**等核心能力。
 
 ## 快速开始
 
@@ -26,8 +26,8 @@ pnpm dev    # 端口 5300
 
 | 能力 | 说明 | 文档 |
 |------|------|------|
-| AI 对话 Agent | LangGraph 多专家对话、需求分析、任务规划、工具调用 | [agent](./agent) |
-| Agent Workflow | 可视化 DAG 工作流编排、32 种节点类型 | [agent-workflow](./agent-workflow) |
+| AI 对话智能体 | LangGraph 多专家对话、需求分析、任务规划、工具调用 | [agent](./agent) |
+| 智能体工作流 | 可视化 DAG 工作流编排、32 种节点类型 | [agent-workflow](./agent-workflow) |
 | RAG 知识库 | 向量检索 + Rerank + 混合检索 | [rag-tool-mcp-boundary](./rag-tool-mcp-boundary) |
 | 插件中心 | Expert / Skill / Tool / MCP 配置化，热重载 | [plugin](./plugin) |
 | MCP 协议 | Model Context Protocol Server 接入 | [mcp](./mcp) |
@@ -35,13 +35,13 @@ pnpm dev    # 端口 5300
 | 专家扩展 | Expert 声明与扩展 | [expert-extension-guide](./expert-extension-guide) |
 | SDK 集成 | REST API + WebSocket + SDK | [sdk](./sdk) |
 
-## AI App 前端
+## AI 应用前端
 
 `ai/app` — Vue 3 前端应用，提供 AI 对话、工作流编排、知识库管理等 UI。
 
 | 文档 | 说明 |
 |------|------|
-| [App 概览](./app/) | `@ai-app` 定位、功能、运行与嵌入模式 |
+| [应用概览](./app/) | `@ai-app` 定位、功能、运行与嵌入模式 |
 | [架构与分层](./app/architecture) | 目录结构、Store/Composable/API 清单、插件适配层 |
 | [路由与页面](./app/routing) | 完整路由表与守卫 |
 
@@ -49,13 +49,13 @@ pnpm dev    # 端口 5300
 
 | 文档 | 说明 |
 |------|------|
-| [架构设计](./architecture) | 双引擎架构（Chat LangGraph + Workflow DAG）、系统概览 |
+| [架构设计](./architecture) | 双引擎架构（对话 LangGraph + 智能体工作流 DAG）、系统概览 |
 | [平台定位](./platform) | AI 平台在 Schema Platform 中的定位 |
 | [ai-shared API](./ai-shared) | AI 共享层 API 参考 |
 | [设计概览](./design/) | 产品设计文档索引 |
-| [Chat 设计](./design/chat) | 对话页面、侧边栏模式、双后端 |
+| [对话设计](./design/chat) | 对话页面、侧边栏模式、双后端 |
 | [RAG 设计](./design/rag) | 知识库管理、检索测试 |
-| [Runtime 设计](./design/runtime) | 服务端执行图、数据流、Checkpoint |
+| [运行时设计](./design/runtime) | 服务端执行图、数据流、Checkpoint |
 
 ## 开发与部署
 
@@ -72,12 +72,12 @@ pnpm dev    # 端口 5300
 
 | 文档 | 说明 |
 |------|------|
-| [Skill 拼装规范](./extend/skill-assembly-spec) | Skill 组装技术规范 |
-| [Pack Spec v1](./extend/pack-spec-v1) | 插件打包规范 |
+| [技能拼装规范](./extend/skill-assembly-spec) | 技能组装技术规范 |
+| [打包规范 v1](./extend/pack-spec-v1) | 插件打包规范 |
 | [第三方插件指南](./extend/third-party-plugin-guide) | 外部开发者接入 |
 | [插件脚手架](./extend/plugin-scaffold/) | 最小 Expert 插件模板 |
 
 ## 产品进度
 
 - [任务进度与开放缺口](./product/backlog) — 活跃 backlog
-- [历史 Phase 归档](./product/archive/) — 已完成 Phase A～Z 与过期计划
+- [工作流术语](./product/workflow-terminology) — 术语表

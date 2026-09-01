@@ -14,7 +14,7 @@
 | Web 框架 | Koa.js |
 | 数据库 | MongoDB 8 (Mongoose ODM) |
 | 认证 | JWT + bcryptjs + OAuth2 授权码 |
-| AI 引擎 | LangGraph (多 Agent 架构) |
+| AI 引擎 | LangGraph (多智能体 架构) |
 | 实时通信 | Socket.IO |
 | 缓存 | Redis (可选) |
 | 部署 | 传统 HTTP Server (自建服务器) |
@@ -88,7 +88,7 @@
 
 | 能力 | 说明 | 状态 |
 |---|---|---|
-| 多 Agent 对话 | LangGraph 驱动，Router → Editor/Flow/Page/General | ✅ |
+| 多智能体 对话 | LangGraph 驱动，Router → Editor/Flow/Page/General | ✅ |
 | SSE 流式输出 | thinking/text/tool_call/schema/flow/diff 事件 | ✅ |
 | HITL 中断-恢复 | 操作需确认时暂停，用户确认后继续 | ✅ |
 | RAG 语义搜索 | BGE-M3 向量嵌入（SiliconFlow 托管）+ 余弦相似度检索 + 关键词降级 | ✅ |
@@ -150,5 +150,5 @@
 1. **分层清晰**: 路由 → 中间件 → 模型，职责分明
 2. **多租户原生**: 从中间件到模型层的全链路租户隔离
 3. **事件驱动**: EventBus 解耦 Schema 发布、表单提交、Webhook 触发
-4. **AI-First**: LangGraph 多 Agent 架构，支持流式输出和人机协作
+4. **AI-First**: LangGraph 多智能体 架构，支持流式输出和人机协作
 5. **ObjectId 主键**: 所有模型使用 MongoDB 原生 ObjectId，数据引用一致性好

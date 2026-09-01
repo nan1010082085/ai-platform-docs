@@ -1,4 +1,4 @@
-# 插件 Registry
+# 插件注册表
 
 插件中心的**注册表**机制，管理 Expert / Skill / Tool / MCP 四类插件的发现、加载与热重载。
 
@@ -6,7 +6,7 @@
 
 ```
 ┌─────────────────────────────────────────────────┐
-│                 Plugin Registry                  │
+│                 插件注册表                  │
 ├──────────┬──────────┬──────────┬─────────────────┤
 │  Expert  │   Skill  │   Tool   │   MCP Server    │
 ├──────────┴──────────┴──────────┴─────────────────┤
@@ -68,8 +68,8 @@ kill -HUP $(pgrep -f "dist/index.js")
 | 文档 | 说明 |
 |------|------|
 | [插件中心总览](./plugin.md) | 架构、配置、生产清单、运行时、CLI |
-| [Skill 拼装规范](./extend/skill-assembly-spec) | Skill 组装技术规范 |
-| [Pack Spec v1](./extend/pack-spec-v1) | 插件打包规范 |
+| [技能拼装规范](./extend/skill-assembly-spec) | 技能组装技术规范 |
+| [打包规范 v1](./extend/pack-spec-v1) | 插件打包规范 |
 | [第三方插件指南](./extend/third-party-plugin-guide) | 外部开发者接入 |
 | [MCP 协议](./mcp) | Model Context Protocol Server 接入 |
-| [Workflow Open API](./design/workflow-open-api) | 工作流对外开放 API |
+| [工作流开放 API](./design/workflow-open-api) | 工作流对外开放 API |

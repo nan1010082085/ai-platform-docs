@@ -1,7 +1,7 @@
-# Workflow Open API 集成指南
+# 工作流开放 API 集成指南
 
-> 面向三方系统的 Workflow 集成文档：通过 Open API 触发已发布工作流、轮询结果、接收回调。
-> 关联：[Workflow 模板 RFC](/extend/workflow-template-rfc)
+> 面向三方系统的 工作流集成文档：通过 Open API 触发已发布工作流、轮询结果、接收回调。
+> 关联：[工作流模板 RFC](/extend/workflow-template-rfc)
 
 ---
 
@@ -277,7 +277,7 @@ app.post('/wf-callback', (req, res) => {
 
 ## 十一、相关文档
 
-- [Workflow 模板 RFC](/extend/workflow-template-rfc) - 模板注册与分发机制
-- [Workflow 变量文档](/extend/workflow-variables) - `$input` / `$node` / `$conversation` 解析规则
+- [工作流模板 RFC](/extend/workflow-template-rfc) - 模板注册与分发机制
+- [工作流变量文档](/extend/workflow-variables) - `$input` / `$node` / `$conversation` 解析规则
 - [自定义模型接入](/extend/custom-models) - 私有模型网关配置
-- [Skill 作者手册](/extend/skill-author-guide) - Skill 打包与分发
+- [技能作者手册](/extend/skill-author-guide) - Skill 打包与分发

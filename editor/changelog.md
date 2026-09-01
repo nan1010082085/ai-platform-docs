@@ -57,7 +57,7 @@ title: 更新日志
 
 ### E3 开放生态
 
-- SchemaType 注册式 + createWidgetPlugin + 第三方 Widget 指南
+- SchemaType 注册式 + createWidgetPlugin + 第三方控件 指南
 - 脚手架/市场因无外部消费者从 backlog 移除
 
 ## 度量基线

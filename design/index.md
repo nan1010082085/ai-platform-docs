@@ -56,7 +56,7 @@ docs 独立，汇聚全平台文档
 
 ## 相关文档
 
-- [AI 平台架构](/ai/architecture) — 双引擎架构（Chat LangGraph + Workflow DAG）
-- [Editor 架构](/editor/architecture) — Widget 体系、Store 设计、画布系统
+- [AI 平台架构](/ai/architecture) — 双引擎架构（对话 LangGraph + 智能体工作流 DAG）
+- [Editor 架构](/editor/architecture) — 控件体系、状态库设计、画布系统
 - [Flow 架构](/flow/architecture) — BPMN 设计器、FlowEngine、flow-shared 边界
 - [Server 能力清单](/server/capabilities) — 后端技术栈与功能矩阵

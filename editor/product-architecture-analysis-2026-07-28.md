@@ -57,7 +57,7 @@
 - 视口剔除（useViewportCulling）优化大屏性能
 - 模式切换自动适配 Widget 可用性
 
-#### ✅ 高可用 Widget 架构
+#### ✅ 高可用 控件架构
 - WidgetStateShell 统一 loading/empty/error 状态
 - WidgetErrorBoundary 崩溃隔离，单 Widget 不拖垮画布
 - useWidgetData 统一数据层（重试/SWR/去重/乐观更新）
@@ -144,7 +144,7 @@
 | 能力 | 状态 | 说明 |
 |------|------|------|
 | SchemaType 注册式 | ✅ | 无需改联合类型 |
-| createWidgetPlugin | ✅ | 第三方 Widget 插件 |
+| createWidgetPlugin | ✅ | 第三方控件 插件 |
 | 大屏主题 | ✅ | 深色/科技感预设 |
 | 多分辨率适配 | ✅ | contain/fit-width/fit-height/stretch |
 | 图表钻取联动 | ✅ | filter/drilldown/highlight |
@@ -267,7 +267,7 @@
 ### 5.1 短期拓展（1-2 周）
 
 1. **Widget 市场 UI**
-   - 浏览/搜索/安装第三方 Widget
+   - 浏览/搜索/安装第三方控件
    - 基于 `createWidgetPlugin` 机制
    - 预计工作量: 3-5 天
 
@@ -352,7 +352,7 @@
 | Bundle 优化引入回归 | 功能异常 | 中 | 充分测试 + 灰度发布 |
 | i18n 工作量超预期 | 进度延迟 | 高 | 分批实施，优先高频 |
 | qiankun 限制 code split | 性能瓶颈 | 高 | 评估 Module Federation 替代 |
-| 第三方 Widget 兼容性 | 生态碎片 | 中 | 严格 Plugin API + 版本管理 |
+| 第三方控件 兼容性 | 生态碎片 | 中 | 严格 Plugin API + 版本管理 |
 
 ---
 
@@ -361,7 +361,7 @@
 Editor 已是一个**功能完整、架构成熟**的可视化搭建平台：
 
 **核心优势**:
-- Schema 驱动 + 双画布模式 + 高可用 Widget 架构
+- Schema 驱动 + 双画布模式 + 高可用 控件架构
 - 1954 测试全绿，vue-tsc 生产错误清零
 - 87 类 Widget + 四大配置系统 + 事件引擎
 
@@ -450,7 +450,7 @@ Editor 已是一个**功能完整、架构成熟**的可视化搭建平台：
 ### 立即可做（无需跨项目协调）
 1. **Widget config i18n**: 将高频 Widget 的 config 改为函数模式，直接使用 t()
 2. **测试覆盖率**: 为新增的翻译层添加单元测试
-3. **文档完善**: 为 Widget 开发指南添加 i18n 章节
+3. **文档完善**: 为 控件开发指南添加 i18n 章节
 
 ### 需要跨项目协调
 1. **Element Plus 按需引入**: 修改 shared/platform-shared/config/element.ts

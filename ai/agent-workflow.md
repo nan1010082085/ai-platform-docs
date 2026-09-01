@@ -1,8 +1,8 @@
-# Agent Workflow 编排系统
+# 智能体工作流编排系统
 
 > n8n 风格可视化 DAG 工作流：设计、发布、执行、监控
 
-**与 Chat LangGraph 的区别**：Chat 是对话式单次请求的多 Agent 协作；Workflow 是可复用的自动化编排，支持 Webhook、多轮对话、文档管道等场景。两者共享 MCP 工具注册表、**插件中心**（`server/config/plugins/`）与 ai-shared 类型。详见 [plugin.md](./plugin.md)。
+**与 Chat LangGraph 的区别**：Chat 是对话式单次请求的多智能体协作；工作流是可复用的自动化编排，支持 Webhook、多轮对话、文档管道等场景。两者共享 MCP 工具注册表、**插件中心**（`server/config/plugins/`）与 ai-shared 类型。详见 [plugin.md](./plugin.md)。
 
 **Chat 选工作流时**：助手消息展示节点时间线 + LLM 流式正文（`workflow:event` WebSocket 推送）。术语见 [product/workflow-terminology.md](./product/workflow-terminology.md)。
 
@@ -138,13 +138,11 @@ HTTP 外部触发，发布时自动生成 `webhookSecret`。
 
 | 节点类型 | 配置 | 说明 |
 |----------|------|------|
-| `tool` | `toolName` | Registry 工具名（MCP `schema__search` 或 LangGraph 专有 `update_schema` 等） |
+| `tool` | `toolName` | 注册表工具名（MCP `schema__search` 或 LangGraph 专有 `update_schema` 等） |
 
-工具名权威定义见 `shared/platform-shared/ai/toolNames.ts`。Palette 工具列表来自插件 Registry。
+工具名权威定义见 `shared/platform-shared/ai/toolNames.ts`。Palette 工具列表来自插件注册表。
 
 ### 2.5 对话智能节点（Phase J）
-
-> 详细规格见 [langgraph-workflow-nodes-roadmap.md](./product/archive/langgraph-workflow-nodes-roadmap.md)
 
 将 Chat LangGraph 黑盒中的对话智能层映射为白盒 Workflow 节点，共享 `server/src/ai/runtime/*` 运行时。
 

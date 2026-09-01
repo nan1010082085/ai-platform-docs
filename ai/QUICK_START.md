@@ -112,8 +112,8 @@ open http://localhost:5300
 
 ## 下一步
 
-- [AI 对话 Agent](./agent) - 了解多专家对话
-- [Agent Workflow](./agent-workflow) - 可视化工作流编排
+- [AI 对话智能体](./agent) - 了解多专家对话
+- [智能体工作流](./agent-workflow) - 可视化工作流编排
 - [RAG 知识库](./rag-tool-mcp-boundary) - 向量检索
 - [插件中心](./plugin) - 扩展 AI 能力
 

@@ -1,4 +1,4 @@
-# Skill 作者手册
+# 技能作者手册
 
 > 本文档面向需要编写、打包和分发 Skill 的开发者。Skill 是插件中心四层能力模型（MCP / Tool / Skill / Expert）中的指令层，负责向 Expert 的 system prompt 注入可复用的行为规范。
 

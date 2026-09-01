@@ -37,11 +37,11 @@ pnpm build
 ## 核心能力
 
 - **Schema CRUD + 发布 + 版本对比** — 表单/表格全生命周期管理
-- **AI 对话 Agent + Agent Workflow** — LangGraph 多专家对话 + DAG 工作流执行引擎
+- **AI 对话智能体 + 智能体工作流** — LangGraph 多专家对话 + DAG 工作流执行引擎
 - **RAG 知识库** — 文档向量化、检索、重排、混合加权融合
 - **插件中心** — Expert / Skill / Tool / MCP 配置化，热重载
 - **Telemetry 埋点** — `/api/telemetry` 端点
-- **Workflow Open API** — 触发 / 轮询 / 回调三种集成模式
+- **工作流开放 API** — 触发 / 轮询 / 回调三种集成模式
 - **RBAC 权限** — 50+ 权限码、角色继承、菜单权限
 - **多租户隔离** — 自动 tenantId 注入，数据完全隔离
 
@@ -61,7 +61,7 @@ pnpm build
 
 ## 相关文档
 
-- [AI 平台](/ai/) — 对话 Agent、工作流、RAG、插件
-- [编辑器](/editor/) — 表单设计器、Widget 体系
+- [AI 平台](/ai/) — 对话智能体、工作流、RAG、插件
+- [编辑器](/editor/) — 表单设计器、控件体系
 - [流程设计器](/flow/) — BPMN 流程引擎
 - [扩展开发](/extend/) — 自定义模型、Skill、模板

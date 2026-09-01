@@ -42,9 +42,7 @@ ai/docs/
 │   └── runtime.md
 ├── product/                     # 产品规划
 │   ├── backlog.md               # 活跃缺口与进度
-│   ├── archive/                 # 已完成 Phase 归档
-│   ├── open-platform-roadmap.md
-│   └── open-source-iteration.md
+│   └── workflow-terminology.md  # 术语表
 └── extend/                      # 扩展指南
     ├── skill-author-guide.md
     ├── workflow-template-rfc.md
@@ -96,7 +94,7 @@ ai/docs/
 ### 4.3 命名规范
 
 - 文件名：小写 + 连字符（`agent-workflow.md`）
-- 标题：首字母大写（`## Agent Workflow`）
+- 标题：中文优先（`## 智能体工作流`），对照见 [中文术语对照](/guide/terminology)
 - 代码：使用反引号（`pluginExpert`）
 
 ---

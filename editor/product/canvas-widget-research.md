@@ -188,4 +188,4 @@ Free 画布
 - [editor/deep-analysis-2026-07-29.md](./deep-analysis-2026-07-29.md) - editor 深耕分析
 - [editor/architecture.md](../architecture.md) - 架构设计
 - [editor/canvas-system.md](../canvas-system.md) - 双画布系统
-- [editor/widgets.md](../widgets.md) - Widget 体系
+- [editor/widgets.md](../widgets.md) - 控件体系

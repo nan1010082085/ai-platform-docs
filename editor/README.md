@@ -12,7 +12,7 @@
 |--------|--------|
 | 了解产品能做什么 | [能力总览](./capabilities.md) |
 | 理解架构与分层 | [架构文档](./architecture.md) |
-| 新做一个 Widget | [Widget 开发](./widget-development.md) · [第三方指南](./third-party-widget-guide.md) |
+| 新做一个 Widget | [控件开发](./widget-development.md) · [第三方指南](./third-party-widget-guide.md) |
 | 配属性面板 | [属性面板](./property-panel.md) |
 | 接 qiankun / 嵌入发布页 | [qiankun](./qiankun-integration.md) · [实例与发布设计](./design/instances-publish.md) |
 
@@ -31,13 +31,13 @@
 
 | 文档 | 说明 |
 |------|------|
-| [widget-development.md](./widget-development.md) | 内置 Widget 开发步骤 |
+| [widget-development.md](./widget-development.md) | 内置 控件开发步骤 |
 | [third-party-widget-guide.md](./third-party-widget-guide.md) | `createWidgetPlugin` 扩展 |
 | [property-panel.md](./property-panel.md) | propertyPanel 声明与编辑器 |
-| [widgets.md](./widgets.md) | Widget 体系总览 |
+| [widgets.md](./widgets.md) | 控件体系总览 |
 | [canvas-system.md](./canvas-system.md) | 双画布系统 |
 | [config-systems.md](./config-systems.md) | 四大配置系统 |
-| [store-design.md](./store-design.md) | Store 设计 |
+| [store-design.md](./store-design.md) | 状态库设计 |
 
 ### 集成与嵌入
 

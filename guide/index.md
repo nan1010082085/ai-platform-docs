@@ -8,11 +8,11 @@ Schema Platform 是一个**表单/流程垂直场景的 AI 应用平台**。
 
 ## 核心能力
 
-- 🤖 **AI 对话 Agent** - LangGraph 多专家对话，需求分析、任务规划、工具调用
-- 🔧 **Agent Workflow** - 可视化 DAG 工作流编排，32 种节点类型
+- 🤖 **AI 对话智能体** - LangGraph 多专家对话，需求分析、任务规划、工具调用
+- 🔧 **智能体工作流** - 可视化 DAG 工作流编排，32 种节点类型
 - 📚 **RAG 知识库** - 向量检索 + Rerank + 混合检索
 - 📊 **评测体系** - 离线评测，数据集 + 版本对比
-- 🔌 **插件中心** - Expert/Skill/Tool/MCP 配置，热重载
+- 🔌 **插件中心** - 专家/技能/工具/MCP 配置，热重载
 - 🏭 **32 个行业模板** - 10 个分类，DB 存储 + UI 管理
 
 ## 快速开始
@@ -57,8 +57,9 @@ cd ai/app && pnpm dev    # 端口 5300
 
 ## 文档导航
 
-- [AI 平台](/ai/) - 对话 Agent、工作流、RAG、插件 · [更新日志](/ai/changelog)
-- [编辑器](/editor/) - 表单设计器、Widget 体系 · [更新日志](/editor/changelog)
+- [AI 平台](/ai/) - 对话智能体、工作流、RAG、插件 · [更新日志](/ai/changelog)
+- [编辑器](/editor/) - 表单设计器、控件体系 · [更新日志](/editor/changelog)
 - [流程设计器](/flow/) - BPMN 流程引擎 · [更新日志](/flow/changelog)
 - [后端服务](/server/) - API、数据库、模型 · [更新日志](/server/changelog)
-- [扩展开发](/extend/) - 自定义模型、Skill、模板
+- [扩展开发](/extend/) - 自定义模型、技能、模板
+- [中文术语对照](/guide/terminology) - Agent / Registry 等英文术语的中文写法

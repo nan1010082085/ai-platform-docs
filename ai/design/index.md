@@ -8,7 +8,7 @@
 |------|------|
 | [信息架构与布局](./overview.md) | 导航、嵌入模式、路由、全局布局 |
 | [AI 对话](./chat.md) | Chat 页面、侧边栏模式、LangGraph / Workflow 双后端 |
-| [Agent 编排](./workflows.md) | 列表、设计器、执行监控、Webhook |
+| [智能体编排](./workflows.md) | 列表、设计器、执行监控、Webhook |
 | [RAG 知识库](./rag.md) | 索引管理、检索测试、Chat 内联 RAG |
 | [**运行时架构**](./runtime.md) | **服务端执行图、数据流、Checkpoint、WebSocket 进度** |
 
@@ -29,7 +29,7 @@
 - **会话管理**：多轮对话、上下文窗口、历史记录
 - **工具调用**：内置工具 + 自定义工具注册
 
-### Agent Workflow
+### 智能体工作流
 
 - **DAG 工作流编排**：32 种节点类型
 - **可视化设计器**：三栏布局（面板 / 画布 / 属性）
@@ -76,7 +76,7 @@ AiLayout (200px 侧栏，嵌入时隐藏)
 | 后端 | 说明 | 适用场景 |
 |------|------|----------|
 | LangGraph | 多专家对话、状态图、工具调用 | 开放式对话、需求分析 |
-| Workflow DAG | 可视化工作流、节点编排 | 固定流程、自动化任务 |
+| 智能体工作流 DAG | 可视化工作流、节点编排 | 固定流程、自动化任务 |
 
 用户可在设置中切换后端，输入区 UI 保持一致。
 
@@ -86,8 +86,8 @@ AiLayout (200px 侧栏，嵌入时隐藏)
 |------|------|
 | [AI 平台概览](/ai/) | 核心能力、快速开始 |
 | [架构设计](/ai/architecture) | 双引擎架构、系统概览 |
-| [Agent 对话](/ai/agent) | LangGraph 多专家对话 |
-| [Agent Workflow](/ai/agent-workflow) | 可视化工作流编排 |
+| [智能体对话](/ai/agent) | LangGraph 多专家对话 |
+| [智能体工作流](/ai/agent-workflow) | 可视化工作流编排 |
 | [RAG 知识库](/ai/rag-tool-mcp-boundary) | 向量检索 + Rerank |
 | [插件中心](/ai/plugin) | 插件体系总览 |
-| [Runtime 设计](./runtime.md) | 服务端执行图、数据流 |
+| [运行时设计](./runtime.md) | 服务端执行图、数据流 |

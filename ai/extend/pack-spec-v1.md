@@ -1,4 +1,4 @@
-# Plugin Pack Specification v1
+# 插件打包规范 v1
 
 > 本文档定义插件包（Plugin Pack）的文件结构、manifest 规范、签名机制与分发流程。
 
@@ -193,7 +193,7 @@ pnpm plugin:install --file <pack.tgz> --force
 
 ## 六、版本兼容性
 
-| Pack Spec 版本 | manifest.version | 说明 |
+| 打包规范 版本 | manifest.version | 说明 |
 |----------------|------------------|------|
 | v1 | `1` | 当前版本，支持签名 |
 

@@ -12,7 +12,7 @@
 | v2 需求分析 | `requirement_analysis_*`、`requirement_confirm_*` | ✅ 已实现 |
 | v2 任务规划 | `task_plan_*` | ✅ 已实现 |
 | v2 思考推理 | `thinker_*` | ✅ 对话流已实现（`chatStreamRunner` 发射，前端写入 thinking） |
-| v2 质量检查 | `quality_check_*` | ✅ 对话流已实现；工作流图节点仍见 [reserved-events-decision.md](./product/archive/reserved-events-decision.md) |
+| v2 质量检查 | `quality_check_*` | ✅ 对话流已实现；工作流图节点按节点类型落地 |
 
 > **Chat LangGraph**：`chat:event`（WebSocket）。  
 > **Chat × Workflow**：REST 启动执行 + `workflow:event`（WebSocket 推送，见 §二）。
@@ -36,7 +36,7 @@ Server                              Client
    │     { threadId, confirmed }       │
 ```
 
-## 二、Agent Workflow 执行事件（Chat）
+## 二、智能体工作流执行事件（Chat）
 
 Chat 选择已发布工作流时，启动仍走 REST，进度通过 WebSocket 推送：
 
@@ -617,7 +617,7 @@ interface ResumePayload {
 
 ## 九、思考与质检事件
 
-> v2 事件，对话流已实现（`chatStreamRunner` 发射）；工作流图节点中的保留事件另见 [reserved-events-decision.md](./product/archive/reserved-events-decision.md)。
+> v2 事件，对话流已实现（`chatStreamRunner` 发射）；工作流图节点按对应节点类型落地。
 
 ### 9.1 thinker_start
 

@@ -1,4 +1,4 @@
-# Workflow 模板注册机制 RFC
+# 工作流模板注册机制 RFC
 
 > 状态：Draft
 > 作者：schema-platform

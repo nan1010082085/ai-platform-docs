@@ -24,7 +24,7 @@
 
 ## 核心系统
 
-### Widget 体系
+### 控件体系
 
 - **注册机制**：`registerWidget` / `createWidgetPlugin` 注册式扩展
 - **Schema 工厂**：`create(id)` 生成初始 Schema
@@ -38,11 +38,11 @@
 - **对齐辅助**：智能对齐线、网格吸附
 - **缩放平移**：画布缩放、平移、适配屏幕
 
-### Store 设计
+### 状态库设计
 
 | Store | 职责 |
 |-------|------|
-| `widgetStore` | Widget 数据真源、Schema CRUD |
+| `widgetStore` | 控件数据真源、Schema CRUD |
 | `editorStore` | 交互状态、选择、immer 历史 |
 | `boardStore` | 画布状态、缩放、平移 |
 | `apiStore` | 持久化、保存、加载 |
@@ -86,10 +86,10 @@ AppLayout (侧栏，嵌入时隐藏)
 
 | 文档 | 说明 |
 |------|------|
-| [Widget 体系](/editor/widgets) | Widget 架构、注册机制 |
-| [Widget 开发指南](/editor/widget-development) | 内置 Widget 开发规范 |
-| [第三方 Widget](/editor/third-party-widget-guide) | 外部 Widget 扩展 |
+| [控件体系](/editor/widgets) | 控件架构、注册机制 |
+| [控件开发指南](/editor/widget-development) | 内置 控件开发规范 |
+| [第三方控件](/editor/third-party-widget-guide) | 外部 Widget 扩展 |
 | [双画布系统](/editor/canvas-system) | 画布架构、布局模式 |
 | [四大配置系统](/editor/config-systems) | 配置系统设计 |
 | [属性面板](/editor/property-panel) | Widget 属性配置 UI |
-| [Store 设计](/editor/store-design) | Widget 数据存储 |
+| [状态库设计](/editor/store-design) | 控件数据存储 |

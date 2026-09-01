@@ -1,10 +1,10 @@
-# Store 设计
+# 状态库设计
 
 7 个 Pinia Store，各司其职。
 
 ## useWidgetStore（`stores/widget.ts`）
 
-Widget 数据的唯一 source of truth。
+控件数据的唯一 source of truth。
 
 **职责**：
 - Widget[] 的 CRUD（addWidget、removeWidget、updateWidget）

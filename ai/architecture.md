@@ -1,6 +1,6 @@
 # AI 架构文档
 
-> `ai/` 项目整体架构：Chat LangGraph 与 Agent Workflow 双引擎。  
+> `ai/` 项目整体架构：Chat LangGraph 与智能体工作流双引擎。  
 > **三能力关系、JWT、凭证、开源小平台定位**见 [platform.md](./platform.md)。
 
 **文档版本**：v7 (2026-07-13) — 去除旧架构引用，对齐当前实现
@@ -35,7 +35,7 @@ ai/
 
 平台运行两套并行的 Agent 引擎，共享 MCP 工具注册表与 `@schema-platform/platform-shared/ai`，但执行模型不同：
 
-| 维度 | Chat LangGraph | Agent Workflow DAG |
+| 维度 | Chat LangGraph | 智能体工作流 DAG |
 |------|----------------|-------------------|
 | 入口 | AiChatView、editor/flow 嵌入 | 设计器、REST API、Webhook、Chat 选工作流 |
 | 引擎 | `server/src/ai/graph/graph.ts` | `server/src/ai/services/agentWorkflowExecutor.ts` |
@@ -54,7 +54,7 @@ ai/
                            ▲                    ▲
                            │                    │
               ┌────────────┴──────┐   ┌────────┴────────────┐
-              │  Chat LangGraph   │   │  Agent Workflow     │
+              │  Chat LangGraph   │   │  智能体工作流     │
               │  (对话式生成)      │   │  (可视化编排)        │
               └────────────┬──────┘   └────────┬────────────┘
                            │                    │
@@ -134,7 +134,7 @@ START
 
 ---
 
-## 四、Agent Workflow 架构（概要）
+## 四、智能体工作流架构（概要）
 
 可视化 DAG 编排系统，详见 [agent-workflow.md](./agent-workflow.md)。
 
@@ -155,7 +155,7 @@ START
 | 工具 | `tool`（`toolName` → Registry / MCP） |
 | 逻辑 | `if`、`hitl`、`end` |
 
-Palette 专家与工具条目来自插件 Registry（`usePluginRegistry`），非硬编码 `agent-editor` / `tool-mcp-*`。
+Palette 专家与工具条目来自插件注册表（`usePluginRegistry`），非硬编码 `agent-editor` / `tool-mcp-*`。
 
 ### 4.3 内置模板（16 个）
 

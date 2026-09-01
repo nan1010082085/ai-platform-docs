@@ -24,7 +24,7 @@
 }
 ```
 
-通过插件中心「导入」或热重载目录加载。启用后可在对话 Agent 选择器中出现。
+通过插件中心「导入」或热重载目录加载。启用后可在对话智能体 选择器中出现。
 
 ## 三、Tool 命名规范
 
@@ -38,7 +38,7 @@
 2. 在 `toolNames.ts` 增加常量与显示标签
 3. 在 Expert / Skill 白名单中引用
 
-## 四、Skill 组装
+## 四、技能组装
 
 Skill 可声明依赖的 Tools 与 Prompt 片段，由 Expert 组装。详见 [skill-assembly-spec.md](../extend/skill-assembly-spec.md)。
 

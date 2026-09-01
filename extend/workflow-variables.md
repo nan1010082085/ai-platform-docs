@@ -360,7 +360,7 @@ Skill（指令层）
 
 1. **模板变量先解析** — 节点的 `prompt` 字段中的 `{{$input.xxx}}`、`{{$node.xxx}}` 等变量先被替换为实际值
 2. **Expert 被调度** — 解析后的 prompt 作为用户消息传入 Expert
-3. **Skill 拼装 system prompt** — Expert 的 system prompt 由 base prompt + 挂载的 Skill content 组装而成
+3. **技能拼装 system prompt** — Expert 的 system prompt 由 base prompt + 挂载的 Skill content 组装而成
 
 ```text
 ┌─ 工作流模板解析 ─────────────────────┐

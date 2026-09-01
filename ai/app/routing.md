@@ -1,8 +1,8 @@
 ---
-title: AI App 路由与页面
+title: AI 应用路由与页面
 ---
 
-# AI App 路由与页面
+# AI 应用路由与页面
 
 > `ai/app/src/router.ts` 完整路由表与守卫逻辑（`createAiRouter`）。
 
@@ -69,6 +69,6 @@ title: AI App 路由与页面
 
 ## 五、相关文档
 
-- [App 概览](./index) — 功能与嵌入模式
+- [应用概览](./index) — 功能与嵌入模式
 - [架构与分层](./architecture) — 目录结构与各层清单
 - [设计概览](../design/overview) — 信息架构与导航线框

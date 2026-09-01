@@ -1,14 +1,14 @@
-# Agent 详细说明
+# 智能体详细说明
 
 > Chat LangGraph 专家 Agent 的类型、职责、执行流程和配置
 
-> **注意**：本文档描述 **Chat 对话引擎**（`server/src/ai/graph/graph.ts`）。专家统一经 **`pluginExpert`** + 插件 Registry 执行；工作流侧见 [agent-workflow.md](./agent-workflow.md) 的 `expert` / `agent-intent` 节点。
+> **注意**：本文档描述 **Chat 对话引擎**（`server/src/ai/graph/graph.ts`）。专家统一经 **`pluginExpert`** + 插件注册表 执行；工作流侧见 [agent-workflow.md](./agent-workflow.md) 的 `expert` / `agent-intent` 节点。
 
 **文档版本**：v2 (2026-07-13) — 对齐基线 1.0：统一 pluginExpert、去除旧 Agent 类
 
 ---
 
-## 一、Agent 架构
+## 一、智能体架构
 
 ### 1.1 基线 1.0：统一专家路径
 
@@ -120,7 +120,7 @@ START
 
 ---
 
-## 三、Agent 配置
+## 三、智能体配置
 
 ### 3.1 专家配置（插件 JSON）
 
@@ -161,7 +161,7 @@ LLM 配置通过环境变量和模型管理模块统一管理：
 
 ---
 
-## 四、Agent 协作
+## 四、智能体协作
 
 ### 4.1 协作机制
 
@@ -216,7 +216,7 @@ pluginExpert (currentAgent=flow) 处理任务
 
 ---
 
-## 五、Agent 状态
+## 五、智能体状态
 
 ### 5.1 AgentStateAnnotation
 

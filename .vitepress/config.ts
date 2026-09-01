@@ -32,7 +32,6 @@ export default withMermaid(defineConfig({
     'ua/**',
     // 内部文档
     'ai/product/**',
-    'ai/migration-plan.md',
     'ai/plugin-roadmap.md',
     'ai/workflow-p2-tasks.md',
     'ai/workflow-regression.md',
@@ -233,9 +232,19 @@ export default withMermaid(defineConfig({
       { text: '编辑器', link: '/editor/' },
       { text: '流程设计器', link: '/flow/' },
       { text: '扩展开发', link: '/extend/' },
+      { text: '术语对照', link: '/guide/terminology' },
     ],
 
     sidebar: {
+      '/guide/': [
+        {
+          text: '指南',
+          items: [
+            { text: '简介', link: '/guide/' },
+            { text: '中文术语对照', link: '/guide/terminology' },
+          ],
+        },
+      ],
       '/editor/': [
         {
           text: '可视化编辑器',
@@ -249,13 +258,13 @@ export default withMermaid(defineConfig({
         {
           text: '核心系统',
           items: [
-            { text: 'Widget 体系', link: '/editor/widgets' },
-            { text: 'Widget 开发指南', link: '/editor/widget-development' },
-            { text: '第三方 Widget', link: '/editor/third-party-widget-guide' },
+            { text: '控件体系', link: '/editor/widgets' },
+            { text: '控件开发指南', link: '/editor/widget-development' },
+            { text: '第三方控件', link: '/editor/third-party-widget-guide' },
             { text: '双画布系统', link: '/editor/canvas-system' },
             { text: '四大配置系统', link: '/editor/config-systems' },
             { text: '属性面板', link: '/editor/property-panel' },
-            { text: 'Store 设计', link: '/editor/store-design' },
+            { text: '状态库设计', link: '/editor/store-design' },
           ],
         },
         {
@@ -288,11 +297,11 @@ export default withMermaid(defineConfig({
         {
           text: '核心功能',
           items: [
-            { text: 'AI 对话 Agent', link: '/ai/agent' },
-            { text: 'Agent Workflow', link: '/ai/agent-workflow' },
+            { text: 'AI 对话智能体', link: '/ai/agent' },
+            { text: '智能体工作流', link: '/ai/agent-workflow' },
             { text: 'RAG 知识库', link: '/ai/rag-tool-mcp-boundary' },
             { text: '插件中心', link: '/ai/plugin' },
-            { text: '插件 Registry', link: '/ai/plugin-registry' },
+            { text: '插件注册表', link: '/ai/plugin-registry' },
             { text: 'MCP 协议', link: '/ai/mcp' },
             { text: '工具系统', link: '/ai/tool' },
             { text: '专家扩展指南', link: '/ai/expert-extension-guide' },
@@ -300,9 +309,9 @@ export default withMermaid(defineConfig({
           ],
         },
         {
-          text: 'AI App 前端',
+          text: 'AI 应用前端',
           items: [
-            { text: 'App 概览', link: '/ai/app/' },
+            { text: '应用概览', link: '/ai/app/' },
             { text: '架构与分层', link: '/ai/app/architecture' },
             { text: '路由与页面', link: '/ai/app/routing' },
           ],
@@ -313,10 +322,10 @@ export default withMermaid(defineConfig({
             { text: '平台定位', link: '/ai/platform' },
             { text: 'ai-shared API', link: '/ai/ai-shared' },
             { text: '设计概览', link: '/ai/design/' },
-            { text: 'Chat 设计', link: '/ai/design/chat' },
+            { text: '对话设计', link: '/ai/design/chat' },
             { text: 'RAG 设计', link: '/ai/design/rag' },
-            { text: 'Runtime 设计', link: '/ai/design/runtime' },
-            { text: 'Workflow Open API', link: '/ai/design/workflow-open-api' },
+            { text: '运行时设计', link: '/ai/design/runtime' },
+            { text: '工作流开放 API', link: '/ai/design/workflow-open-api' },
           ],
         },
         {
@@ -333,8 +342,8 @@ export default withMermaid(defineConfig({
         {
           text: '扩展开发',
           items: [
-            { text: 'Skill 拼装规范', link: '/ai/extend/skill-assembly-spec' },
-            { text: 'Pack Spec v1', link: '/ai/extend/pack-spec-v1' },
+            { text: '技能拼装规范', link: '/ai/extend/skill-assembly-spec' },
+            { text: '打包规范 v1', link: '/ai/extend/pack-spec-v1' },
             { text: '第三方插件指南', link: '/ai/extend/third-party-plugin-guide' },
             { text: '插件脚手架', link: '/ai/extend/plugin-scaffold/' },
           ],
@@ -346,27 +355,10 @@ export default withMermaid(defineConfig({
           items: [
             { text: '概览', link: '/extend/' },
             { text: '自定义模型', link: '/extend/custom-models' },
-            { text: 'Skill 作者手册', link: '/extend/skill-author-guide' },
-            { text: 'Workflow 模板 RFC', link: '/extend/workflow-template-rfc' },
-            { text: 'Workflow 集成指南', link: '/extend/workflow-integration' },
-            { text: 'Workflow 变量', link: '/extend/workflow-variables' },
-          ],
-        },
-      ],
-      '/server/': [
-        {
-          text: '后端服务',
-          items: [
-            { text: '概览', link: '/server/' },
-            { text: '更新日志', link: '/server/changelog' },
-            { text: '能力清单', link: '/server/capabilities' },
-            { text: 'API 参考', link: '/server/api' },
-            { text: 'API 详细文档', link: '/server/api-reference' },
-            { text: '数据库设计', link: '/server/database' },
-            { text: '数据模型', link: '/server/models' },
-            { text: 'RAG 架构', link: '/server/rag-architecture' },
-            { text: '插件中心', link: '/server/plugin-center' },
-            { text: '部署与运维', link: '/server/deployment' },
+            { text: '技能作者手册', link: '/extend/skill-author-guide' },
+            { text: '工作流模板 RFC', link: '/extend/workflow-template-rfc' },
+            { text: '工作流集成指南', link: '/extend/workflow-integration' },
+            { text: '工作流变量', link: '/extend/workflow-variables' },
           ],
         },
       ],

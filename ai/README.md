@@ -34,12 +34,12 @@ cd shared/platform-shared && pnpm build  # 构建共享包（含 AI 类型/事�
 - [架构总览](./architecture.md) - 双引擎 + 基线 1.0（pluginExpert、expert/tool 节点、invoke-only）
 - [能力平台定位](./platform.md) - editor / flow / ai 一体、JWT、双 Key
 
-### Chat LangGraph
+### 对话 LangGraph
 
-- [Agent 系统](./agent.md) - 5 种专家 Agent、执行流程、协作机制
+- [智能体系统](./agent.md) - 5 种专家 Agent、执行流程、协作机制
 - [事件协议](./events.md) - v1/v2 事件类型、WebSocket 传输、HITL
 
-### Agent Workflow
+### 智能体工作流
 
 - [工作流编排](./agent-workflow.md) - 节点参考、模板、执行引擎、REST API、设计器 UI
 
@@ -51,12 +51,12 @@ cd shared/platform-shared && pnpm build  # 构建共享包（含 AI 类型/事�
 ### 插件中心
 
 - [插件中心](./plugin.md) - 架构、配置、生产清单、CLI
-- [插件 Registry](./plugin-registry.md) - 插件注册表
+- [插件注册表](./plugin-registry.md) - 插件注册表
 - [第三方插件开发指南](./extend/third-party-plugin-guide.md) - Expert/Skill/Tool/MCP + 脚手架
 
-### AI App 前端
+### AI 应用前端
 
-- [App 概览](./app/) - `@ai-app` 前端应用：功能、运行与嵌入模式
+- [应用概览](./app/) - `@ai-app` 前端应用：功能、运行与嵌入模式
 - [架构与分层](./app/architecture.md) - 目录结构、Store/Composable/API 清单、插件适配层
 - [路由与页面](./app/routing.md) - 路由表与守卫逻辑
 
@@ -70,7 +70,7 @@ cd shared/platform-shared && pnpm build  # 构建共享包（含 AI 类型/事�
 - [设计文档索引](./design/) - 页面线框、Mermaid 交互流
 - [信息架构与布局](./design/overview.md) - 导航、嵌入模式、Store 关系
 - [AI 对话设计](./design/chat.md) - Chat / 侧边栏 / LangGraph vs Workflow
-- [Agent 编排设计](./design/workflows.md) - 设计器、执行监控、Webhook
-- [Workflow 开放 API](./design/workflow-open-api.md) - 已收敛至 invoke
+- [智能体编排设计](./design/workflows.md) - 设计器、执行监控、Webhook
+- [工作流开放 API](./design/workflow-open-api.md) - 已收敛至 invoke
 - [RAG 知识库设计](./design/rag.md) - 索引管理、检索测试、Chat 内联 RAG
 - [运行时架构](./design/runtime.md) - LangGraph / Workflow Executor / RAG 执行图

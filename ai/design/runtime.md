@@ -76,7 +76,7 @@ flowchart TB
 
 ### 双引擎运行时对比
 
-| 维度 | Chat LangGraph | Agent Workflow |
+| 维度 | Chat LangGraph | 智能体工作流 |
 |------|----------------|----------------|
 | 入口 | `chat:send`（WebSocket） | `POST .../execute` / Webhook |
 | 编排 | `graph.streamEvents()` | `executeAgentWorkflow()` while 循环 |
@@ -263,7 +263,7 @@ stateDiagram-v2
 
 ---
 
-## 三、Agent Workflow 运行时
+## 三、智能体工作流运行时
 
 ### 3.1 触发与异步执行
 

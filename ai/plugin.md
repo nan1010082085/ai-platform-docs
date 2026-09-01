@@ -1,9 +1,9 @@
 # 插件中心（Plugin Center）
 
 > **独立文档**：Expert / Skill / Tool / MCP 四层能力目录的配置、运行时、UI 与演进路线。  
-> Chat LangGraph 与 Agent Workflow **共用**同一 Registry。
+> Chat LangGraph 与智能体工作流 **共用**同一注册表。
 
-**相关**：[Expert 扩展指南](./expert-extension-guide.md) · [五项迭代完成记录](./product/archive/ai-five-phase-iteration.md) · [Workflow 开放 API](./design/workflow-open-api.md) · 服务端配置说明 `server/config/plugins/README.md`
+**相关**：[Expert 扩展指南](./expert-extension-guide.md) · [工作流开放 API](./design/workflow-open-api.md) · 服务端配置说明 `server/config/plugins/README.md`
 
 ---
 
@@ -231,8 +231,7 @@ kill -HUP $(pgrep -f "dist/index.js")   # 热重载 Registry
 
 | # | 项 | 状态 |
 |---|-----|------|
-| — | Phase F 能力层细化调研 | 见 [open-platform-roadmap.md §三](./product/open-platform-roadmap.md#三phase-f--能力层细化调研) |
-| — | Prompt 四层架构文档 `prompt-architecture.md` | 调研产出，待写 |
+| — | Prompt / 能力层扩展 | 按 [product/backlog.md](./product/backlog.md) 与插件化原则按需排期 |
 
 历史 PLG 项已全部完成，见上表「已完成能力」。
 

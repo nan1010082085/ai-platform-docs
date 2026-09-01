@@ -112,6 +112,6 @@ curl http://localhost:3001/api/ai/plugins | jq '.experts[] | select(.id == "my-e
 | 文档 | 说明 |
 |------|------|
 | [第三方插件指南](../third-party-plugin-guide) | Tool / Skill / MCP 详细开发指南 |
-| [Skill 拼装规范](../skill-assembly-spec) | Skill 组装技术规范 |
-| [Pack Spec v1](../pack-spec-v1) | 插件打包规范 |
+| [技能拼装规范](../skill-assembly-spec) | 技能组装技术规范 |
+| [打包规范 v1](../pack-spec-v1) | 插件打包规范 |
 | [插件中心](/ai/plugin) | 插件体系总览 |

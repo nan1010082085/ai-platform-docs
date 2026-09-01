@@ -421,4 +421,4 @@ echo "Build 产物大小: $(du -sh dist/ 2>/dev/null | cut -f1 || echo 'N/A')"
 | `docs/architecture.md` | 架构变化、新增 Store/Composable |
 | `docs/capabilities.md` | 能力状态、缺口清单 |
 | `docs/iteration-plan-v2.md` | 任务状态、监控指标 |
-| `docs/widget-development.md` | 新增 Widget 开发指南 |
+| `docs/widget-development.md` | 新增 控件开发指南 |

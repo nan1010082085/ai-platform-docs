@@ -45,7 +45,7 @@ pnpm build
 
 | 文档 | 说明 |
 |------|------|
-| [架构设计](./architecture) | 分层、Store 设计、API 清单 |
+| [架构设计](./architecture) | 分层、状态库设计、API 清单 |
 | [用户管理](./user-management) | 用户 CRUD、状态管理、批量操作 |
 | [角色权限](./role-permission) | 角色定义、权限分配、继承机制 |
 | [租户管理](./tenant-management) | 多租户隔离、租户配置 |

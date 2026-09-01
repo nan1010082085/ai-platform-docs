@@ -7,10 +7,10 @@
 | 文档 | 说明 |
 |------|------|
 | [自定义模型](./custom-models) | 自定义模型接入指南：Ollama、vLLM、DeepSeek 私有网关配置 |
-| [Skill 作者手册](./skill-author-guide) | Skill 作者手册：定义、打包、分发、最佳实践 |
-| [Workflow 模板 RFC](./workflow-template-rfc) | Workflow 模板注册机制 RFC：插件 pack 带模板、运行时注册、迁移策略 |
-| [Workflow 集成指南](./workflow-integration) | Workflow Open API 集成指南：触发 / 轮询 / 回调 / 错误码 / 代码示例 |
-| [Workflow 变量](./workflow-variables) | Workflow LLM 节点变量文档：`$input`、`$node`、`$json`、`$conversation` 解析规则 |
+| [技能作者手册](./skill-author-guide) | 技能作者手册：定义、打包、分发、最佳实践 |
+| [工作流模板 RFC](./workflow-template-rfc) | 工作流模板注册机制 RFC：插件 pack 带模板、运行时注册、迁移策略 |
+| [工作流集成指南](./workflow-integration) | 工作流开放 API 集成指南：触发 / 轮询 / 回调 / 错误码 / 代码示例 |
+| [工作流变量](./workflow-variables) | Workflow LLM 节点变量文档：`$input`、`$node`、`$json`、`$conversation` 解析规则 |
 
 ## 相关文档
 
@@ -20,4 +20,4 @@
 | [插件中心](/ai/plugin) | 插件体系总览 |
 | [Expert 扩展指南](/ai/expert-extension-guide) | Expert 声明与扩展 |
 | [MCP 协议](/ai/mcp) | MCP Server 接入与 transport |
-| [Skill 组装规范](/ai/extend/skill-assembly-spec) | Skill 拼装技术规范 |
+| [技能组装规范](/ai/extend/skill-assembly-spec) | 技能拼装技术规范 |

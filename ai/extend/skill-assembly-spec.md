@@ -1,4 +1,4 @@
-# Skill 拼装顺序与冲突规范
+# 技能拼装顺序与冲突规范
 
 > 本文档定义 Skill 如何拼入 Expert system prompt 的完整规则，包括拼装顺序、分隔符、冲突处理、版本控制与最佳实践。
 > 实现代码：`server/src/ai/plugins/resolveExpertPrompt.ts`、`server/src/ai/plugins/registry.ts`、`server/src/ai/plugins/loadPluginConfig.ts`
@@ -130,7 +130,7 @@ const mergeById = <T extends { id: string }>(a: T[], b: T[]): T[] => {
 # ② config/plugins/local/skills/platform.reply-zh.json
 { "id": "platform.reply-zh", "content": "请用繁體中文回覆。" }
 
-# 最终 Registry 中 content = "请用繁體中文回覆。"
+# 最终注册表 中 content = "请用繁體中文回覆。"
 ```
 
 ### 3.2 同一 Expert 引用重复 Skill
@@ -314,7 +314,7 @@ PluginRegistry.getSkill(id)
 
 | 文件 | 职责 |
 |------|------|
-| `server/src/ai/plugins/resolveExpertPrompt.ts` | Skill 拼装核心逻辑 |
+| `server/src/ai/plugins/resolveExpertPrompt.ts` | 技能拼装核心逻辑 |
 | `server/src/ai/plugins/registry.ts` | Skill 注册表（Map 存储、按 id 查找） |
 | `server/src/ai/plugins/loadPluginConfig.ts` | 配置加载、分层合并、热重载 |
 | `server/src/ai/plugins/types.ts` | `SkillDeclaration` 类型定义 |

@@ -1,4 +1,4 @@
-# Agent Workflow 集成 API
+# 智能体工作流集成 API
 
 > 工作流对外开放的集成 API，支持触发执行、查询状态、获取结果。
 
@@ -112,6 +112,6 @@ Content-Type: application/json
 | 文档 | 说明 |
 |------|------|
 | [SDK 指南](../sdk.md) | REST API + WebSocket + SDK 集成 |
-| [Agent Workflow](../agent-workflow) | 工作流编排、节点类型 |
+| [智能体工作流](../agent-workflow) | 工作流编排、节点类型 |
 | [事件协议](../events) | WebSocket 实时事件 |
 | [安全最佳实践](../SECURITY_BEST_PRACTICES) | API Key 管理、数据隔离 |

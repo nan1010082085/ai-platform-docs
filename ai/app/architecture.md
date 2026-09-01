@@ -1,14 +1,14 @@
 ---
-title: AI App 架构与分层
+title: AI 应用架构与分层
 ---
 
-# AI App 架构与分层
+# AI 应用架构与分层
 
 > `ai/app/` 前端应用的实现级结构：目录规范、Store / Composable / API 清单、插件适配层与 Harness 客户端。
 
 ## 一、分层规范
 
-AI App 前端遵循平台统一分层（与 editor / flow / ua 一致）：
+AI 应用前端遵循平台统一分层（与 editor / flow / ua 一致）：
 
 | 层 | 位置 | 职责 | 约束 |
 |------|------|------|------|
@@ -17,7 +17,7 @@ AI App 前端遵循平台统一分层（与 editor / flow / ua 一致）：
 | 全局状态 | `stores/` | Pinia Store | 全局状态唯一出口，禁止组件内裸状态跨页共享 |
 | 公共逻辑 | `composables/` | `useXXX` 组合式函数 | 公共逻辑统一组合式 API，废弃零散 utils |
 | API 聚合 | `api/` | 所有后端请求 | 组件/stores/composables 禁止直接 `fetch()` |
-| 插件适配 | `plugins/` | DSH/Cordis 插件容器 | 业务代码只允许 `import ... from '@/plugins'` |
+| 插件适配 | `plugins/` | Cordis 插件容器 | 业务代码只允许 `import ... from '@/plugins'` |
 | 常量 | `constants/` | 静态枚举/元数据 | errorCodes、节点类型、模型 Provider 元数据 |
 | 类型 | `types/` | 本地协议类型 | 跨项目共享类型放 `platform-shared/ai` |
 
@@ -74,14 +74,14 @@ AI App 前端遵循平台统一分层（与 editor / flow / ua 一致）：
 | 工作流执行 | `useWorkflowChatExecution`、`useWorkflowExecutionStream`、`useWorkflowInvoke`、`useWorkflowInvokeInfo`、`useWorkflowSelfTest`、`useWorkflowSuggestion`、`useWorkflowTemplates`、`usePublishedAgentWorkflows` |
 | 设计器 | `useAgentNodePropertyPanel`（节点属性面板注册）、`useEdgePath`、`useFlowPreview`、`useWorkflowActions` |
 | 模型 | `useModelCenter`、`useModelOptions`、`useModelPresets` |
-| 插件 | `usePluginRegistry`（Registry 快照）、`usePluginRuntime`、`useMcpHealth` |
+| 插件 | `usePluginRegistry`（注册表快照）、`usePluginRuntime`、`useMcpHealth` |
 | 预览 | `usePreviewCompare`、`usePreviewInteraction` |
 | Shell 嵌入 | `useShellEmbed`（qiankun/iframe 嵌入检测与上下文桥接） |
 | 监控 / 多语言 | `useAiMonitor`、`useAiLocale` |
 
-## 五、DSH/Cordis 插件适配层（src/plugins/）
+## 五、Cordis 插件适配层（src/plugins/）
 
-M0 落地的插件体系融合（设计依据：`ai/docs/design/dsh-cordis-integration.md`）。**业务代码只允许 `import ... from '@/plugins'`**，禁止直接引用 `@deepseek-ai/cordis` / `@deepseek-ai/dsh-*`，Cordis API 变更只影响适配层内部。
+Cordis 启发的插件容器（原则：`ai/docs/design/plugin-architecture-principles.md`）。独立 harness 已清理；客户端适配层保留。**业务代码只允许 `import ... from '@/plugins'`**，禁止直接引用 `@deepseek-ai/cordis`，API 变更只影响适配层内部。扩展点（工具 / 节点 / 渲染器 / skill 等）优先注册进 Service，禁止在业务里堆砌常量与散落 registry。
 
 | 文件 | 职责 |
 |------|------|
@@ -92,7 +92,7 @@ M0 落地的插件体系融合（设计依据：`ai/docs/design/dsh-cordis-integ
 | `config/layers.ts` | 配置分层：`builtin < registry overlay < local patch`（`mergeLayers`） |
 | `config/nodeTypes.ts` | Agent 画布 Palette 项与节点配色（`AGENT_PALETTE_ITEMS`） |
 | `config/renderers.ts` | 消息渲染器注册 |
-| `registry-adapter.ts` | 服务端 Registry 工具 → 适配层工具定义（`registryToolToDef`） |
+| `registry-adapter.ts` | 服务端注册表 工具 → 适配层工具定义（`registryToolToDef`） |
 | `skill-adapter.ts` | 平台 Skill → 适配层技能定义（`platformSkillToDef`） |
 | `plugins/chat-tools` | 工具定义类型与分类（`ToolDef` / `ToolCategory`） |
 | `plugins/node-types` / `plugins/renderers` | 节点类型 / 渲染器插件 |
@@ -101,7 +101,7 @@ M0 落地的插件体系融合（设计依据：`ai/docs/design/dsh-cordis-integ
 
 - 插件（代码）静态装载；工具 / workflow / skill 是数据，由插件运行时动态注册（`chatTools.setOverlay` / `ctx.tools.register`）
 - workflow 永远是数据不是插件；浏览器端禁止 loader 运行时动态 import
-- 版本锁定：`@deepseek-ai/cordis@4.0.1`、`@deepseek-ai/dsh@0.1.0-rc.6` 精确版本，升级需逐包评审
+- 版本锁定：`@deepseek-ai/cordis` 精确版本，升级需读 changelog 评审
 
 ## 六、多语言与遥测
 
@@ -119,7 +119,7 @@ M0 落地的插件体系融合（设计依据：`ai/docs/design/dsh-cordis-integ
 
 ## 九、相关文档
 
-- [App 概览](./index) — 定位、功能、运行与嵌入模式
+- [应用概览](./index) — 定位、功能、运行与嵌入模式
 - [路由与页面](./routing) — 完整路由表与守卫
 - [ai-shared API](../ai-shared) — 共享类型/事件/Prompt
 - [设计概览](../design/overview) — 信息架构线框

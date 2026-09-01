@@ -55,7 +55,7 @@ Formily 是表单引擎（无大屏/自由布局），Amis 是配置渲染（设
 
 1. **双画布**--Free（大屏/自由页，绝对定位）+ Flex（表单，流式）。Formily 只有表单，Amis 无自由布局
 2. **四大配置系统 + 事件引擎**--事件（20 动作）/联动（6 类型）/API/变量，比 Amis 配置化更强
-3. **高可用 Widget 架构**--WidgetStateShell + WidgetErrorBoundary + useWidgetData + el-table-v2 虚拟化，生产级
+3. **高可用 控件架构**--WidgetStateShell + WidgetErrorBoundary + useWidgetData + el-table-v2 虚拟化，生产级
 4. **与 AI 一体**--AiSidebarView 嵌入，Formily/Amis 无原生 AI 辅助
 5. **Schema 驱动 + 注册式类型**--`SchemaType = string` + registry + createWidgetPlugin
 6. **视口剔除 + immer 撤销**--大屏性能与编辑体验
@@ -102,7 +102,7 @@ editor + ai + flow 一体是最大护城河，通用平台无法复制：
 
 - [architecture.md](../architecture.md) - 分层架构
 - [capabilities.md](../capabilities.md) - 能力矩阵
-- [widgets.md](../widgets.md) - Widget 体系
+- [widgets.md](../widgets.md) - 控件体系
 - [canvas-system.md](../canvas-system.md) - 双画布
 - [product-architecture-analysis-2026-07-28.md](../product-architecture-analysis-2026-07-28.md) - 上次架构分析（Bundle 优化方案）
 - [iteration-evolution.md](../iteration-evolution.md) - E1-E3 收口

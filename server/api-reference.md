@@ -1158,7 +1158,7 @@ Chat UI 通过 Socket.IO 流式对话，不走 HTTP SSE。
 
 实现：`server/src/ai/chatStreamHandler.ts` + `chatStreamRunner.ts`。
 
-### Agent Workflow 执行进度（WebSocket）
+### 智能体工作流执行进度（WebSocket）
 
 平台内执行（Chat、设计器、执行详情/列表）通过 Socket.IO 推送进度：
 
@@ -1529,7 +1529,7 @@ Provider 列表及策略。
 
 ---
 
-## Agent Workflow（平台内 JWT）
+## 智能体工作流（平台内 JWT）
 
 | 方法 | 路径 | 说明 |
 |---|---|---|
@@ -1545,11 +1545,11 @@ Provider 列表及策略。
 
 Webhook 触发：`POST /api/ai/webhooks/*path`（HMAC `X-Webhook-Signature`）。
 
-插件 Registry（设计器）：`GET /api/ai/plugins` — 返回 experts / tools / mcpServers 配置快照。详见 [`ai/docs/plugin.md`](../../ai/docs/plugin.md)。
+插件注册表（设计器）：`GET /api/ai/plugins` — 返回 experts / tools / mcpServers 配置快照。详见 [`ai/docs/plugin.md`](../../ai/docs/plugin.md)。
 
 ---
 
-## Agent Workflow 外部集成（invoke）
+## 智能体工作流外部集成（invoke）
 
 > **唯一外部入口**：`POST /api/ai/workflows/invoke/:slugOrId`（按 slug 或 workflow `_id`）。  
 > `/api/ai/open/*` 已在基线 1.0 **删除**。详见 [`ai/docs/sdk.md`](../../ai/docs/sdk.md)、[`ai/docs/design/workflow-open-api.md`](../../ai/docs/design/workflow-open-api.md)。

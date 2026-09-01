@@ -1,4 +1,4 @@
-# Agent Workflow 术语表
+# 智能体工作流术语表
 
 > 产品与研发对齐用。避免把「画布入口节点」与「执行触发通道」混为一谈。
 
@@ -46,4 +46,4 @@
 
 详见 [design/chat.md](../design/chat.md)、[design/runtime.md](../design/runtime.md)。
 
-**相关**：[五项迭代记录](./archive/ai-five-phase-iteration.md) · [插件中心](../plugin.md) · [任务进度 backlog](./backlog.md)
+**相关**：[插件中心](../plugin.md) · [任务进度 backlog](./backlog.md)

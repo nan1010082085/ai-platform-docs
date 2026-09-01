@@ -78,7 +78,7 @@ Schema 驱动的可视化表单设计器，已具备页面/大屏双模式地基
 4. ~~**P2** PropertyPanel 继续拆到 <10KB；移除 WidgetRule~~ ✅ 已闭环（10.1KB，WidgetRule 已删）
 5. ~~**P2** 嵌套策略代码对齐决策~~ ✅ 已闭环
 6. ~~**P0（新）** 高可用复杂数据 widget~~ ✅ 已闭环（Phase 13：WidgetStateShell + WidgetErrorBoundary + 虚拟化 + useWidgetData + 乐观更新）
-7. ~~**P1（新）** Widget 数据层统一~~ ✅ 已闭环（useWidgetData 接入 useListData + kanban + tree-table + descriptions；advanced-table/table 显式 enableRetry: true）
+7. ~~**P1（新）** 控件数据层统一~~ ✅ 已闭环（useWidgetData 接入 useListData + kanban + tree-table + descriptions；advanced-table/table 显式 enableRetry: true）
 8. ~~**P1（新）** Widget Error Boundary~~ ✅ 已闭环（Phase 13）
 9. ~~**P2（新）** 复杂 widget 拆分~~ ✅ 已闭环（advanced-table 595 -> 420 行，拆出 `advancedTableCellRender.ts` 纯函数 + `useAdvancedTableConfig.ts` 配置解析 + `useAdvancedTableEvents.ts` 事件分发）
 10. ~~**P3** Widget SDK 脚手架~~ ❌ **不必要，移除**：无外部 widget 包消费者，同仓 registerWidget 流程已成熟，开放生态第二阶段真有外部接入需求再开

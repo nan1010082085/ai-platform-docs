@@ -42,7 +42,7 @@
 |------|------|
 | `AiChatPanel` | 消息列表 + 输入区容器 |
 | `AiMessage` | 单条消息：文本、思考、工具调用、卡片 |
-| `TaskChainBar` | 多 Agent 任务链进度 |
+| `TaskChainBar` | 多智能体 任务链进度 |
 | `AiMentionInput` | @ 引用 Schema/Flow |
 | `AiRagSearch` | 输入区上方 RAG 检索浮层 |
 | `AgentWorkflowPicker` | 选择已发布工作流作为后端 |
@@ -139,7 +139,7 @@ stateDiagram-v2
 
 确认后输入框 placeholder 变为 `requirementInputPlaceholder` 提示。
 
-### 3.3 任务链（多 Agent 协作）
+### 3.3 任务链（多智能体 协作）
 
 ```mermaid
 flowchart LR

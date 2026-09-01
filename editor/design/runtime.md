@@ -284,4 +284,4 @@ server /api/*
 - [designer.md](./designer.md) — 设计器 UI 交互
 - [instances-publish.md](./instances-publish.md) — 发布与嵌入
 - [../architecture.md](../architecture.md) — 组件架构
-- [../widget-development.md](../widget-development.md) — Widget 开发
+- [../widget-development.md](../widget-development.md) — 控件开发
