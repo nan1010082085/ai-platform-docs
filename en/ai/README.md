@@ -1,70 +1,163 @@
-# AI Documentation
+# AI Assistant Documentation
 
-`@ai-app` - an **open-source application-capability platform** (agent orchestration, RAG, plugins, chat, external integration); shares JWT with editor / flow and provides an AI assistant to designers via the sidebar.
-
-**Must read**: [Platform positioning](./platform.md) - three capabilities in one, shared JWT, credential model, small-platform boundary.
+> Create forms, processes, and intelligent applications with natural language
 
 ## Quick Start
 
+### Start Development
+
 ```bash
-cd ai/app && pnpm dev                # Start dev server (port 5300)
-cd ai/app && pnpm build              # Build frontend
-cd shared/platform-shared && pnpm build  # Build shared package (includes AI types/events; needed for cross-repo consumption)
+# Start AI frontend
+cd ai/app && pnpm dev
+
+# Start backend service (new terminal)
+cd server && pnpm dev
 ```
 
-## Package Structure
+Open `http://localhost:5300` to start using.
 
-| Package | Directory | Description |
-|---|---|---|
-| `@ai-app` | `ai/app/` | Vue 3 micro-frontend: Chat, RAG, monitoring, workflow designer |
-| `@schema-platform/platform-shared` | `shared/platform-shared/` | Platform shared; AI types/events/prompt/workflow domain models in the `ai/` subdirectory |
+### Basic Usage
 
-**Integration**: [sdk.md](./sdk.md) - invoke entry + key auth; external systems call the REST API directly.
+1. Click "New Conversation"
+2. Select Agent type
+3. Enter your requirements
+4. View AI-generated results
 
-## External Integration
+## Core Features
 
-- [Integration & SDK](./sdk.md) - invoke entry, user-platform key, workflow key
-- WebSocket streaming API (Socket.IO)
-- MCP protocol (plugin center config)
+### Multi-Agent Conversation
 
-## Doc Directory
-
-### Architecture Overview
-
-- [Architecture overview](./architecture.md) - dual-engine + baseline 1.0 (pluginExpert, expert/tool nodes, invoke-only)
-- [Platform positioning](./platform.md) - editor / flow / ai unified, JWT, dual key
-
-### Chat LangGraph
-
-- [Agent system](./agent.md) - 5 expert agents, execution flow, collaboration
-- [Event protocol](./events.md) - v1/v2 event types, WebSocket transport, HITL
+| Agent | Expertise |
+|-------|-----------|
+| Auto | Auto-detect intent, intelligent routing |
+| Editor | Form design, generate Schema JSON |
+| Flow | Process design, generate BPMN diagrams |
 
 ### Agent Workflow
 
-- [Workflow orchestration](./agent-workflow.md) - node reference, templates, execution engine, REST API, designer UI
+Visual workflow orchestration with 32 node types:
 
-### Tools & Protocol
+- **Triggers** — Manual, Webhook, Scheduled
+- **AI Nodes** — LLM, Agent Loop, Agent Team, Intent Router
+- **Document Processing** — Document parsing, visual analysis, audio transcription
+- **Logic Control** — Conditional branches, multi-path branches, variable assignment
+- **Human-in-the-loop** — HITL approval (pause → confirm → continue)
 
-- [Tool system](./tool.md) - MCP & LangGraph tools, registry, extension
-- [MCP protocol](./mcp.md) - 5 MCP servers, bridge architecture
+### RAG Knowledge Base
+
+- Vector retrieval + keyword fallback
+- Rerank (BGE-Reranker)
+- Hybrid retrieval (semantic + keyword weighted fusion)
+- Retrieval debugging view (three-way comparison)
+
+### Evaluation System
+
+- Dataset management (CRUD + CSV import)
+- Evaluation runs (select target workflow + dataset)
+- Result comparison (pass rate/time/tokens/LLM scores)
 
 ### Plugin Center
 
-- [Plugin center](./plugin.md) - architecture, config, production checklist, CLI
-- [Plugin registry](./plugin-registry.md) - plugin registry
-- [Third-party plugin guide](./extend/third-party-plugin-guide.md) - Expert/Skill/Tool/MCP + scaffold
+JSON configuration for Experts, Skills, Tools, MCP servers. Hot reload, CLI packaging.
 
-### Shared Package & Ops
+## Documentation Directory
 
-- [ai-shared API](./ai-shared.md) - types, exports, tool names, prompt builder
-- [Environment variables](./environment-variables.md) - all env vars, minimal config example
+### Architecture
 
-### Product Design (wireframes & interaction flows)
+- [Architecture Overview](./architecture.md) — Dual-engine architecture, system overview
+- [Platform Positioning](./platform.md) — editor / flow / ai integration, JWT, dual keys
 
-- [Design doc index](./design/) - page wireframes, Mermaid interaction flows
-- [Information architecture & layout](./design/overview.md) - navigation, embed modes, store relationships
-- [AI chat design](./design/chat.md) - Chat / sidebar / LangGraph vs Workflow
-- [Agent orchestration design](./design/workflows.md) - designer, execution monitoring, webhook
-- [Workflow Open API](./design/workflow-open-api.md) - converged to invoke
-- [RAG knowledge base design](./design/rag.md) - index management, retrieval testing, inline Chat RAG
-- [Runtime architecture](./design/runtime.md) - LangGraph / Workflow Executor / RAG execution graph
+### Chat System
+
+- [Agent System](./agent.md) — 5 expert agents, execution flow, collaboration
+- [Event Protocol](./events.md) — v1/v2 event types, WebSocket transport, HITL
+
+### Workflow
+
+- [Workflow Orchestration](./agent-workflow.md) — Node reference, templates, execution engine, REST API
+
+### Tools & Protocol
+
+- [Tool System](./tool.md) — MCP & LangGraph tools, registry, extension
+- [MCP Protocol](./mcp.md) — 5 MCP servers, bridge architecture
+
+### Plugins
+
+- [Plugin Center](./plugin.md) — Architecture, config, production checklist, CLI
+- [Plugin Registry](./plugin-registry.md) — Plugin registry
+- [Third-party Plugin Development](./extend/third-party-plugin-guide.md) — Expert/Skill/Tool/MCP
+
+### Frontend Application
+
+- [Application Overview](./app/) — `@ai-app` frontend: features, runtime & embed modes
+- [Architecture & Layering](./app/architecture.md) — Directory structure, Store/Composable/API
+- [Routing & Pages](./app/routing.md) — Route table & guards
+
+### Shared Package
+
+- [ai-shared API](./ai-shared.md) — Types, exports, tool names, prompt builder
+- [Environment Variables](./environment-variables.md) — All env vars, minimal config
+
+### Design Documents
+
+- [Design Doc Index](./design/) — Page wireframes, Mermaid interaction flows
+- [Information Architecture](./design/overview.md) — Navigation, embed modes, store relationships
+- [AI Chat Design](./design/chat.md) — Chat / sidebar / LangGraph vs Workflow
+- [Agent Orchestration Design](./design/workflows.md) — Designer, execution monitoring, webhook
+- [RAG Knowledge Base Design](./design/rag.md) — Index management, retrieval testing, inline Chat RAG
+- [Runtime Architecture](./design/runtime.md) — LangGraph / Workflow Executor / RAG execution graph
+
+## External Integration
+
+### REST API
+
+```bash
+curl -X POST http://localhost:3001/api/ai/workflows/invoke/your-slug \
+  -H "X-Workflow-Key: wf_your_key" \
+  -H "Content-Type: application/json" \
+  -d '{"input": "your data"}'
+```
+
+### WebSocket
+
+Connect using Socket.IO for streaming output.
+
+### MCP Protocol
+
+Configure MCP Server through Plugin Center to extend AI capabilities.
+
+## Environment Variables
+
+### Required
+
+| Variable | Description |
+|----------|-------------|
+| MONGODB_URI | MongoDB connection string |
+| JWT_SECRET | JWT signing secret |
+| DEEPSEEK_API_KEY | DeepSeek API key |
+
+### Optional
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| OPENAI_API_KEY | — | OpenAI API key |
+| ANTHROPIC_API_KEY | — | Anthropic API key |
+| EMBEDDING_API_KEY | — | Embedding API key |
+| REDIS_URL | redis://localhost:6379 | Redis (optional) |
+
+## FAQ
+
+**Q: AI-generated content is not accurate, what should I do?**
+A: Upload relevant documents to the knowledge base, and AI will reference existing designs. You can also continue the conversation to have AI adjust.
+
+**Q: How to extend AI capabilities?**
+A: Use Plugin Center to configure Experts, Skills, Tools, or MCP Servers.
+
+**Q: Workflow execution failed, what should I do?**
+A: Check execution logs, review node configurations and API calls.
+
+## Related Links
+
+- [AI App README](../../../ai/app/README.md) — User guide
+- [Server API Docs](../server/README.md) — Backend API
+- [Deployment Guide](../../deploy/README.md) — Production deployment

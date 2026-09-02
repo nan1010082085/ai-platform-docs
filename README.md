@@ -1,151 +1,166 @@
-# Schema Platform Documentation
+# Schema Platform 文档
 
-This directory contains the documentation for Schema Platform, built with [VitePress](https://vitepress.dev/).
+> 平台使用指南、API 参考和开发文档
 
-## 🚀 Quick Start
+## 快速导航
 
-### Prerequisites
+### 我是用户
 
-- Node.js 20+
-- npm or pnpm
+- **[快速开始](./guide/getting-started.md)** — 5 分钟上手平台
+- **[AI 助手使用](./ai/README.md)** — 用对话创建表单和流程
+- **[表单设计器](./editor/README.md)** — 可视化搭建页面
+- **[流程设计器](./flow/README.md)** — 设计业务审批流程
+- **[用户管理](./ua/README.md)** — 管理用户和权限
 
-### Local Development
+### 我是开发者
 
-```bash
-# Install dependencies
-npm install
+- **[API 参考](./server/README.md)** — 后端 API 接口文档
+- **[架构设计](./design/README.md)** — 系统架构说明
+- **[扩展开发](./extend/README.md)** — 二次开发指南
+- **[部署指南](./guide/deployment.md)** — 生产环境部署
 
-# Start development server
-npm run dev
-```
+### 我想了解产品
 
-Open http://localhost:5173 in your browser.
+- **[产品介绍](./guide/introduction.md)** — 平台能做什么
+- **[使用场景](./guide/scenarios.md)** — 典型应用场景
+- **[更新日志](../CHANGELOG.md)** — 版本更新记录
 
-### Build
-
-```bash
-# Build for production
-npm run build
-
-# Preview production build
-npm run preview
-```
-
-## 📁 Structure
-
-This is the **single source of truth** for all Schema Platform documentation. Each sub-project's docs live here directly — they are no longer synced from per-project `docs/` directories (the `sync-project-docs.sh` step was removed when docs were consolidated into this independent project).
+## 文档结构
 
 ```
 docs/
-├── .vitepress/          # VitePress configuration
-│   └── config.ts        # Site config, sidebar, nav
-├── ai/                  # AI Platform docs (source)
-├── editor/              # Form Editor docs (source)
-├── flow/                # Flow Designer docs (source)
-├── server/              # Backend service docs (source)
-├── guide/               # Getting started guides
-├── design/              # Platform-wide architecture docs
-├── extend/              # Extension development guides
-├── en/                  # English translations
-├── public/              # Static assets (logo, etc.)
-├── index.md             # Homepage
-├── deploy.sh            # Deployment script
-├── nginx-docs.conf      # nginx config sample
-└── package.json
+├── guide/               # 入门指南
+│   ├── getting-started.md
+│   ├── introduction.md
+│   ├── scenarios.md
+│   └── deployment.md
+├── ai/                  # AI 助手文档
+│   ├── README.md
+│   ├── architecture.md
+│   └── ...
+├── editor/              # 表单设计器文档
+│   ├── README.md
+│   ├── capabilities.md
+│   └── ...
+├── flow/                # 流程设计器文档
+│   ├── README.md
+│   └── ...
+├── server/              # 后端 API 文档
+│   ├── README.md
+│   └── ...
+├── design/              # 架构设计文档
+│   ├── README.md
+│   └── ...
+├── extend/              # 扩展开发文档
+│   ├── README.md
+│   └── ...
+└── en/                  # English documentation
 ```
 
-## 📝 Writing Documentation
+## 本地开发
 
-### Adding a New Page
+### 安装依赖
 
-1. Create a markdown file in the appropriate directory
-2. Add the page to the sidebar in `.vitepress/config.ts`
+```bash
+cd docs
+npm install
+```
 
-### Markdown Extensions
+### 启动开发服务器
 
-VitePress supports enhanced markdown:
+```bash
+npm run dev
+```
 
-- **Code blocks** with syntax highlighting
-- **Custom containers** (tip, warning, danger)
-- **Emoji support** :tada:
-- **Table of contents** generation
+打开 http://localhost:5173 查看文档站点。
 
-### Example
+### 构建生产版本
+
+```bash
+npm run build
+npm run preview
+```
+
+## 文档编写规范
+
+### Markdown 语法
+
+文档使用 VitePress 增强的 Markdown：
 
 ```markdown
-# My Page
+# 一级标题
+
+## 二级标题
+
+正文内容。
 
 ::: tip
-This is a tip container.
+这是一个提示框。
 :::
 
 ::: warning
-This is a warning container.
+这是一个警告框。
 :::
 
 ::: danger
-This is a danger container.
+这是一个危险提示框。
 :::
+
+```代码块
+console.log('Hello')
+```
 ```
 
-## 🚀 Deployment
+### 添加新页面
 
-### GitHub Pages (Recommended)
+1. 在对应目录创建 `.md` 文件
+2. 在 `.vitepress/config.ts` 中添加到侧边栏
+3. 编写内容，遵循现有文档风格
 
-The documentation is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
+### 文档原则
 
-**Live URL**: https://nan1010082085.github.io/ai-platform/
+- **面向用户** — 说明"能做什么"而非"怎么实现"
+- **场景驱动** — 用实际场景说明功能
+- **简洁明了** — 避免技术术语，用通俗语言
+- **图文并茂** — 适当使用截图和示意图
 
-### Manual Deployment
+## 部署
+
+### GitHub Pages（推荐）
+
+文档会自动部署到 GitHub Pages：
+
+**访问地址**：https://nan1010082085.github.io/ai-platform/
+
+### 手动部署
 
 ```bash
-# Build and deploy
 npm run deploy
 ```
 
-This will:
-1. Build the documentation
-2. Deploy to GitHub Pages using `gh-pages`
+### 其他平台
 
-### Other Platforms
+构建产物可以部署到任何静态托管：
 
-The built documentation can be deployed to any static hosting:
+- **Vercel**：`vercel --prod`
+- **Netlify**：连接 GitHub 仓库
+- **AWS S3**：上传 `docs/.vitepress/dist` 到 S3
 
-- **Vercel**: `vercel --prod`
-- **Netlify**: Connect to GitHub repository
-- **AWS S3**: Upload `docs/.vitepress/dist` to S3 bucket
+## 贡献
 
-## 🔧 Configuration
+欢迎贡献文档！
 
-### Site Configuration
+1. Fork 仓库
+2. 创建功能分支
+3. 编写或修改文档
+4. 提交 Pull Request
 
-Edit `.vitepress/config.ts` to customize:
+## 资源
 
-- Site title and description
-- Navigation menu
-- Sidebar structure
-- Social links
-- Footer content
+- **VitePress 文档**：https://vitepress.dev/
+- **Markdown 指南**：https://www.markdownguide.org/
+- **Vue.js 文档**：https://vuejs.org/
 
-### Environment Variables
+## 许可证
 
-No environment variables required for documentation.
-
-## 📚 Resources
-
-- [VitePress Documentation](https://vitepress.dev/)
-- [Markdown Guide](https://www.markdownguide.org/)
-- [Vue.js Documentation](https://vuejs.org/)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
-Please follow the existing documentation style and structure.
-
-## 📄 License
-
-This documentation is part of Schema Platform and is licensed under the MIT License.
+本文档是 Schema Platform 的一部分，遵循 MIT 许可证。
