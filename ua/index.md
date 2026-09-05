@@ -49,6 +49,9 @@ pnpm build
 | [用户管理](./user-management) | 用户 CRUD、状态管理、批量操作 |
 | [角色权限](./role-permission) | 角色定义、权限分配、继承机制 |
 | [租户管理](./tenant-management) | 多租户隔离、租户配置 |
+| [租户 · 注册 · 鉴权重设计](../design/tenant-registration-auth-redesign.md) | 组织型租户、双注册、Membership/Invite；**P1–P8 已关闭**（P7 本地 Ethereal；生产建议显式 SMTP_*） |
+| [开放工作清单](../design/open-work-inventory.md) | 未实现节点汇总（**当前 0**） |
+| [更新说明 · 应用租户](./changelog.md) | Chat/Forum 独立租户与 UA 侧栏 |
 | [菜单管理](./menu-management) | 动态菜单、权限菜单 |
 | [SSO 配置](./sso-config) | SSO 客户端、单点登录 |
 | [模型配置](./model-config) | AI 模型管理、Provider 配置 |
@@ -63,8 +66,10 @@ AppLayout (侧栏)
 ├── /roles              RoleListView           角色列表
 ├── /roles/:id          RoleDetailView         角色详情
 ├── /permissions        PermissionListView     权限列表
-├── /tenants            TenantListView         租户列表
+├── /tenants            TenantListView         租户列表（含平台额度）
 ├── /tenants/:id        TenantDetailView       租户详情
+├── /invites            InviteListView         租户邀请码
+├── /devices            DeviceListView         管理员设备
 ├── /menus              MenuListView           菜单管理
 ├── /sso                SSOConfigView          SSO 配置
 ├── /models             ModelConfigView        模型配置

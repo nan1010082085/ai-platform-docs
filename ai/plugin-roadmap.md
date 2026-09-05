@@ -1,19 +1,8 @@
-# 插件路线图（已迁移）
+# 插件路线图（内部）
 
-> 路线图内容已合并进独立插件文档，避免多份文档漂移。历史 Phase 迭代文档已清理。
+> 路线图与进度记录仅供研发使用，不对用户文档站展示。
 
-| 内容 | 文档 |
+| 内容 | 位置 |
 |------|------|
-| 已完成能力、生产清单、代码入口 | [plugin.md](./plugin.md) |
-| 待办与进度 | [plugin.md §八](./plugin.md#八待办项) · [product/backlog.md](./product/backlog.md) |
-| 工作流开放 API | [design/workflow-open-api.md](./design/workflow-open-api.md) |
-| 客户端插件化原则 | `ai/docs/design/plugin-architecture-principles.md` |
-
-**CLI 速查**（`server/` 目录）：
-
-```bash
-pnpm plugin:validate
-pnpm plugin:pack --dir config/plugins/packs/example.support --out dist/example.support.tgz
-pnpm plugin:install --file dist/example.support.tgz [--tenant acme]
-kill -HUP $(pgrep -f "dist/index.js")
-```
+| 插件能力说明 | [plugin.md](./plugin.md) |
+| 内部进度 | [product/backlog.md](./product/backlog.md) |

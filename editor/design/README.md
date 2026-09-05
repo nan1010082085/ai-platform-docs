@@ -2,7 +2,7 @@
 
 > 页面线框、交互流、运行时架构 — 基于 `editor/src` 当前实现（2026-07-20）
 
-产品能力矩阵见 [../capabilities.md](../capabilities.md)；架构见 [../architecture.md](../architecture.md)。
+产品能力见 [../capabilities.md](../capabilities.md)；架构见 [../architecture.md](../architecture.md)。
 
 ## 文档索引
 

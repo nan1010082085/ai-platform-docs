@@ -1,9 +1,9 @@
-# Plugin Center (Migrated)
+# Plugin Registry
 
-> The plugin center has been consolidated into a **standalone document**; please read:
+See **[plugin.md](./plugin.md)** for architecture, configuration, runtime, CLI, and capabilities.
 
-**-> [plugin.md](./plugin.md)** - architecture, config, production checklist, runtime, CLI, done & todo
+Related:
 
-- **Unfinished items & implementation ideas**: [product/backlog.md](./product/backlog.md) (internal) · [plugin.md §8](./plugin.md#8-todo-items-and-implementation-ideas)
-- **Workflow external exposure**: [design/workflow-open-api.md](./design/workflow-open-api.md)
-- **Server config directory**: `server/config/plugins/README.md`
+- [Workflow Open API](./design/workflow-open-api.md)
+- [MCP Protocol](./mcp.md)
+- [Third-party Plugin Guide](./extend/third-party-plugin-guide.md)

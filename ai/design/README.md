@@ -36,7 +36,7 @@ AiLayout (200px 侧栏，嵌入时隐藏)
 ├── /workflows/:id       AgentWorkflowDesignerView  全屏设计器（无侧栏）
 ├── /workflows/:id/executions  AgentExecutionListView
 ├── /executions/:id      AgentExecutionDetailView   全屏执行详情
-├── /rag                 RagKnowledgeBase    知识库
-├── /monitor             AiMonitorView       性能监控
+├── /rag                 RagKnowledgeBase    知识库（任务流：覆盖率 + 待索引优先）
+├── /monitor             AiMonitorView       用量与成本（设置极简：成本/预算/平台异常）
 └── /sidebar             AiSidebarView       嵌入抽屉模式
 ```

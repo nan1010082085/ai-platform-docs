@@ -129,11 +129,11 @@ WebSocket chat:* / workflow:*
 | Convention | Description |
 |------|------|
 | Multi-account | Designed for multi-user overall; `createdBy` and tenant `tenantId` run through workflows and keys |
-| Platform key ownership | **Whoever creates it owns it**; list/delete/update defaults to self only (backend to be tightened) |
+| Platform key ownership | **Whoever creates it owns it**; list/delete/update defaults to self only |
 | Platform key permissions | Select capabilities on creation (e.g. `workflow:execute`); execution represents the **creator's user identity** |
-| Role permissions | `apikey:*` should not be bound only to "admin"; regular logged-in users should manage **their own** keys |
+| Role permissions | Regular logged-in users manage **their own** keys (`apikey:*`) |
 
-Current implementation gaps in [backlog](./product/backlog.md) (invoke accepts `X-API-Key`, lists filtered by `createdBy`). The integration key UI and workflow key rotation have landed (`ApiKeyManagerView`, `WorkflowInvokeInfo`).
+Invoke accepts both `X-API-Key` (user platform key) and `X-Workflow-Key` (workflow key). Manage keys in the AI app UI.
 
 ---
 
@@ -171,15 +171,6 @@ Embedded: editor/flow + ai Sidebar (assistant bar only)
 |------|------|
 | Architecture overview | [architecture.md](./architecture.md) |
 | Credentials & SDK | [sdk.md](./sdk.md) |
-| Workflow terminology | [product/workflow-terminology.md](./product/workflow-terminology.md) (internal) |
+| Workflow terminology | [workflow-terminology.md](./workflow-terminology.md) |
 | Plugin center | [plugin.md](./plugin.md) |
 | UI / embedding | [design/overview.md](./design/overview.md) |
-
----
-
-## 7. Evolution List (aligned with discussion conclusions)
-
-1. **Docs**: this doc is authoritative; unify the JWT / dual-key narrative (replacing outdated statements like "non-open platform, workflow key only").
-2. **Invoke routing**: accept both `X-API-Key` (user platform key) and `X-Workflow-Key`.
-3. **AI app UI**: "My Integration Keys" - landed (`ApiKeyManagerView` CRUD `sk-...`; `WorkflowInvokeInfo` manages `wf-...`).
-4. **Backend**: `GET/DELETE/PATCH /api/keys` defaults to `createdBy` filter; regular roles have `apikey:*` (own only).

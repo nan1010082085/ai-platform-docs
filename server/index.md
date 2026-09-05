@@ -31,8 +31,8 @@ pnpm build
 | 队列 | BullMQ + Redis（持久化队列、自动重试、死信队列） |
 | LLM 集成 | DeepSeek / OpenAI / Anthropic + 自定义 Provider（BYOK） |
 | RAG | BGE-M3 embedding + BGE-Reranker 重排 |
-| 认证 | JWT + SSO + API Key（三模式） |
-| 多租户 | Mongoose tenantPlugin 自动注入 |
+| 认证 | JWT + SSO + API Key + **服务双因子**（三/四通道见 [service-access](../ai/service-access.md)） |
+| 多租户 | Mongoose tenantPlugin；体系重设计见 [租户重设计](../design/tenant-registration-auth-redesign.md) |
 
 ## 核心能力
 
@@ -43,7 +43,7 @@ pnpm build
 - **Telemetry 埋点** — `/api/telemetry` 端点
 - **工作流开放 API** — 触发 / 轮询 / 回调三种集成模式
 - **RBAC 权限** — 50+ 权限码、角色继承、菜单权限
-- **多租户隔离** — 自动 tenantId 注入，数据完全隔离
+- **多租户隔离** — `tenantId` + plugin（**注意**：当前默认数据多在哨兵 `000000`；完整组织型租户见 [重设计规格](../design/tenant-registration-auth-redesign.md)）
 
 ## 文档目录
 
@@ -65,3 +65,6 @@ pnpm build
 - [编辑器](/editor/) — 表单设计器、控件体系
 - [流程设计器](/flow/) — BPMN 流程引擎
 - [扩展开发](/extend/) — 自定义模型、技能、模板
+- [租户重设计](../design/tenant-registration-auth-redesign.md) — **P1–P8 已关闭**
+- [开放工作清单](../design/open-work-inventory.md) — 计划开放项（**当前 0**）+ 审查残留债
+- [服务接入 / 双因子](../ai/service-access.md) — 机器接入与双因子头

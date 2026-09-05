@@ -1,6 +1,6 @@
 # AI 平台 — 任务进度与开放缺口
 
-> 最后更新：**2026-08-31**  
+> 最后更新：**2026-09-05**  
 > 插件化原则：仓库 `ai/docs/design/plugin-architecture-principles.md`  
 > 能力文档：[plugin.md](../plugin.md) · [platform.md](../platform.md) · [workflow-terminology.md](./workflow-terminology.md)
 
@@ -24,12 +24,19 @@
 
 ## 开放缺口
 
-当前无绑定旧 Phase 编号的活跃任务。后续按需排期即可，不再维护过期演进计划副本。
-
-| 主题 | 说明 |
-|------|------|
-| 插件扩展点深化 | 路由分支、测试探针等继续插件化接入，而非硬编码 |
-| 产品能力 | 多智能体 / 记忆 / 配额等按产品优先级另开计划 |
+| 主题 | 状态 | 说明 |
+|------|------|------|
+| 插件扩展点深化 | 持续 | 路由分支、测试探针等继续插件化接入 |
+| P7 邮件邀请 | **已关（本地 Ethereal）** | 生产仍建议显式 SMTP_* |
+| 管理员 `X-Device-Id` 注入 | **已关闭** | `apiClient` 统一注入 |
+| 服务双因子 | **已关闭** | [计划](../design/service-dual-factor-access.md) · [接入指南](../service-access.md) |
+| 知识库 UX · 监控并入运行时 | **已关闭** | [计划](./kb-and-monitor-ux-plan.md) |
+| 合流与面板 UX | **已关闭** | [计划](../design/workflow-fanin-palette-and-harness.md) |
+| Editor iteration-plan-v2 | **已关闭** | [计划](../../editor/iteration-plan-v2.md) |
+| UA · BYOK · 设备封禁 | **已关** | [计划](../design/ua-permissions-byok-admin-device.md) |
+| 导航与知识库原则 | **已关闭**（原则与验收清单齐） | [nav-and-kb-gaps](./nav-and-kb-gaps.md) |
+| 工作流模板 RFC | **已关闭**（§5.1–5.25） | [RFC](../../extend/workflow-template-rfc.md) |
+| **全量计数** | — | [open-work-inventory](../../design/open-work-inventory.md) = **0** |
 
 ---
 

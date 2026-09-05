@@ -13,14 +13,15 @@
 │  [AI Logo] │                                                             │
 │  智能助手   │                                                             │
 │ ────────── │                                                             │
-│ ● AI 对话  │                                                             │
-│   Agent编排│                                                             │
-│   RAG知识库│                                                             │
-│   性能监控 │                                                             │
+│ ● 对话     │                                                             │
+│   工作流   │                                                             │
 │ ────────── │                                                             │
+│   （设置） │  ← 知识库/插件/监控/评测等进设置下拉                         │
 │   侧边栏模式│                                                             │
 └────────────┴─────────────────────────────────────────────────────────────┘
 ```
+> 主路由仅「对话 / 工作流」；知识库、插件、监控等进入设置。
+
 
 ### 1.2 qiankun 嵌入模式
 
@@ -53,18 +54,19 @@ Shell 已提供主导航时，子应用隐藏左侧栏，主内容区占满宽�
 
 ```mermaid
 flowchart LR
-  subgraph nav [侧栏导航]
-    Chat["/  AI 对话"]
-    WF["/workflows  Agent 编排"]
-    RAG["/rag  RAG 知识库"]
-    Mon["/monitor  性能监控"]
+  subgraph nav [顶导主路由]
+    Chat["/  对话 Chat"]
+    WF["/workflows  工作流 Workflow"]
   end
 
-  subgraph wf_child [编排子路由 — 高亮 Agent 编排]
+  subgraph settings [设置下拉]
+    RAG["/rag 知识库"]
+    Plug["/plugins 插件"]
+    Mon["/monitor 用量与成本（极简）"]
+  end
+
+  subgraph wf_child [工作流子路由 — 高亮工作流]
     List["/workflows"]
-  end
-
-  subgraph exec_child [执行子路由 — 高亮 Agent 编排]
     ExecList["/workflows/:id/executions"]
     ExecDetail["/executions/:id"]
   end
@@ -74,7 +76,7 @@ flowchart LR
   WF --> ExecDetail
 ```
 
-`activeNav` 规则：`/workflows*` 与 `/executions*` 均激活「Agent 编排」。
+`activeNav` 规则：`/workflows*` 与 `/executions*` 均激活「工作流」。
 
 ---
 

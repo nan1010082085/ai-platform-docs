@@ -71,6 +71,14 @@ platform-{VERSION}.tar.gz  # 全量
 deploy/deploy.sh --target {target} {VERSION}
 ```
 
+## 关键能力摘录
+
+| 能力 | 说明 |
+|------|------|
+| `AppIcon` + `iconRegistry` | 全端统一图标；禁止直连 Element Plus icons |
+| `deviceId` / `X-Device-Id` | `apiClient` 统一注入；UA 共用 `sfp_device_id` |
+| AI 类型（1.3.0+） | 工作流模板 id 以 string 为主路径，兼容 Registry |
+
 ## 公共包改动必须部署
 
 修改 `shared/platform-shared/`、`shared/flow-shared/`、`ai/shared/` 后，必须重新打包部署依赖该公共包的所有子项目：

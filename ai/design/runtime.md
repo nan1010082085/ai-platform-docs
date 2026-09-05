@@ -288,32 +288,35 @@ sequenceDiagram
 
 ### 3.2 执行器主循环
 
+就绪队列调度（档 A）：节点成功后对其**分支感知后继**做前驱计数 `--`；为 0 则入队。支持扇出与 `merge` 汇聚；`if`/`switch` 仅激活匹配分支。线性单出边图与旧 `pickNextNode` 行为等价。
+
 ```mermaid
 flowchart TD
-  Start["executeAgentWorkflow"] --> Init["构建 RuntimeContext\ninput / nodeOutputs / conversationHistory"]
+  Start["executeAgentWorkflow"] --> Init["构建 RuntimeContext\n+ remainingPreds / readyQueue"]
   Init --> Resume{resumeFromWaiting?}
-  Resume -->|是| Restore["恢复 waiting 节点\n重建 ctx.nodeOutputs"]
-  Resume -->|否| Entry["currentId = entryNodeId"]
+  Resume -->|是| Restore["恢复 waiting 节点\nenqueueSuccessors"]
+  Resume -->|否| Entry["queue.push(entryNodeId)"]
   Restore --> Loop
   Entry --> Loop
 
-  Loop["while currentId"] --> Cancel{已取消?}
+  Loop["while currentId = queue.shift"] --> Cancel{已取消?}
   Cancel -->|是| Stop["return"]
-  Cancel -->|否| Cycle{visited 含 currentId?}
+  Cancel -->|否| Cycle{visits 超限?}
   Cycle -->|是| ErrCycle["error: 检测到循环"]
-  Cycle -->|否| Mark["visited.add"]
-  Mark --> Record["appendNodeRecord running"]
-  Record --> RunNode["runNode(node, ctx)"]
+  Cycle -->|否| Record["appendNodeRecord running"]
+  Record --> RunNode["runNode → NodeRegistry"]
   RunNode --> Wait{result.wait?}
-  Wait -->|是| HITL["update waiting\nfinishExecution(waiting)\nreturn"]
+  Wait -->|是| HITL["finishExecution(waiting)"]
   Wait -->|否| Err{node error?}
   Err -->|是| Fail["finishExecution(error)"]
-  Err -->|否| Success["ctx.lastOutput = output\nctx.nodeOutputs[id] = output"]
-  Success --> EndType{node.type === end?}
+  Err -->|否| Success["lastOutput / nodeOutputs"]
+  Success --> EndType{type === end?}
   EndType -->|是| Done["finishExecution(success)"]
-  EndType -->|否| Next["pickNextNode\n(if 分支)"]
-  Next --> Loop
+  EndType -->|否| Enq["enqueueSuccessors(branch?)"]
+  Enq --> Loop
 ```
+
+`merge` 输出 `{ sources, text, mergeWait }`；模板 `comic-storyboard` 演示三角上游 → 合流 → 分镜。
 
 ### 3.3 RuntimeContext 数据流
 
@@ -497,19 +500,19 @@ flowchart TD
 
 ---
 
-## 七、监控运行时（AiMonitorView）
+## 七、监控运行时（采集 vs 展示）
 
 ```mermaid
 flowchart LR
-  UI["AiMonitorView\n30s 自动刷新"] --> API["GET /api/ai/monitor/*"]
-  API --> Metrics["AgentMetric 集合"]
-  Metrics --> Summary["summary / stats / recent / alerts"]
-  Summary --> UI
-
-  Graph["LangGraph 执行"] -.->|写入| Metrics
+  Graph["LangGraph / Workflow 执行"] -.->|写入| Metrics["AgentMetric"]
+  ExecUI["执行详情 runtimeStrip"] --> Exec["AgentWorkflowExecution"]
+  CostUI["/monitor 用量与成本\n成本趋势 · 预算 · 平台异常"] --> API["GET /api/ai/monitor/cost-trend|budget|alerts"]
+  API --> Metrics
 ```
 
-监控采集点在 LangGraph / Agent 执行期间写入 `AgentMetric`，与 Workflow 执行记录（`AgentWorkflowExecution`）**分离存储**。
+- **主路径排障**：工作流执行详情的本次耗时 / 失败 / 慢节点（不必打开 `/monitor`）
+- **设置极简页** `/monitor`：仅跨专家成本趋势、预算、平台级异常次级列表（已取消独立预警台大盘）
+- 监控 API 与采集保留；与 `AgentWorkflowExecution` **分离存储**
 
 ---
 

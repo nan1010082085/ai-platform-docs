@@ -36,7 +36,7 @@ AiLayout (200px sidebar, hidden when embedded)
 ├── /workflows/:id       AgentWorkflowDesignerView  full-screen designer (no sidebar)
 ├── /workflows/:id/executions  AgentExecutionListView
 ├── /executions/:id      AgentExecutionDetailView   full-screen execution detail
-├── /rag                 RagKnowledgeBase    knowledge base
-├── /monitor             AiMonitorView       performance monitoring
+├── /rag                 RagKnowledgeBase    knowledge base (task-flow UX)
+├── /monitor             AiMonitorView       usage & cost
 └── /sidebar             AiSidebarView       embedded drawer mode
 ```

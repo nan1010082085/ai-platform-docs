@@ -1,7 +1,8 @@
 # 插件中心（Plugin Center）
 
-> **独立文档**：专家 / 技能 / 工具 / MCP 四层能力目录的配置、运行时、UI 与演进路线。  
-> Chat LangGraph 与智能体工作流 **共用**同一注册表。
+> **使用者请先读：** [扩展能力（插件）用户指南](./user-plugins.md)  
+> 本文偏配置与运维：专家 / 技能 / 工具 / 工具服务四层如何配置与加载。  
+> 对话与工作流 **共用**同一注册表。
 
 **相关**：[专家扩展指南](./expert-extension-guide.md) · [工作流开放 API](./design/workflow-open-api.md) · 服务端配置说明 `server/config/plugins/README.md`
 
@@ -203,43 +204,20 @@ kill -HUP $(pgrep -f "dist/index.js")   # 热重载 Registry
 
 ---
 
-## 七、已完成能力
+## 七、能力清单
 
-| 类别 | 项 | 状态 |
-|------|-----|------|
-| **配置** | 分目录 `mcp/tools/experts/skills` | ✅ |
-| | `local/`、`tenants/` overlay | ✅ |
-| | 热重载 SIGHUP + `AI_PLUGIN_WATCH` | ✅ |
-| | `plugin:validate` / `pack` / `install` | ✅ |
-| **运行时** | MCP bridge 读 Registry（inmemory/stdio/sse） | ✅ |
-| | `runRegisteredExpert` + Chat `pluginExpert` | ✅ |
-| | Workflow `expert` 节点 + `expertId` | ✅ |
-| | http 工具统一执行器 | ✅ |
-| | Router / taskPlanner 动态专家 | ✅ |
-| **前端** | 设计器 Palette 动态加载 | ✅ |
-| | ToolNodePanel Registry 优先 | ✅ |
-| | Plugin Center 四层只读 UI + 中文工具名 | ✅ |
-| | 专家类型 pill 标签（legacy 中文） | ✅ |
-| **生产技能** | `platform.reply-zh` / `platform.schema-quality` | ✅ |
-| | 挂到 general + editor expert | ✅ |
-| **质量** | stdio MCP 集成测试 | ✅ |
-| | CI `ai-tests.yml` plugin:validate 门禁 | ✅ |
-
----
-
-## 八、待办项
-
-| # | 项 | 状态 |
-|---|-----|------|
-| — | Prompt / 能力层扩展 | 按 [product/backlog.md](./product/backlog.md) 与插件化原则按需排期 |
-
-历史 PLG 项已全部完成，见上表「已完成能力」。
+| 类别 | 能力 |
+|------|------|
+| **配置** | 分目录 `mcp/tools/experts/skills`；`local/`、`tenants/` overlay；热重载 SIGHUP + `AI_PLUGIN_WATCH`；`plugin:validate` / `pack` / `install` |
+| **运行时** | MCP bridge（inmemory/stdio/sse）；`runRegisteredExpert` + Chat `pluginExpert`；Workflow `expert` 节点；http 工具统一执行器；Router / taskPlanner 动态专家 |
+| **前端** | 设计器 Palette 动态加载；ToolNodePanel 读注册表；插件中心四层 UI |
+| **生产技能** | `platform.reply-zh` / `platform.schema-quality` 等可挂到专家 |
 
 本地覆盖写入：`PUT /api/ai/plugins/local/{mcp|tools|experts|skills}/{file}.json`
 
 ---
 
-## 九、新增插件快速步骤
+## 八、新增插件快速步骤
 
 1. 在对应子目录新增 JSON（或复制 `local.example/`）  
 2. `pnpm plugin:validate`  

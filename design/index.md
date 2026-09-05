@@ -11,6 +11,8 @@ Schema Platform 的核心架构设计文档，涵盖平台级跨项目的技术�
 | 文档 | 说明 |
 |------|------|
 | [模型架构](./model-architecture) | Provider/Model 两级结构、BYOK 三层归属、模型能力声明 |
+| [租户 · 注册 · 鉴权重设计](./tenant-registration-auth-redesign.md) | 组织型租户、双注册、Membership/Invite、限额；**P1–P8 已关闭**（P7 本地 Ethereal；生产建议显式 SMTP_*） |
+| [开放工作清单](./open-work-inventory.md) | 内部计划未实现节点汇总（**当前 0**） |
 
 ## 平台架构概览
 
@@ -51,7 +53,7 @@ docs 独立，汇聚全平台文档
 | 双画布布局 | `free` 绝对定位（大屏）/ `flex` 流式（表单页） |
 | 设计/运行分离 | editor 设计态 vs runtime 运行态，通过 `WIDGET_SURFACE_KEY` 区分 |
 | qiankun 微前端 | 各子应用独立部署，Shell 统一入口 |
-| 多租户隔离 | Mongoose `tenantPlugin` 自动注入 `tenantId` |
+| 多租户隔离 | Mongoose `tenantPlugin`；完整体系与 **LLM 限额分层** 见 [租户重设计](./tenant-registration-auth-redesign.md) |
 | RAG 检索链路 | BGE-M3 embedding + BGE-Reranker 重排 + 混合加权融合 |
 
 ## 相关文档

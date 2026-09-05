@@ -29,7 +29,7 @@ Query execution:
 GET /api/ai/workflows/invoke/executions/{executionId}
 ```
 
-(Same key; under the user-platform-key scenario, must be consistent with the invoke auth rules - see the evolution list in [platform.md](./platform.md).)
+(Same key; see auth rules in [platform.md](./platform.md).)
 
 ---
 

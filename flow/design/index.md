@@ -95,6 +95,6 @@ AppLayout (侧栏，嵌入时隐藏)
 |------|------|
 | [架构设计](/flow/architecture) | 分层、flow-shared 边界、Store |
 | [更新日志](/flow/changelog) | 迭代记录 |
-| [能力清单](/editor/capabilities) | Editor 完整能力矩阵 |
+| [能力清单](/editor/capabilities) | Editor 可用能力 |
 | [AI 平台](/ai/) | AI 对话、工作流、RAG |
 | [扩展开发](/extend/) | 自定义模型、技能、模板 |

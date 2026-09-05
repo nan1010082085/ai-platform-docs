@@ -167,6 +167,10 @@ JavaScript 表达式分支。连线 `data.branch` 为 `'true'` 或 `'false'`。
 
 示例：`lastOutput && lastOutput.extractionMethod === 'ocr'`
 
+#### `merge`
+
+多路上游汇聚。`mergeWait`: `all`（默认）/ `any`。输出 `{ sources, text, mergeWait }`。非 merge 入度 >1 时校验 warning，建议改用合流。模板：`comic-storyboard`。
+
 #### `hitl`
 
 人工确认暂停。执行状态变为 `waiting`，需调用 resume API 继续。
@@ -294,13 +298,18 @@ AI PPT 生成节点。
 
 `agentWorkflowExecutor.ts` 核心行为：
 
-1. 从 `entryNodeId` 开始顺序遍历 DAG
-2. 环检测：visited set 防止无限循环
+1. 从 `entryNodeId` 进入**就绪队列**：节点完成后对其后继做前驱计数递减，计数为 0 时入队（支持扇出与合流）
+2. 环检测：每节点访问次数上限（`MAX_VISITS_PER_NODE`）防止无限循环
 3. 每个节点产生一条 `AgentNodeRecord`（pending → running → success/error/waiting/skipped）
-4. 节点输出写入 `nodeOutputs[nodeId]`，作为下游 `{{$node.*}}` 的数据源
-5. 专家节点：复用 Chat 同款 MCP 注册表，最多 3 轮 tool round
-6. HITL：`hitl` 节点设置 `wait: true` → 执行 `waiting` → 等待 resume
-7. `continue`：基于 `parentExecutionId` 新建执行，继承 `conversationHistory`
+4. 节点输出写入 `nodeOutputs[nodeId]`，作为下游 `{{$node.*}}` 的数据源；`lastOutput` 取最近完成节点输出
+5. **`merge` 合流**：等待全部（`mergeWait: all`）或任一（`any`）前驱成功后，组装 `{ sources, text, mergeWait }` 供下游 Prompt / `{{$json}}` 使用；模板示例见 `comic-storyboard`
+6. 专家节点：复用 Chat 同款 MCP 注册表，最多 3 轮 tool round
+7. HITL：`hitl` 节点设置 `wait: true` → 执行 `waiting` → 等待 resume
+8. `continue`：基于 `parentExecutionId` 新建执行，继承 `conversationHistory`
+
+### 6.0 面板选择
+
+左侧 palette **不再平铺**全部工具/专家；拖入通用「工具」「专家」后在属性面板内选择具体项。分类默认折叠专家/工具/动作，并保留「最近」分组。
 
 ### 6.1 执行状态
 
@@ -404,6 +413,7 @@ AI PPT 生成节点。
 - 连线引用有效节点
 - 节点 ID 不重复（error）
 - `if` 节点必须有 true/false 两条分支（error）
+- 非 merge 多入边 → warning「请使用合流」；merge 入度 <2 → warning
 - `webhook-trigger` 必须有 `webhookPath`（error）
 - LLM/工具/专家节点的必填配置检查（warning）
 

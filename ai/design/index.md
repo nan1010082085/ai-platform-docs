@@ -9,8 +9,13 @@
 | [信息架构与布局](./overview.md) | 导航、嵌入模式、路由、全局布局 |
 | [AI 对话](./chat.md) | Chat 页面、侧边栏模式、LangGraph / Workflow 双后端 |
 | [智能体编排](./workflows.md) | 列表、设计器、执行监控、Webhook |
-| [RAG 知识库](./rag.md) | 索引管理、检索测试、Chat 内联 RAG |
+| [RAG 知识库](./rag.md) | 索引管理、检索测试、Chat 内联 RAG（**已按任务流重做**，见 [kb-and-monitor-ux-plan](../product/kb-and-monitor-ux-plan.md)） |
 | [**运行时架构**](./runtime.md) | **服务端执行图、数据流、Checkpoint、WebSocket 进度** |
+| [工作流开放 API](./workflow-open-api.md) | 外部 invoke 与 Key 集成 |
+| [UA · BYOK · 设备](./ua-permissions-byok-admin-device.md) | **已关闭**（权限 / BYOK / 设备 API / 会话门 / 全端 `X-Device-Id`） |
+| [服务双因子](./service-dual-factor-access.md) | **已关闭** · T1–T6 落地 · [接入指南](../service-access.md) |
+| [合流 · 面板 · Harness](./workflow-fanin-palette-and-harness.md) | **已关闭**（merge + palette + comic-storyboard；余搜索预填为增强） |
+| [开放工作清单](../../design/open-work-inventory.md) | 全平台未实现节点计数（**当前 0**） |
 
 ## 设计原则
 
@@ -66,10 +71,11 @@ AiLayout (200px 侧栏，嵌入时隐藏)
 ├── /workflows/:id       AgentWorkflowDesignerView  全屏设计器（无侧栏）
 ├── /workflows/:id/executions  AgentExecutionListView
 ├── /executions/:id      AgentExecutionDetailView   全屏执行详情
-├── /rag                 RagKnowledgeBase    知识库
-├── /monitor             AiMonitorView       性能监控
+├── /rag                 RagKnowledgeBase    知识库（任务流：覆盖率 + 待索引优先）
+├── /monitor             AiMonitorView       用量与成本（成本趋势·预算·平台异常；日常排障看执行详情）
 └── /sidebar             AiSidebarView       嵌入抽屉模式
 ```
+
 
 ## 双后端架构
 

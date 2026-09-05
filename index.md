@@ -3,53 +3,50 @@ layout: home
 
 hero:
   name: Schema Platform
-  text: 表单/流程垂直场景的 AI 应用平台
-  tagline: 对话智能体 · 可视化工作流编排 · RAG 知识库 · 评测体系 · 插件中心
-  image:
-    src: /logo.svg
-    alt: Schema Platform
+  text: 表单 / 流程垂直场景的 AI 应用平台
+  tagline: 从业务表单到审批流程，再到数据、权限和自动化，一条业务闭环全部在一个平台里完成
   actions:
     - theme: brand
       text: 快速开始
-      link: /ai/QUICK_START
+      link: /guide/quickstart
     - theme: alt
-      text: GitHub
-      link: https://github.com/nan1010082085/ai-platform
+      text: 查看能力
+      link: /guide/
 
 features:
+  - icon: 🧾
+    title: 业务表单与页面
+    details: 用拖拽方式搭建审批单、录入页、列表页和运营大屏，发布后立刻可用于真实业务。
+  - icon: 🔀
+    title: 审批与业务流程
+    details: 用可视化流程设计器编排审批、自动化、并行分支和子流程，让业务规则变成可执行流程。
+  - icon: 🗂️
+    title: 业务数据
+    details: 表单提交后自动形成业务数据，可查询、筛选、维护，并作为流程和智能体的输入。
+  - icon: 🛡️
+    title: 用户与租户
+    details: 管理账号、组织、角色和权限，让不同团队在同一个平台内安全协作。
+  - icon: ✨
+    title: AI 助手
+    details: 用自然语言生成表单、流程或页面，并在信息不足时先确认再执行。
   - icon: 🤖
-    title: AI 对话智能体
-    details: LangGraph StateGraph 多专家对话，支持需求分析、任务规划、工具调用、HITL 中断恢复。
-  - icon: 🔧
-    title: 32 种节点类型
-    details: 可视化 DAG 工作流编辑器，含 LLM、agent-loop、agent-team、代码执行、定时触发、7 个垂直场景节点（审批/合规/异常检测等）。
+    title: 智能体工作流
+    details: 把文档解析、知识检索、模型调用、条件判断和人工确认组合成可复用的自动化流程。
   - icon: 📚
-    title: RAG + Rerank
-    details: 向量检索 + 关键词 fallback + BGE-Reranker 重排 + 混合加权融合。检索调试三路对比视图。
-  - icon: 📊
-    title: 评测体系
-    details: 离线评测工作流质量，数据集管理 + 评测运行 + 版本对比（通过率/耗时/token/LLM 评分）。
+    title: 知识库
+    details: 上传业务文档建立知识库，让助手和工作流基于真实资料回答和处理任务。
   - icon: 🔌
-    title: 插件中心
-    details: JSON 配置专家/技能/工具/MCP，热重载，CLI 打包，插件市场。
-  - icon: 🏭
-    title: 32 个行业模板
-    details: 覆盖 10 个分类：HR、财务、运营、客服、法务、文档处理、审计等，DB 存储 + UI 管理。
-  - icon: ⚡
-    title: BullMQ 执行引擎
-    details: 持久化队列 + Worker + 自动重试 + 死信队列，进程崩溃不丢执行。
-  - icon: 📡
-    title: 渠道部署
-    details: ChannelAdapter 抽象层，一个工作流部署到 Web/飞书/钉钉。
+    title: 开放集成
+    details: 通过 REST API、Webhook、页面嵌入和 MCP 工具，把平台能力接入现有业务系统。
 ---
 
-<style>
-:root {
-  --vp-home-hero-name-color: transparent;
-  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #3eaf7c 30%, #41d1ff);
-}
+Schema Platform 的核心业务不是通用 AI 平台，而是**表单 / 流程垂直场景**的一体化工作台。
 
-.VPFeatures .VPFeature {
-  text-align: left;
-}
-</style>
+它面向四类使用者：
+
+1. **业务使用者**：搭建表单、页面和审批流。
+2. **业务管理者**：管理业务数据、用户、租户和权限。
+3. **集成方**：把已发布的工作流和页面接入自己的系统。
+4. **扩展开发者**：开发自定义控件、插件、技能和模型接入。
+
+如果你只想先看它能做什么，从 [能力总览](/guide/) 开始；如果你准备自己部署，直接看 [快速开始](/guide/quickstart)。

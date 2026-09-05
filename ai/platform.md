@@ -128,11 +128,11 @@ WebSocket chat:* / workflow:*
 | 约定 | 说明 |
 |------|------|
 | 多账号 | 整体按多用户设计；`createdBy`、租户 `tenantId` 贯穿工作流与 Key |
-| 平台 Key 归属 | **谁创建归谁**；列表/删改默认仅本人（后端待收紧） |
+| 平台 Key 归属 | **谁创建归谁**；列表/删改默认仅本人 |
 | 平台 Key 权限 | 创建时勾选能力（如 `workflow:execute`）；执行时代表 **创建者用户身份** |
-| 角色权限 | `apikey:*` 不应仅绑在「管理员」；普通登录用户应能管理 **自己的** Key |
+| 角色权限 | 普通登录用户可管理 **自己的** Key（`apikey:*`） |
 
-当前实现差距见 [backlog](./product/backlog.md)（invoke 认 `X-API-Key`、按 `createdBy` 过滤列表）。集成密钥 UI 与工作流 Key 轮换已落地（`ApiKeyManagerView`、`WorkflowInvokeInfo`）。
+invoke 同时接受 `X-API-Key`（用户平台 Key）与 `X-Workflow-Key`（工作流 Key）。可在 AI 应用中管理集成密钥与工作流 Key。
 
 ---
 
@@ -170,15 +170,6 @@ WebSocket chat:* / workflow:*
 |------|------|
 | 架构总览 | [architecture.md](./architecture.md) |
 | 凭证与 SDK | [sdk.md](./sdk.md) |
-| 工作流术语 | [product/workflow-terminology.md](./product/workflow-terminology.md) |
+| 工作流术语 | [workflow-terminology.md](./workflow-terminology.md) |
 | 插件中心 | [plugin.md](./plugin.md) |
 | UI / 嵌入 | [design/overview.md](./design/overview.md) |
-
----
-
-## 七、演进清单（与对话结论对齐）
-
-1. **文档**：以本文为准，统一 JWT / 双 Key 叙事（取代「非开放平台、仅 Workflow Key」等过时表述）。
-2. **invoke 路由**：同时接受 `X-API-Key`（用户平台 Key）与 `X-Workflow-Key`。
-3. **AI 应用 UI**：「我的集成密钥」— 已落地（`ApiKeyManagerView` CRUD `sk-...`；`WorkflowInvokeInfo` 管理 `wf-...`）。
-4. **后端**：`GET/DELETE/PATCH /api/keys` 默认按 `createdBy` 过滤；普通角色具备 `apikey:*`（仅自己的）。

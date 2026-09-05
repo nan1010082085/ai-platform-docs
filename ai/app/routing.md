@@ -22,7 +22,7 @@ title: AI 应用路由与页面
 | `/rag` | `rag` | `RagKnowledgeBase` |
 | `/memory` | `memory` | `MemoryManagementView` |
 | `/integration` | `integration` | `WorkflowIntegrationView` |
-| `/monitor` | `monitor` | `AiMonitorView` |
+| `/monitor` | `monitor` | `AiMonitorView`（用量与成本极简：成本趋势 / 预算 / 平台异常） |
 | `/plugins` | `plugin-center` | `PluginCenterView` |
 | `/mcp` | `mcp-manager` | `McpManagerView` |
 | `/workflows` | `agent-workflows` | `AgentWorkflowListView` |
@@ -65,7 +65,14 @@ title: AI 应用路由与页面
 
 ## 四、导航高亮规则
 
-`/workflows*` 与 `/executions*` 均激活侧栏「Agent 编排」项（见 [设计概览](../design/overview) 的 `activeNav` 规则）。
+顶导主路由仅两项：
+
+| 顶导 | zh-CN | en-US | 高亮 |
+|------|-------|-------|------|
+| `/` | 对话 | Chat | `path === '/'` |
+| `/workflows` | 工作流 | Workflow | `/workflows*`、`/executions*` |
+
+知识库、插件、监控、模型、评测等进入设置下拉，路由仍可直达。
 
 ## 五、相关文档
 

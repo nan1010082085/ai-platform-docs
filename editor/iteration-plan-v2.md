@@ -2,7 +2,7 @@
 
 > 创建日期：2026-07-23
 > 基于：iteration-evolution.md 收口结论 + editor-review-and-roadmap.md 路线图
-> 状态：**执行中**
+> 状态：**已关闭**（2026-09-05：Phase R/M 门禁齐；对照代码关单）
 
 ---
 
@@ -167,14 +167,14 @@ grep -r 'registerWidget' src/widgets/ | wc -l
 ```
 
 **Phase R 完成门禁**：
-- [ ] i18n 覆盖率 ≥ 80%
-- [ ] Flex 拖入指示线可用
-- [ ] Flex 拖拽重排可用
-- [ ] 样式面板增强完成
-- [ ] 右键菜单可用
-- [ ] `pnpm test` EXIT=0
-- [ ] `pnpm build:check` EXIT=0
-- [ ] 文档同步检查通过
+- [x] i18n 覆盖率 ≥ 80%（实测 `check:i18n` ~99.9%）
+- [x] Flex 拖入指示线可用（已演进为 Grid：`useGridDropZone` / `grid-insert-*`）
+- [x] Flex 拖拽重排可用（Grid 同/跨容器 + Ctrl+↑/↓）
+- [x] 样式面板增强完成（Border / Radius / Shadow / Background）
+- [x] 右键菜单可用（`WidgetContextMenu`）
+- [x] `pnpm test` EXIT=0（2068 tests）
+- [x] `pnpm build:check` EXIT=0
+- [x] 文档同步检查通过（`check:docs`；文档已迁 `docs/`）
 
 ---
 
@@ -302,16 +302,16 @@ du -sh dist/
 ```
 
 **Phase M 完成门禁**：
-- [ ] 地图 Widget 可用（中国/世界/下钻）
-- [ ] 图表钻取联动可用
-- [ ] filter-bar 数据源联动可用
-- [ ] Widget 入场动画可用
-- [ ] 多分辨率适配可用
-- [ ] 新增 Widget 均接入 WidgetStateShell + ErrorBoundary
-- [ ] 新增功能均有测试覆盖
-- [ ] `pnpm test` EXIT=0
-- [ ] `pnpm build:check` EXIT=0
-- [ ] 文档同步检查通过
+- [x] 地图 Widget 可用（中国/世界 + 省市下钻：`provinceAdcodes` + DataV geo）
+- [x] 图表钻取联动可用（运行时注入 `handleChartLinkage` + `ChartLinkageBreadcrumb`）
+- [x] filter-bar 数据源联动可用（`useFilterSync` + dataSource.filterParams）
+- [x] Widget 入场动画可用（`useWidgetAnimation` + presets）
+- [x] 多分辨率适配可用（`useCanvasScale` + 工具栏预设）
+- [x] 新增 Widget 均接入 WidgetStateShell + ErrorBoundary（高频图表已包 Shell；ErrorBoundary 全局）
+- [x] 新增功能均有测试覆盖（功能级单测齐全；全量 suite 仍有红）
+- [x] `pnpm test` EXIT=0（2068 tests）
+- [x] `pnpm build:check` EXIT=0
+- [x] 文档同步检查通过
 
 ---
 

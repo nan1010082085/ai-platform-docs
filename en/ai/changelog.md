@@ -4,41 +4,37 @@ title: Changelog
 
 # AI Platform · Changelog
 
-> Records major iterations of the AI platform (chat agent / Agent Workflow / RAG / plugin center).
-> Internal planning docs are archived in `ai/product/` and not shown here.
+> Major updates for the AI platform (chat agent / workflows / knowledge base / plugin center).
 
 ## 2026-07-27 · Multi-agent & Long-term Memory
 
-- **Memory node**: workflow long-term memory node, cross-session context persistence
-- **Agent Handoff**: cross-expert task handoff, explicit handoff protocol
-- **Parallel execution**: `parallel` node multi-branch + convergence
-- **Agentic RAG**: retrieval-augmented from passive citation to active retrieval decisions
+- **Memory node**: long-term memory across sessions
+- **Agent Handoff**: explicit cross-expert handoff
+- **Parallel execution**: `parallel` node multi-branch + join
+- **Agentic RAG**: active retrieval decisions instead of passive citation
 
-## 2026-07-24 · Full-chain Architecture & Prompt Optimization
+## 2026-07-24 · Full-chain & Prompt Optimization
 
-- **Full-chain architecture**: Chat -> LangGraph -> LLM -> industry templates
-- **LangGraph optimization**: 12 optimizations (state management, node reuse, error recovery)
-- **Prompt optimization**: temperature strategy + prompt spec, output stability improved
-- **Vertical domain analysis**: form/flow + AI differentiated scenarios
+- **Full-chain architecture**: Chat → LangGraph → LLM → industry templates
+- **LangGraph improvements**: state management, node reuse, error recovery
+- **Prompt optimization**: temperature strategy + prompt specs
+- **Industry templates**: HR / finance / ops / customer service / legal, and more
 
 ## 2026-07-22 · Agent Deepening & Workflow-as-Agent
 
-- **Sub-workflow invocation**: workflow nodes can call published sub-workflows
-- **Cost visibility & quota**: execution cost stats, tenant quota management
-- **agent-loop node**: workflow autonomous loop decisions
+- **Sub-workflow invocation**: call published sub-workflows from nodes
+- **Cost visibility & quota**: execution cost stats, tenant quotas
+- **agent-loop node**: autonomous loop decisions in workflows
 - **Workflow as skill**: published workflows callable as agent skills
-- **Complex file componentization**: large-file splitting, first-screen perf
-
-## 2026-07-20 · Open-source Readiness
-
-- **Five-capability maturity**: chat/workflow/plugins mature, RAG/integration pending
-- **Open-source readiness diagnosis**: i18n, frontend telemetry, doc calibration identified
-- **Industry templates**: 10 categories (HR/finance/ops/customer service/legal, etc.)
+- **Large-file componentization**: first-screen performance
 
 ## Earlier · Capability Foundation
 
-- **Dual-engine architecture**: Chat LangGraph StateGraph + Workflow DAG orchestration
-- **Plugin center**: Expert / Skill / Tool / MCP config, hot-reload
-- **BullMQ execution engine**: persistent queue + auto-retry + dead-letter queue
-- **RAG knowledge base**: vector search + BGE-Reranker rerank + hybrid weighted fusion
-- **External integration**: Workflow Open API (polling + callback modes)
+| Capability | Description |
+|------|------|
+| Dual-engine architecture | Chat LangGraph + workflow DAG |
+| Plugin center | Expert / Skill / Tool / MCP config, hot-reload |
+| BullMQ execution engine | Persistent queue + retry + dead-letter |
+| RAG knowledge base | Vector search + BGE-Reranker + hybrid fusion |
+| MCP protocol | Model Context Protocol server access |
+| External integration | Workflow Open API (invoke + Key; polling / callback) |

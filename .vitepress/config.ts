@@ -1,7 +1,6 @@
 import { defineConfig } from 'vitepress'
 import { withMermaid } from 'vitepress-plugin-mermaid'
 
-/** markdown-it 插件：代码块和行内代码里的 {{ }} 转义为 HTML 实体 */
 function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args: unknown[]) => string> } }) {
   const defaultFence = md.renderer.rules.fence!.bind(md.renderer.rules)
   md.renderer.rules.fence = (tokens: unknown[], idx: number, options: unknown, env: unknown, self: unknown) => {
@@ -9,6 +8,7 @@ function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args
       .replace(/\{\{/g, '&#123;&#123;')
       .replace(/\}\}/g, '&#125;&#125;')
   }
+
   const defaultCodeInline = md.renderer.rules.code_inline!.bind(md.renderer.rules)
   md.renderer.rules.code_inline = (tokens: unknown[], idx: number, options: unknown, env: unknown, self: unknown) => {
     return defaultCodeInline(tokens, idx, options, env, self)
@@ -20,30 +20,22 @@ function escapeVueInterpolation(md: { renderer: { rules: Record<string, (...args
 export default withMermaid(defineConfig({
   base: '/schema-platform/docs/',
   title: 'Schema Platform',
-  description: '表单/流程垂直场景的 AI 应用平台',
+  description: '表单、流程与智能体的一体化工作台',
   lang: 'zh-CN',
 
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: false,
 
   srcExclude: [
-    // 私有仓库文档（不公开）
+    'README.md',
+    'ai/**',
+    'editor/**',
+    'flow/**',
+    'extend/**',
+    'design/**',
+    'en/**',
     'server/**',
     'shared/**',
     'ua/**',
-    // 内部文档
-    'ai/product/**',
-    'ai/plugin-roadmap.md',
-    'ai/workflow-p2-tasks.md',
-    'ai/workflow-regression.md',
-    'ai/testing/**',
-    'editor/iteration-evolution.md',
-    'editor/iteration-plan-v2.md',
-    'editor/stage-review-log.md',
-    'editor/editor-review-and-roadmap.md',
-    'editor/container-nesting-decision.md',
-    'editor/schema-validation-testing.md',
-    'editor/product-architecture-analysis-2026-07-28.md',
-    'editor/product/**',
   ],
 
   markdown: {
@@ -57,330 +49,85 @@ export default withMermaid(defineConfig({
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ],
 
-  locales: {
-    root: {
-      label: '中文',
-      lang: 'zh-CN',
-    },
-    en: {
-      label: 'English',
-      lang: 'en-US',
-      title: 'Schema Platform',
-      description: 'AI application platform for form/flow scenarios',
-      themeConfig: {
-        nav: [
-          { text: 'Home', link: '/en/' },
-          { text: 'Guide', link: '/en/guide/' },
-          { text: 'AI', link: '/en/ai/' },
-          { text: 'Editor', link: '/en/editor/' },
-          { text: 'Flow', link: '/en/flow/' },
-          { text: 'Extend', link: '/en/extend/' },
-          { text: 'Design', link: '/en/design/' },
-        ],
-        sidebar: {
-          '/en/guide/': [
-            { text: 'Guide', items: [{ text: 'Introduction', link: '/en/guide/' }] },
-          ],
-          '/en/extend/': [
-            {
-              text: 'Extension Development',
-              items: [
-                { text: 'Overview', link: '/en/extend/' },
-                { text: 'Custom Models', link: '/en/extend/custom-models' },
-                { text: 'Skill Author Guide', link: '/en/extend/skill-author-guide' },
-                { text: 'Workflow Template RFC', link: '/en/extend/workflow-template-rfc' },
-                { text: 'Workflow Integration', link: '/en/extend/workflow-integration' },
-                { text: 'Workflow Variables', link: '/en/extend/workflow-variables' },
-              ],
-            },
-          ],
-          '/en/ai/': [
-        {
-          text: 'AI Platform',
-          items: [
-            { text: 'Overview', link: '/en/ai/' },
-            { text: 'Changelog', link: '/en/ai/changelog' },
-            { text: 'Quick Start', link: '/en/ai/QUICK_START' },
-            { text: 'Architecture', link: '/en/ai/architecture' },
-          ],
-        },
-        {
-          text: 'Core Features',
-          items: [
-            { text: 'Chat Agent', link: '/en/ai/agent' },
-            { text: 'Agent Workflow', link: '/en/ai/agent-workflow' },
-            { text: 'RAG', link: '/en/ai/rag-tool-mcp-boundary' },
-            { text: 'Plugin Center', link: '/en/ai/plugin' },
-            { text: 'Plugin Registry', link: '/en/ai/plugin-registry' },
-            { text: 'MCP', link: '/en/ai/mcp' },
-            { text: 'Tools', link: '/en/ai/tool' },
-            { text: 'Expert Extension', link: '/en/ai/expert-extension-guide' },
-            { text: 'SDK', link: '/en/ai/sdk' },
-          ],
-        },
-        {
-          text: 'AI App Frontend',
-          items: [
-            { text: 'App Overview', link: '/en/ai/app/' },
-            { text: 'Architecture & Layers', link: '/en/ai/app/architecture' },
-            { text: 'Routing & Pages', link: '/en/ai/app/routing' },
-          ],
-        },
-        {
-          text: 'Architecture & Design',
-          items: [
-            { text: 'Platform', link: '/en/ai/platform' },
-            { text: 'ai-shared API', link: '/en/ai/ai-shared' },
-            { text: 'Design Overview', link: '/en/ai/design/' },
-            { text: 'Chat Design', link: '/en/ai/design/chat' },
-            { text: 'RAG Design', link: '/en/ai/design/rag' },
-            { text: 'Runtime Design', link: '/en/ai/design/runtime' },
-            { text: 'Workflow Open API', link: '/en/ai/design/workflow-open-api' },
-          ],
-        },
-        {
-          text: 'Development & Deployment',
-          items: [
-            { text: 'Development', link: '/en/ai/DEVELOPMENT' },
-            { text: 'Deployment', link: '/en/ai/DEPLOYMENT' },
-            { text: 'Environment Variables', link: '/en/ai/environment-variables' },
-            { text: 'Events', link: '/en/ai/events' },
-            { text: 'Contributing', link: '/en/ai/CONTRIBUTING' },
-            { text: 'Security', link: '/en/ai/SECURITY_BEST_PRACTICES' },
-          ],
-        },
-        {
-          text: 'Extension Development',
-          items: [
-            { text: 'Skill Assembly Spec', link: '/en/ai/extend/skill-assembly-spec' },
-            { text: 'Pack Spec v1', link: '/en/ai/extend/pack-spec-v1' },
-            { text: 'Third-party Plugin', link: '/en/ai/extend/third-party-plugin-guide' },
-            { text: 'Plugin Scaffold', link: '/en/ai/extend/plugin-scaffold/' },
-          ],
-        },
-      ],
-          '/en/editor/': [
-        {
-          text: 'Visual Editor',
-          items: [
-            { text: 'Overview', link: '/en/editor/' },
-            { text: 'Changelog', link: '/en/editor/changelog' },
-            { text: 'Capabilities', link: '/en/editor/capabilities' },
-            { text: 'Architecture', link: '/en/editor/architecture' },
-          ],
-        },
-        {
-          text: 'Core Systems',
-          items: [
-            { text: 'Widgets', link: '/en/editor/widgets' },
-            { text: 'Widget Development', link: '/en/editor/widget-development' },
-            { text: 'Third-party Widget', link: '/en/editor/third-party-widget-guide' },
-            { text: 'Dual Canvas', link: '/en/editor/canvas-system' },
-            { text: 'Config Systems', link: '/en/editor/config-systems' },
-            { text: 'Property Panel', link: '/en/editor/property-panel' },
-            { text: 'Store Design', link: '/en/editor/store-design' },
-          ],
-        },
-        {
-          text: 'Integration & Embedding',
-          items: [
-            { text: 'qiankun Integration', link: '/en/editor/qiankun-integration' },
-            { text: 'Micro-app Container', link: '/en/editor/micro-app-container-design' },
-          ],
-        },
-        {
-          text: 'Design',
-          items: [
-            { text: 'Design Overview', link: '/en/editor/design/' },
-            { text: 'Designer', link: '/en/editor/design/designer' },
-            { text: 'Runtime', link: '/en/editor/design/runtime' },
-            { text: 'Instances & Publish', link: '/en/editor/design/instances-publish' },
-          ],
-        },
-      ],
-          '/en/flow/': [
-        {
-          text: 'Flow Designer',
-          items: [
-            { text: 'Overview', link: '/en/flow/' },
-            { text: 'Changelog', link: '/en/flow/changelog' },
-            { text: 'Architecture', link: '/en/flow/architecture' },
-            { text: 'Design Overview', link: '/en/flow/design/' },
-            { text: 'Designer', link: '/en/flow/design/designer' },
-            { text: 'Runtime', link: '/en/flow/design/runtime' },
-            { text: 'Instances & Tasks', link: '/en/flow/design/instances-tasks' },
-          ],
-        },
-      ],
-          '/en/design/': [
-            { text: 'Design', items: [{ text: 'Model Architecture', link: '/en/design/model-architecture' }] },
-          ],
-        },
-        outline: { label: 'On this page' },
-        docFooter: { prev: 'Previous', next: 'Next' },
-        returnToTopLabel: 'Return to top',
-      },
-    },
-  },
-
   themeConfig: {
     logo: '/logo.svg',
 
     nav: [
       { text: '首页', link: '/' },
-      { text: 'AI 平台', link: '/ai/' },
-      { text: '编辑器', link: '/editor/' },
-      { text: '流程设计器', link: '/flow/' },
-      { text: '扩展开发', link: '/extend/' },
-      { text: '术语对照', link: '/guide/terminology' },
+      { text: '指南', link: '/guide/' },
+      { text: '集成', link: '/integration/' },
+      { text: '扩展', link: '/extension/' },
+      { text: '部署', link: '/deploy/' },
+      { text: '参考', link: '/reference/' },
     ],
 
     sidebar: {
       '/guide/': [
         {
-          text: '指南',
+          text: '使用指南',
           items: [
-            { text: '简介', link: '/guide/' },
-            { text: '中文术语对照', link: '/guide/terminology' },
+            { text: '能力总览', link: '/guide/' },
+            { text: '快速开始', link: '/guide/quickstart' },
+            { text: '表单与页面', link: '/guide/forms' },
+            { text: '流程设计', link: '/guide/flows' },
+            { text: '业务数据', link: '/guide/data' },
+            { text: '用户与租户', link: '/guide/users' },
+            { text: 'AI 助手', link: '/guide/ai-assistant' },
+            { text: '智能体工作流', link: '/guide/workflows' },
+            { text: '知识库', link: '/guide/knowledge-base' },
+            { text: '评测', link: '/guide/evaluation' },
+            { text: '插件', link: '/guide/plugins' },
+            { text: '术语对照', link: '/guide/terminology' },
           ],
         },
       ],
-      '/editor/': [
+      '/integration/': [
         {
-          text: '可视化编辑器',
+          text: '外部集成',
           items: [
-            { text: '概览', link: '/editor/' },
-            { text: '更新日志', link: '/editor/changelog' },
-            { text: '能力清单', link: '/editor/capabilities' },
-            { text: '架构设计', link: '/editor/architecture' },
-          ],
-        },
-        {
-          text: '核心系统',
-          items: [
-            { text: '控件体系', link: '/editor/widgets' },
-            { text: '控件开发指南', link: '/editor/widget-development' },
-            { text: '第三方控件', link: '/editor/third-party-widget-guide' },
-            { text: '双画布系统', link: '/editor/canvas-system' },
-            { text: '四大配置系统', link: '/editor/config-systems' },
-            { text: '属性面板', link: '/editor/property-panel' },
-            { text: '状态库设计', link: '/editor/store-design' },
-          ],
-        },
-        {
-          text: '集成与嵌入',
-          items: [
-            { text: 'qiankun 集成', link: '/editor/qiankun-integration' },
-            { text: '微应用容器设计', link: '/editor/micro-app-container-design' },
-          ],
-        },
-        {
-          text: '设计',
-          items: [
-            { text: '设计概览', link: '/editor/design/' },
-            { text: '设计器设计', link: '/editor/design/designer' },
-            { text: '运行时设计', link: '/editor/design/runtime' },
-            { text: '实例与发布', link: '/editor/design/instances-publish' },
+            { text: '集成总览', link: '/integration/' },
+            { text: '认证方式', link: '/integration/authentication' },
+            { text: '工作流 API', link: '/integration/workflow-api' },
+            { text: '页面嵌入', link: '/integration/embed-pages' },
+            { text: 'MCP 工具', link: '/integration/mcp' },
           ],
         },
       ],
-      '/ai/': [
-        {
-          text: 'AI 平台',
-          items: [
-            { text: '概览', link: '/ai/' },
-            { text: '更新日志', link: '/ai/changelog' },
-            { text: '快速开始', link: '/ai/QUICK_START' },
-            { text: '架构设计', link: '/ai/architecture' },
-          ],
-        },
-        {
-          text: '核心功能',
-          items: [
-            { text: 'AI 对话智能体', link: '/ai/agent' },
-            { text: '智能体工作流', link: '/ai/agent-workflow' },
-            { text: 'RAG 知识库', link: '/ai/rag-tool-mcp-boundary' },
-            { text: '插件中心', link: '/ai/plugin' },
-            { text: '插件注册表', link: '/ai/plugin-registry' },
-            { text: 'MCP 协议', link: '/ai/mcp' },
-            { text: '工具系统', link: '/ai/tool' },
-            { text: '专家扩展指南', link: '/ai/expert-extension-guide' },
-            { text: 'SDK 指南', link: '/ai/sdk' },
-          ],
-        },
-        {
-          text: 'AI 应用前端',
-          items: [
-            { text: '应用概览', link: '/ai/app/' },
-            { text: '架构与分层', link: '/ai/app/architecture' },
-            { text: '路由与页面', link: '/ai/app/routing' },
-          ],
-        },
-        {
-          text: '架构与设计',
-          items: [
-            { text: '平台定位', link: '/ai/platform' },
-            { text: 'ai-shared API', link: '/ai/ai-shared' },
-            { text: '设计概览', link: '/ai/design/' },
-            { text: '对话设计', link: '/ai/design/chat' },
-            { text: 'RAG 设计', link: '/ai/design/rag' },
-            { text: '运行时设计', link: '/ai/design/runtime' },
-            { text: '工作流开放 API', link: '/ai/design/workflow-open-api' },
-          ],
-        },
-        {
-          text: '开发与部署',
-          items: [
-            { text: '开发指南', link: '/ai/DEVELOPMENT' },
-            { text: '部署指南', link: '/ai/DEPLOYMENT' },
-            { text: '环境变量', link: '/ai/environment-variables' },
-            { text: '事件协议', link: '/ai/events' },
-            { text: '贡献指南', link: '/ai/CONTRIBUTING' },
-            { text: '安全最佳实践', link: '/ai/SECURITY_BEST_PRACTICES' },
-          ],
-        },
+      '/extension/': [
         {
           text: '扩展开发',
           items: [
-            { text: '技能拼装规范', link: '/ai/extend/skill-assembly-spec' },
-            { text: '打包规范 v1', link: '/ai/extend/pack-spec-v1' },
-            { text: '第三方插件指南', link: '/ai/extend/third-party-plugin-guide' },
-            { text: '插件脚手架', link: '/ai/extend/plugin-scaffold/' },
+            { text: '扩展总览', link: '/extension/' },
+            { text: '自定义控件', link: '/extension/widgets' },
+            { text: '插件开发', link: '/extension/plugins' },
+            { text: '技能开发', link: '/extension/skills' },
+            { text: '自定义模型', link: '/extension/custom-models' },
           ],
         },
       ],
-      '/extend/': [
+      '/deploy/': [
         {
-          text: '扩展开发',
+          text: '部署',
           items: [
-            { text: '概览', link: '/extend/' },
-            { text: '自定义模型', link: '/extend/custom-models' },
-            { text: '技能作者手册', link: '/extend/skill-author-guide' },
-            { text: '工作流模板 RFC', link: '/extend/workflow-template-rfc' },
-            { text: '工作流集成指南', link: '/extend/workflow-integration' },
-            { text: '工作流变量', link: '/extend/workflow-variables' },
+            { text: '部署总览', link: '/deploy/' },
+            { text: '安装', link: '/deploy/install' },
+            { text: '配置', link: '/deploy/configuration' },
+            { text: '安全', link: '/deploy/security' },
+            { text: '运维', link: '/deploy/operations' },
           ],
         },
       ],
-      '/flow/': [
+      '/reference/': [
         {
-          text: '流程设计器',
+          text: '参考',
           items: [
-            { text: '概览', link: '/flow/' },
-            { text: '更新日志', link: '/flow/changelog' },
-            { text: '架构设计', link: '/flow/architecture' },
-            { text: '设计概览', link: '/flow/design/' },
-            { text: '设计器设计', link: '/flow/design/designer' },
-            { text: '运行时设计', link: '/flow/design/runtime' },
-            { text: '实例与任务', link: '/flow/design/instances-tasks' },
-          ],
-        },
-      ],
-      '/design/': [
-        {
-          text: '架构设计',
-          items: [
-            { text: '模型架构', link: '/design/model-architecture' },
+            { text: '参考总览', link: '/reference/' },
+            { text: '工作流节点', link: '/reference/workflow-nodes' },
+            { text: '流程节点', link: '/reference/flow-nodes' },
+            { text: '控件', link: '/reference/widgets' },
+            { text: '事件', link: '/reference/events' },
+            { text: 'API', link: '/reference/api' },
+            { text: '错误码', link: '/reference/errors' },
           ],
         },
       ],
@@ -392,7 +139,7 @@ export default withMermaid(defineConfig({
 
     footer: {
       message: 'MIT License',
-      copyright: '© 2024 Schema Platform Team',
+      copyright: '© 2026 Schema Platform Team',
     },
 
     search: {

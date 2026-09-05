@@ -35,3 +35,4 @@ pnpm --filter @flow build
 - [流程设计器](./design/designer.md) — 画布、节点面板、模拟执行
 - [实例与任务](./design/instances-tasks.md) — 审批、嵌入页
 - [运行时架构](./design/runtime.md) — FlowEngine、Token 模型、服务端执行
+- [开放工作清单](../design/open-work-inventory.md) — 全平台计划开放项（**当前 0**）

@@ -4,41 +4,24 @@ title: Changelog
 
 # Visual Editor · Changelog
 
-> Records major iterations of the editor (form / page / dashboard designer).
-> Internal planning docs are archived in `editor/iteration-evolution.md` and not shown here.
+> Major updates for the visual editor (form / page / dashboard designer).
 
-## 2026-07-20 · E1-E3 Closure
+## 2026-08-03 · Grid layout engine
 
-### E1 Dashboard Foundation
+- Layout modes: `free` and `grid` (legacy `flex` maps to `grid` on load)
+- Grid engine: multi-column adaptive layout, `gridSpan`, gaps and column constraints
+- Containers work in both free and grid layouts
 
-- Doc stats alignment, viewport culling, immer undo, dashboard demo
-- Theme/animation skeleton, deprecated alias cleanup
+## 2026-07-20 · Dashboard & publish experience
 
-### E2 Experience Deepening
+- Dashboard foundation: viewport culling, undo/redo, demo, theme presets
+- Publish modes via URL `?interaction=`
+- Shortcuts and frontend telemetry client
+- SchemaType registry + `createWidgetPlugin` + third-party widget guide
 
-- Publish mode, shortcuts, telemetry client + dashboard
-- PropertyPanel 29KB -> 10.1KB (split into 6 composables/utils)
-- Nesting alignment, i18n coverage ~15%
+## Earlier · Capability foundation
 
-### E3 Open Ecosystem
-
-- SchemaType registry-based + createWidgetPlugin + third-party widget guide
-- Scaffold/marketplace removed from backlog (no external consumers)
-
-## Measurement Baseline
-
-| Metric | Count |
-|---|---|
-| Widget directories | 86 |
-| registerWidget | 97 |
-| Pinia stores | 12 |
-| Composables | 46 |
-| Vitest tests | ~1941 |
-
-## Earlier · Capability Foundation
-
-- **Dual canvas system**: Free absolute positioning + Flex flow layout
-- **Four config systems**: events / linkage / API / variables
-- **Condition expressions**: visibleOn / disabledOn / requiredOn, sandbox execution
-- **Event engine**: 18 action types
-- **qiankun micro-frontend**: sub-app integration
+- Dual canvas: Free absolute positioning + Grid CSS Grid
+- Four config systems: events / linkage / API / variables
+- Conditional expressions and event engine
+- qiankun micro-frontend embedding

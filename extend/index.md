@@ -8,7 +8,7 @@
 |------|------|
 | [自定义模型](./custom-models) | 自定义模型接入指南：Ollama、vLLM、DeepSeek 私有网关配置 |
 | [技能作者手册](./skill-author-guide) | 技能作者手册：定义、打包、分发、最佳实践 |
-| [工作流模板 RFC](./workflow-template-rfc) | 工作流模板注册机制 RFC：插件 pack 带模板、运行时注册、迁移策略 |
+| [工作流模板 RFC](./workflow-template-rfc) | **已实现（P0–P4）**：PluginRegistry `workflows` 层、JSON 内置模板、Marketplace API |
 | [工作流集成指南](./workflow-integration) | 工作流开放 API 集成指南：触发 / 轮询 / 回调 / 错误码 / 代码示例 |
 | [工作流变量](./workflow-variables) | Workflow LLM 节点变量文档：`$input`、`$node`、`$json`、`$conversation` 解析规则 |
 

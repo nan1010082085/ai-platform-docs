@@ -29,8 +29,7 @@ Content-Type: application/json
 GET /api/ai/workflows/invoke/executions/{executionId}
 ```
 
-（同样带 Key；用户平台 Key 场景下需与 invoke 鉴权规则一致，见 [platform.md](./platform.md) 演进清单。）
-
+（同样带 Key；鉴权规则见 [platform.md](./platform.md)。）
 ---
 
 ## 外部集成方式

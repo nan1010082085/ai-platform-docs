@@ -193,4 +193,4 @@ createWidgetPlugin({ widgets: [myWidget] })
 | [控件开发指南](/editor/widget-development) | 内置 控件开发规范 |
 | [属性面板](/editor/property-panel) | Widget 属性配置 UI |
 | [状态库设计](/editor/store-design) | 控件数据存储 |
-| [能力清单](/editor/capabilities) | Editor 完整能力矩阵 |
+| [能力清单](/editor/capabilities) | Editor 可用能力 |

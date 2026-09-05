@@ -74,7 +74,7 @@ pnpm dev
 
 | 文档 | 说明 |
 |------|------|
-| [capabilities.md](./capabilities.md) | 产品能力矩阵、验收路径、已知缺口 |
+| [capabilities.md](./capabilities.md) | 产品能力清单与体验路径 |
 | [architecture.md](./architecture.md) | 分层、Store、渲染双路径、Schema |
 
 ### 开发指南

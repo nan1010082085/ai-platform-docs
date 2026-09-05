@@ -4,7 +4,9 @@ title: AI 应用架构与分层
 
 # AI 应用架构与分层
 
-> `ai/app/` 前端应用的实现级结构：目录规范、Store / Composable / API 清单、插件适配层与 Harness 客户端。
+> `ai/app/` 前端应用结构说明。  
+> **使用者**请优先阅读 [扩展能力用户指南](../user-plugins.md) 与 [账号与安全](../user-security.md)。  
+> 下文含实现分层，供二次开发参考。
 
 ## 一、分层规范
 
@@ -17,7 +19,7 @@ AI 应用前端遵循平台统一分层（与 editor / flow / ua 一致）：
 | 全局状态 | `stores/` | Pinia Store | 全局状态唯一出口，禁止组件内裸状态跨页共享 |
 | 公共逻辑 | `composables/` | `useXXX` 组合式函数 | 公共逻辑统一组合式 API，废弃零散 utils |
 | API 聚合 | `api/` | 所有后端请求 | 组件/stores/composables 禁止直接 `fetch()` |
-| 插件适配 | `plugins/` | Cordis 插件容器 | 业务代码只允许 `import ... from '@/plugins'` |
+| 插件适配 | `plugins/` | 扩展能力注册（业务只从 `@/plugins` 导入） | 禁止业务直接依赖底层插件容器包 |
 | 常量 | `constants/` | 静态枚举/元数据 | errorCodes、节点类型、模型 Provider 元数据 |
 | 类型 | `types/` | 本地协议类型 | 跨项目共享类型放 `platform-shared/ai` |
 
@@ -81,7 +83,11 @@ AI 应用前端遵循平台统一分层（与 editor / flow / ua 一致）：
 
 ## 五、Cordis 插件适配层（src/plugins/）
 
-Cordis 启发的插件容器（原则：`ai/docs/design/plugin-architecture-principles.md`）。独立 harness 已清理；客户端适配层保留。**业务代码只允许 `import ... from '@/plugins'`**，禁止直接引用 `@deepseek-ai/cordis`，API 变更只影响适配层内部。扩展点（工具 / 节点 / 渲染器 / skill 等）优先注册进 Service，禁止在业务里堆砌常量与散落 registry。
+Cordis 启发的插件容器（原则：`ai/docs/design/plugin-architecture-principles.md`；完整说明：`ai/docs/design/plugin-foundation-complete.md`）。独立 harness 已清理；客户端适配层保留。**业务代码只允许 `import ... from '@/plugins'`**，禁止直接引用 `@deepseek-ai/cordis`。
+
+能力 Service：`chatTools` / `nodeTypes` / `renderers` / `skillDefs`。  
+壳层 Service：`nodePanels`（属性面板）/ `shellNav`（导航）/ `shellRoutes`（路由贡献，经 `createAiRouter` 合并）。  
+功能模块：`plugins/modules/*` 按域注册路由。扩展点优先注册进 Service，禁止在业务里堆砌常量与散落 registry。
 
 | 文件 | 职责 |
 |------|------|
@@ -102,6 +108,8 @@ Cordis 启发的插件容器（原则：`ai/docs/design/plugin-architecture-prin
 - 插件（代码）静态装载；工具 / workflow / skill 是数据，由插件运行时动态注册（`chatTools.setOverlay` / `ctx.tools.register`）
 - workflow 永远是数据不是插件；浏览器端禁止 loader 运行时动态 import
 - 版本锁定：`@deepseek-ai/cordis` 精确版本，升级需读 changelog 评审
+- 壳层：`nodePanels` / `shellNav` / `shellRoutes`；模块目录 `plugins/modules/`
+- 完整文档：仓库内 `ai/docs/design/plugin-foundation-complete.md`
 
 ## 六、多语言与遥测
 

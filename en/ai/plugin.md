@@ -203,43 +203,20 @@ Deploy: `deploy/pack.sh --target server` carries the whole `server/config/`.
 
 ---
 
-## 7. Completed Capabilities
+## 7. Capabilities
 
-| Category | Item | Status |
-|------|-----|------|
-| **Config** | per-directory `mcp/tools/experts/skills` | ✅ |
-| | `local/`, `tenants/` overlay | ✅ |
-| | hot-reload SIGHUP + `AI_PLUGIN_WATCH` | ✅ |
-| | `plugin:validate` / `pack` / `install` | ✅ |
-| **Runtime** | MCP bridge reads Registry (inmemory/stdio/sse) | ✅ |
-| | `runRegisteredExpert` + Chat `pluginExpert` | ✅ |
-| | Workflow `expert` node + `expertId` | ✅ |
-| | unified http tool executor | ✅ |
-| | Router / taskPlanner dynamic experts | ✅ |
-| **Frontend** | designer Palette dynamic load | ✅ |
-| | ToolNodePanel Registry-first | ✅ |
-| | Plugin Center four-layer read-only UI + Chinese tool names | ✅ |
-| | expert type pill labels (legacy Chinese) | ✅ |
-| **Production Skills** | `platform.reply-zh` / `platform.schema-quality` | ✅ |
-| | attached to general + editor experts | ✅ |
-| **Quality** | stdio MCP integration tests | ✅ |
-| | CI `ai-tests.yml` plugin:validate gate | ✅ |
-
----
-
-## 8. Todo Items
-
-| # | Item | Status |
-|---|-----|------|
-| - | Prompt / capability-layer extensions | Schedule via [product/backlog.md](./product/backlog.md) and plugin principles as needed |
-
-Historical PLG items are all complete; see the "Completed Capabilities" table above.
+| Category | Capability |
+|------|------|
+| **Config** | Per-directory `mcp/tools/experts/skills`; `local/` / `tenants/` overlay; hot-reload SIGHUP + `AI_PLUGIN_WATCH`; `plugin:validate` / `pack` / `install` |
+| **Runtime** | MCP bridge (inmemory/stdio/sse); `runRegisteredExpert` + Chat `pluginExpert`; Workflow `expert` node; unified http tool executor; Router / taskPlanner dynamic experts |
+| **Frontend** | Designer Palette from Registry; ToolNodePanel Registry-first; Plugin Center four-layer UI |
+| **Skills** | Built-in skills such as `platform.reply-zh` / `platform.schema-quality` |
 
 Local override write: `PUT /api/ai/plugins/local/{mcp|tools|experts|skills}/{file}.json`
 
 ---
 
-## 9. Quick Steps to Add a Plugin
+## 8. Quick Steps to Add a Plugin
 
 1. Add a JSON file in the corresponding subdirectory (or copy `local.example/`)
 2. `pnpm plugin:validate`

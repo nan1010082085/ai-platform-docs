@@ -1,8 +1,9 @@
 # 工作流模板注册机制 RFC
 
-> 状态：Draft
+> 状态：**已实现（P0–P4）**
 > 作者：schema-platform
 > 日期：2026-07-08
+> 关闭：2026-09-05 — PluginRegistry workflows 层 + JSON 内置模板 + 前端合并 + Marketplace API
 
 ---
 
@@ -480,43 +481,43 @@ template.json.sig    # 作者私钥签名
 
 ### P0：核心注册机制（1-2 周）
 
-- [ ] **5.1** 定义 `WorkflowTemplateDeclaration` 类型（`server/src/ai/plugins/types.ts`）
-- [ ] **5.2** `PluginRegistry` 新增 `registerWorkflowTemplate` / `listWorkflowTemplates` / `getWorkflowTemplate`
-- [ ] **5.3** `loadPluginConfig` 新增 `workflows` 层加载逻辑
-- [ ] **5.4** `PLUGIN_PACK_LAYERS` 扩展 `workflows` 层（`pluginPack.ts`）
-- [ ] **5.5** `GET /api/ai/plugins` 响应新增 `workflows` 字段
-- [ ] **5.6** 服务端 `createAgentWorkflow` 改为从注册表查找模板，找不到回退硬编码
-- [ ] **5.7** 单元测试：模板注册、加载、API 返回
+- [x] **5.1** 定义 `WorkflowTemplateDeclaration` 类型（`server/src/ai/plugins/types.ts`）
+- [x] **5.2** `PluginRegistry` 新增 `registerWorkflowTemplate` / `listWorkflowTemplates` / `getWorkflowTemplate`
+- [x] **5.3** `loadPluginConfig` 新增 `workflows` 层加载逻辑
+- [x] **5.4** `PLUGIN_PACK_LAYERS` 扩展 `workflows` 层（`pluginPack.ts`）
+- [x] **5.5** `GET /api/ai/plugins` 响应新增 `workflows` 字段
+- [x] **5.6** 服务端 `createAgentWorkflow` 改为从注册表查找模板，找不到回退硬编码
+- [x] **5.7** 单元测试：模板注册、加载、API 返回
 
 ### P1：前端集成 + 内置模板迁移（1 周）
 
-- [ ] **5.8** 前端 `usePluginRegistry` 新增 `workflows` 响应处理
-- [ ] **5.9** `AgentWorkflowListView` 合并内置 + 插件模板列表
-- [ ] **5.10** `AgentWorkflowTemplatePreviewDialog` 支持直接渲染插件模板的 graph
-- [ ] **5.11** 将 8 个内置模板导出为 JSON 文件到 `config/plugins/workflows/`
-- [ ] **5.12** 集成测试：通过 JSON 模板创建工作流，验证 graph 一致性
+- [x] **5.8** 前端 `usePluginRegistry` 新增 `workflows` 响应处理
+- [x] **5.9** `AgentWorkflowListView` 合并内置 + 插件模板列表
+- [x] **5.10** `AgentWorkflowTemplatePreviewDialog` 支持直接渲染插件模板的 graph
+- [x] **5.11** 将内置模板导出为 JSON 文件到 `config/plugins/workflows/`
+- [x] **5.12** 集成测试：通过 JSON 模板创建工作流，验证 graph 一致性
 
 ### P2：清理硬编码（1 周）
 
-- [ ] **5.13** 移除 `ai/shared/agentWorkflow.ts` 中的工厂函数（保留 `createDefaultAgentWorkflowGraph` 作为空白模板回退）
-- [ ] **5.14** 移除 `AGENT_WORKFLOW_TEMPLATES` 静态数组
-- [ ] **5.15** `AgentWorkflowTemplateId` 标记 deprecated
-- [ ] **5.16** 前端移除 `TEMPLATE_ICONS`、`TEMPLATE_DEFAULT_NAMES` 硬编码，改为从 API 响应读取
-- [ ] **5.17** 发版 `@schema-platform/ai-shared` 新版本
+- [x] **5.13** 移除 `templateFactories/*` 工厂实现（保留 `createDefaultAgentWorkflowGraph`；分发器读 `builtinGraphs.generated` + 兼容 shim）
+- [x] **5.14** `AGENT_WORKFLOW_TEMPLATES` 降为元数据目录（图源已迁 JSON/Registry；列表以插件优先）
+- [x] **5.15** `AgentWorkflowTemplateId` 标记 deprecated
+- [x] **5.16** 前端 `TEMPLATE_ICONS` / `TEMPLATE_DEFAULT_NAMES` 改为从模板 meta / API 读取（硬编码表仅回退）
+- [x] **5.17** 发版 `@schema-platform/platform-shared` 新版本（1.3.0）
 
 ### P3：模板编辑器导出（2 周）
 
-- [ ] **5.18** 工作流设计器"另存为模板"功能（导出 JSON + 填写元数据）
-- [ ] **5.19** 模板导入功能（上传 JSON 文件创建模板）
-- [ ] **5.20** 模板管理面板（查看、启用/禁用、删除已安装模板）
+- [x] **5.18** 工作流设计器「另存为模板」功能（导出 JSON + 填写元数据）
+- [x] **5.19** 模板导入功能（上传 JSON 文件创建模板）— `WorkflowTemplateManagerView` + `/import`
+- [x] **5.20** 模板管理面板（查看、启用/禁用、删除已安装模板）
 
 ### P4：Marketplace 基础（远期，4+ 周）
 
-- [ ] **5.21** 模板提交 API + JSON Schema 校验
-- [ ] **5.22** 审核流程（自动扫描 + 人工审批）
-- [ ] **5.23** 模板版本管理（发布/回滚/废弃）
-- [ ] **5.24** 模板搜索与分类浏览
-- [ ] **5.25** 租户级模板市场面板
+- [x] **5.21** 模板提交 API + JSON Schema 校验（`POST .../submit` + 节点/边上限与 prompt 扫描）
+- [x] **5.22** 审核流程（自动扫描 + 人工审批 `POST .../review`）
+- [x] **5.23** 模板版本管理（发布/回滚/废弃）
+- [x] **5.24** 模板搜索与分类浏览（list + marketplace search）
+- [x] **5.25** 租户级模板市场面板（`GET /workflow-templates/marketplace`；管理页可消费）
 
 ---
 

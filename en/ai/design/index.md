@@ -11,6 +11,7 @@
 | [Agent orchestration](./workflows.md) | list, designer, execution monitoring, webhook |
 | [RAG knowledge base](./rag.md) | index management, retrieval testing, inline Chat RAG |
 | [**Runtime architecture**](./runtime.md) | **server execution graph, data flow, checkpoint, WebSocket progress** |
+| [Workflow Open API](./workflow-open-api.md) | External invoke and Key integration |
 
 ## Design Principles
 
@@ -36,7 +37,7 @@ AiLayout (200px sidebar, hidden when embedded)
 ├── /workflows/:id       AgentWorkflowDesignerView  full-screen designer (no sidebar)
 ├── /workflows/:id/executions  AgentExecutionListView
 ├── /executions/:id      AgentExecutionDetailView   full-screen execution detail
-├── /rag                 RagKnowledgeBase    knowledge base
-├── /monitor             AiMonitorView       performance monitoring
+├── /rag                 RagKnowledgeBase    knowledge base (task-flow UX)
+├── /monitor             AiMonitorView       usage & cost
 └── /sidebar             AiSidebarView       embedded drawer mode
 ```

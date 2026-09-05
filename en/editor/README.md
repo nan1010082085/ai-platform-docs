@@ -74,7 +74,7 @@ Open `http://localhost:5100` to start using.
 
 | Doc | Description |
 |------|------|
-| [capabilities.md](./capabilities.md) | Product capability matrix, acceptance paths, known gaps |
+| [capabilities.md](./capabilities.md) | Product capability list and walkthroughs |
 | [architecture.md](./architecture.md) | Layering, stores, dual render paths, schema |
 
 ### Development Guide

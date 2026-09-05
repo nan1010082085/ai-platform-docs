@@ -53,9 +53,12 @@ pnpm dev    # 端口 5300
 | [平台定位](./platform) | AI 平台在 Schema Platform 中的定位 |
 | [ai-shared API](./ai-shared) | AI 共享层 API 参考 |
 | [设计概览](./design/) | 产品设计文档索引 |
+| [任务进度与开放缺口](./product/backlog) | 已关闭计划总览；开放计数见 inventory |
+| [开放工作清单](../design/open-work-inventory) | 全平台未实现节点计数（**当前 0**） |
 | [对话设计](./design/chat) | 对话页面、侧边栏模式、双后端 |
 | [RAG 设计](./design/rag) | 知识库管理、检索测试 |
 | [运行时设计](./design/runtime) | 服务端执行图、数据流、Checkpoint |
+| [工作流术语](./workflow-terminology) | 入口节点与执行 trigger 对照 |
 
 ## 开发与部署
 
@@ -77,7 +80,7 @@ pnpm dev    # 端口 5300
 | [第三方插件指南](./extend/third-party-plugin-guide) | 外部开发者接入 |
 | [插件脚手架](./extend/plugin-scaffold/) | 最小专家插件模板 |
 
-## 产品进度
+## 用户指南
 
-- [任务进度与开放缺口](./product/backlog) — 活跃 backlog
-- [工作流术语](./product/workflow-terminology) — 术语表
+- [扩展能力（插件）](./user-plugins) — 专家 / 工具怎么用
+- [账号、权限与安全](./user-security) — 自有模型、设备绑定、服务接入简介
